@@ -1,5 +1,12 @@
 // src/app/services/page.tsx
 import { BookingButton } from "@/components/site/booking-button";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Stone Fabrication Services in Los Angeles",
+  description:
+    "Explore stone fabrication services from Quiroz Marble and Granite, including kitchen countertops, bathroom vanities, fireplaces, outdoor kitchens, commercial interiors, and custom stone details in the greater Los Angeles area.",
+};
 
 const services = [
   {
@@ -67,7 +74,9 @@ export default function ServicesPage() {
         {services.map((service) => (
           <div
             key={service.title}
-            className="flex flex-col justify-between rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] p-5 shadow-sm md:p-6"
+            className="flex flex-col justify-between rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] p-5 shadow-sm md:p-6
+                       transition-all duration-200 ease-out
+                       hover:-translate-y-0.5 hover:shadow-md"
           >
             <div className="space-y-2">
               <h2 className="text-sm font-semibold tracking-tight text-[#111827]">
@@ -83,7 +92,11 @@ export default function ServicesPage() {
       </div>
 
       {/* CTA strip */}
-      <div className="mt-12 rounded-2xl border border-[#E2E0DA] bg-[#F3F1EB] px-5 py-6 md:mt-16 md:flex md:items-center md:justify-between md:px-6">
+      <div
+        className="mt-12 rounded-2xl border border-[#E2E0DA] bg-[#F3F1EB] px-5 py-6 md:mt-16 md:flex md:items-center md:justify-between md:px-6
+                   transition-all duration-200 ease-out
+                   hover:-translate-y-0.5 hover:shadow-md"
+      >
         <div className="space-y-1">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
             Ready to talk through a project?

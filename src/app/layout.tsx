@@ -6,9 +6,28 @@ import { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Quiroz Marble and Granite | Tailored Stone Surfaces",
+  title: {
+    default: "Quiroz Marble and Granite | Stone Fabrication in Los Angeles",
+    template: "%s | Quiroz Marble and Granite",
+  },
   description:
-    "Quiroz Marble and Granite crafts tailored stone surfaces for modern kitchens, bathrooms, fireplaces, and commercial spaces.",
+    "Family-run stone fabrication shop providing templating, fabrication, and installation for kitchens, bathrooms, fireplaces, outdoor spaces, and commercial interiors in the greater Los Angeles area.",
+  metadataBase: new URL("https://www.quirozmarbleandgranite.com"), // update to your real domain
+  openGraph: {
+    title: "Quiroz Marble and Granite | Stone Fabrication in Los Angeles",
+    description:
+      "Premium stone fabrication and installation for kitchens, bathrooms, fireplaces, outdoor spaces, and commercial interiors in the greater Los Angeles area.",
+    url: "https://www.quirozmarbleandgranite.com",
+    siteName: "Quiroz Marble and Granite",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Quiroz Marble and Granite | Stone Fabrication in Los Angeles",
+    description:
+      "Stone fabrication and installation for kitchens, baths, fireplaces, outdoor spaces, and commercial interiors across Los Angeles.",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
