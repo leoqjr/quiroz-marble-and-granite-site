@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { ReactNode } from "react";
 import "./globals.css";
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
