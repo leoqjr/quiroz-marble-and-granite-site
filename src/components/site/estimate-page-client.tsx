@@ -4,11 +4,42 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
 
 export default function EstimatePageClient() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "submitted" | "error"
+  >("idle");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    alert("Thank you. We’ve received your request and will follow up shortly.");
+    if (status === "submitting") return;
+    setStatus("submitting");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    // Optional: tag this as coming from the estimate form
+    formData.append("source", "estimate");
+
+    try {
+      const res = await fetch("https://formspree.io/f/meevpoqo", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (res.ok) {
+        setStatus("submitted");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -182,18 +213,37 @@ export default function EstimatePageClient() {
               />
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col gap-2">
               <Button
                 type="submit"
+                disabled={status === "submitting"}
                 className="rounded-full border border-[#111827] bg-[#1F2933] px-6 py-2
                            text-xs font-medium uppercase tracking-[0.16em] text-[#F8F7F4]
                            shadow-sm
                            transition-all duration-200 ease-out
                            hover:bg-[#111827] hover:-translate-y-0.5 hover:shadow-md
-                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A77B] focus-visible:ring-offset-2"
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A77B] focus-visible:ring-offset-2
+                           disabled:cursor-not-allowed disabled:border-[#9CA3AF] disabled:bg-[#9CA3AF]"
               >
-                Submit Request
+                {status === "submitted"
+                  ? "Submitted"
+                  : status === "submitting"
+                    ? "Sending..."
+                    : "Submit Request"}
               </Button>
+
+              {status === "submitted" && (
+                <p className="text-[11px] text-[#059669]">
+                  Thank you—your estimate request has been received. We’ll
+                  follow up within one business day.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-[11px] text-[#B91C1C]">
+                  Something went wrong sending your request. Please try again or
+                  contact us directly.
+                </p>
+              )}
             </div>
 
             <p className="text-[11px] leading-relaxed text-[#9CA3AF]">

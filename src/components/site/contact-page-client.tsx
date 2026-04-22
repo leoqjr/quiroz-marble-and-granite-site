@@ -5,19 +5,36 @@ import { BookingButton } from "@/components/site/booking-button";
 import { useState } from "react";
 
 export default function ContactPageClient() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "submitted">(
-    "idle",
-  );
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "submitted" | "error"
+  >("idle");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === "submitting") return;
     setStatus("submitting");
 
-    // Placeholder submit behavior – replace with real API later
-    setTimeout(() => {
-      setStatus("submitted");
-    }, 700);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("https://formspree.io/f/meevpoqo", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (res.ok) {
+        setStatus("submitted");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -135,7 +152,7 @@ export default function ContactPageClient() {
             </p>
             <button
               type="submit"
-              disabled={status !== "idle"}
+              disabled={status === "submitting"}
               className="inline-flex items-center justify-center rounded-full border border-[#1F2933] bg-[#1F2933] px-4 py-2
                          text-[12px] font-medium uppercase tracking-[0.16em] text-[#FDFCF9]
                          transition-all duration-200 ease-out
@@ -150,6 +167,19 @@ export default function ContactPageClient() {
                   : "Send message"}
             </button>
           </div>
+
+          {status === "submitted" && (
+            <p className="text-[11px] text-[#059669]">
+              Thank you—your message has been sent. We’ll follow up within one
+              business day.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-[11px] text-[#B91C1C]">
+              Something went wrong sending your message. Please try again or
+              contact us directly.
+            </p>
+          )}
         </form>
 
         {/* Direct contact / fabrication info */}
