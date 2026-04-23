@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   },
   description:
     "Family-run stone fabrication shop providing templating, fabrication, and installation for kitchens, bathrooms, fireplaces, outdoor spaces, and commercial interiors in the greater Los Angeles area.",
-  metadataBase: new URL("https://www.quirozmarbleandgranite.com"), // update to your real domain
+  metadataBase: new URL("https://www.quirozmarblegranite.com"),
   openGraph: {
     title: "Quiroz Marble and Granite | Stone Fabrication in Los Angeles",
     description:
       "Premium stone fabrication and installation for kitchens, bathrooms, fireplaces, outdoor spaces, and commercial interiors in the greater Los Angeles area.",
-    url: "https://www.quirozmarbleandgranite.com",
+    url: "https://www.quirozmarblegranite.com",
     siteName: "Quiroz Marble and Granite",
     locale: "en_US",
     type: "website",
