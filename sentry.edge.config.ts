@@ -8,11 +8,12 @@ import * as Sentry from "@sentry/nextjs";
 Sentry.init({
   dsn: "https://4e43cb0d3b8d2bb302a746f3619c3d26@o4511269963038720.ingest.us.sentry.io/4511269966512128",
 
-  // Force a clean environment name on edge
   environment:
     process.env.VERCEL_ENV === "production"
       ? "production"
       : process.env.VERCEL_ENV || process.env.NODE_ENV || "development",
+
+  tracesSampleRate: 0.1,
 
   sendDefaultPii: true,
 });
