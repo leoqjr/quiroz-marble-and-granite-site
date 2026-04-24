@@ -71,7 +71,7 @@ function HeroSection() {
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/zac-gudakov-9j9b2L0qAYU-unsplash.jpg')",
+          backgroundImage: "url('selected-kitchen.jpg')",
         }}
       />
 
