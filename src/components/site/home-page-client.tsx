@@ -45,10 +45,10 @@ export function HomePageClient() {
         {/* Hero */}
         <HeroSection />
 
-        {/* Selected projects moved up */}
+        {/* Selected projects */}
         <PortfolioPreviewSection onItemClick={setActiveItem} />
 
-        {/* Who we work with moved down */}
+        {/* Who we work with */}
         <HeroSecondary />
       </main>
 
@@ -66,83 +66,86 @@ export function HomePageClient() {
 function HeroSection() {
   return (
     <section className="relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]">
-      {/* Background image layer – swap path when you wire up real asset */}
+      {/* Background image layer – make sure the path matches your file in /public */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/selected-kitchen.jpg')",
+          backgroundImage: "url('/zac-gudakov-9j9b2L0qAYU-unsplash.jpg')",
         }}
       />
 
-      {/* Readability overlay */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-black/55 via-black/35 to-black/15" />
+      {/* Stronger gradient for readability */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/55 to-black/10" />
 
       {/* Content */}
       <div className="relative px-5 py-9 sm:px-7 sm:py-10 md:px-10 md:py-14">
-        <div className="max-w-xl space-y-6">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#E5DED7]/80"
-          >
-            Los Angeles · Family owned
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-            className="text-balance text-3xl font-semibold tracking-tight text-[#F9F8F5] sm:text-4xl md:text-5xl"
-          >
-            Elevated stone fabrication for calm, modern homes.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
-            className="max-w-md text-sm leading-relaxed text-[#E5DED7]"
-          >
-            Quiroz Marble and Granite designs and installs custom countertops
-            and stone surfaces in granite, marble, quartz, and porcelain for
-            kitchens, baths, fireplaces, and outdoor spaces.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-            className="flex flex-wrap items-center gap-4 pt-1"
-          >
-            <BookingButton />
-            <Link
-              href="/portfolio"
-              className="text-xs font-medium uppercase tracking-[0.16em] text-[#F9F8F5] underline underline-offset-4 hover:text-white"
+        {/* Soft glass card behind text */}
+        <div className="max-w-xl rounded-2xl bg-black/25 px-4 py-5 sm:px-6 sm:py-6 backdrop-blur-[2px]">
+          <div className="space-y-6">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#F3F2EE]/85"
             >
-              View recent projects
-            </Link>
-          </motion.div>
+              Los Angeles · Family owned
+            </motion.p>
 
-          {/* Small trust row – visible on mobile too */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.26 }}
-            className="mt-4 flex flex-wrap gap-6 text-[11px] text-[#E5DED7]/90"
-          >
-            <div>
-              <p className="font-semibold text-[#FDFBF7]">20+ years</p>
-              <p>Stone fabrication experience.</p>
-            </div>
-            <div>
-              <p className="font-semibold text-[#FDFBF7]">
-                Kitchen, bath, outdoor
-              </p>
-              <p>From first measure to install.</p>
-            </div>
-          </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+              className="text-balance text-3xl font-semibold tracking-tight text-[#FDFBF7] sm:text-4xl md:text-5xl"
+            >
+              Elevated stone fabrication for calm, modern homes.
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
+              className="max-w-md text-sm leading-relaxed text-[#F3F2EE]"
+            >
+              Quiroz Marble and Granite designs and installs custom countertops
+              and stone surfaces in granite, marble, quartz, and porcelain for
+              kitchens, baths, fireplaces, and outdoor spaces.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+              className="flex flex-wrap items-center gap-4 pt-1"
+            >
+              <BookingButton />
+              <Link
+                href="/portfolio"
+                className="text-xs font-medium uppercase tracking-[0.16em] text-[#FDFBF7] underline underline-offset-4 hover:text-white"
+              >
+                View recent projects
+              </Link>
+            </motion.div>
+
+            {/* Small trust row */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.26 }}
+              className="mt-4 flex flex-wrap gap-6 text-[11px] text-[#F3F2EE]/90"
+            >
+              <div>
+                <p className="font-semibold text-[#FDFBF7]">20+ years</p>
+                <p>Stone fabrication experience.</p>
+              </div>
+              <div>
+                <p className="font-semibold text-[#FDFBF7]">
+                  Kitchen, bath, outdoor
+                </p>
+                <p>From first measure to install.</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
