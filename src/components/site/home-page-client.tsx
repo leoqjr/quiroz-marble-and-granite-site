@@ -173,34 +173,11 @@ function FeaturedProjectSection() {
         </Link>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:items-stretch">
-        {/* Wide image slot */}
-        <div className="relative h-[220px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[260px]">
-          {/* Replace with <Image> later */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
-          <div className="absolute bottom-4 left-4 rounded-full bg-white/85 px-3 py-1 text-xs font-medium text-[#4B5563] backdrop-blur-sm">
-            Future project image placeholder
-          </div>
-        </div>
-
-        {/* Project summary card */}
-        <div className="flex flex-col justify-between rounded-3xl border border-[#D8CBC3] bg-[#F3F2EE] px-5 py-5 md:px-6 md:py-6">
-          <div className="space-y-2">
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-              Kitchen project
-            </p>
-            <h3 className="text-base font-medium text-[#1D1D1D]">
-              Quiet, gallery-like stone for a family kitchen.
-            </h3>
-            <p className="text-sm leading-relaxed text-[#4B5563]">
-              This section will highlight a single project with a wide image and
-              a short story—material, layout, and how the space is used.
-            </p>
-          </div>
-          <div className="pt-3 text-sm text-[#4B5563]">
-            <p>Material: To be filled in</p>
-            <p>Location: Los Angeles, CA</p>
-          </div>
+      <div className="relative h-[240px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[300px]">
+        {/* Replace with <Image> later */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
+        <div className="absolute bottom-4 left-4 rounded-full bg-white/85 px-3 py-1 text-xs font-medium text-[#4B5563] backdrop-blur-sm">
+          Future project image placeholder
         </div>
       </div>
     </section>
