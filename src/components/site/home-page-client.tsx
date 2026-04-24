@@ -42,10 +42,14 @@ export function HomePageClient() {
   return (
     <div className="bg-[#F3F2EE]">
       <main className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-20 pt-10 md:gap-12 md:px-6 md:pb-24 md:pt-14">
+        {/* Hero */}
         <HeroSection />
-        <FeaturedProjectSection />
-        <HeroSecondary />
+
+        {/* Selected projects moved up */}
         <PortfolioPreviewSection onItemClick={setActiveItem} />
+
+        {/* Who we work with moved down */}
+        <HeroSecondary />
       </main>
 
       {/* Lightbox overlay */}
@@ -61,131 +65,87 @@ export function HomePageClient() {
 
 function HeroSection() {
   return (
-    <section className="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:items-center">
-      {/* Left: Short, clear copy */}
-      <div className="space-y-6">
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#4B5563]"
-        >
-          Stone surfaces for modern homes.
-        </motion.p>
+    <section className="relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]">
+      {/* Background image layer – swap path when you wire up real asset */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/zac-gudakov-9j9b2L0qAYU-unsplash.jpg')",
+        }}
+      />
 
-        <motion.h1
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-          className="text-balance text-3xl md:text-5xl font-semibold tracking-tight text-[#1D1D1D]"
-        >
-          Elevated stone fabrication in Los Angeles.
-        </motion.h1>
+      {/* Readability overlay */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-black/55 via-black/35 to-black/15" />
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
-          className="max-w-md text-base leading-relaxed text-[#4B5563]"
-        >
-          Quiroz Marble and Granite creates custom stone countertops and
-          surfaces in granite, marble, quartz, and porcelain—built for kitchens,
-          baths, fireplaces, and outdoor spaces.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          className="flex flex-wrap items-center gap-4 pt-2"
-        >
-          <BookingButton />
-          <Link
-            href="/portfolio"
-            className="text-xs font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
+      {/* Content */}
+      <div className="relative px-5 py-9 sm:px-7 sm:py-10 md:px-10 md:py-14">
+        <div className="max-w-xl space-y-6">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#E5DED7]/80"
           >
-            View recent projects
-          </Link>
-        </motion.div>
+            Los Angeles · Family owned
+          </motion.p>
 
-        {/* Supporting blurbs: desktop only */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.26 }}
-          className="hidden flex-wrap gap-6 pt-1 text-xs text-[#4B5563] md:flex"
-        >
-          <div className="space-y-1">
-            <p className="font-semibold text-[#1D1D1D]">
-              Detail-driven installs
-            </p>
-            <p>From first measure to final seam.</p>
-          </div>
-          <div className="space-y-1">
-            <p className="font-semibold text-[#1D1D1D]">For homes & trade</p>
-            <p>Homeowners, designers, and contractors.</p>
-          </div>
-        </motion.div>
-      </div>
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+            className="text-balance text-3xl font-semibold tracking-tight text-[#F9F8F5] sm:text-4xl md:text-5xl"
+          >
+            Elevated stone fabrication for calm, modern homes.
+          </motion.h1>
 
-      {/* Right: Visual (image placeholder for now) */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98, y: 10 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-        className="relative h-[260px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[340px] lg:h-[380px]"
-      >
-        {/* Image slot – replace with <Image> later */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_40%,_#D3C8BD_100%)]" />
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
+            className="max-w-md text-sm leading-relaxed text-[#E5DED7]"
+          >
+            Quiroz Marble and Granite designs and installs custom countertops
+            and stone surfaces in granite, marble, quartz, and porcelain for
+            kitchens, baths, fireplaces, and outdoor spaces.
+          </motion.p>
 
-        <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-6 lg:p-7">
-          <div className="flex justify-between text-xs text-[#4B5563]">
-            <span>Future featured kitchen</span>
-            <span>Los Angeles, CA</span>
-          </div>
-          <div className="flex flex-col items-start gap-3">
-            <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563] backdrop-blur-sm">
-              Image placeholder — project hero
-            </span>
-            <p className="max-w-xs text-xs text-[#4B5563]">
-              This block will showcase a hero photo of your work once images are
-              ready.
-            </p>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            className="flex flex-wrap items-center gap-4 pt-1"
+          >
+            <BookingButton />
+            <Link
+              href="/portfolio"
+              className="text-xs font-medium uppercase tracking-[0.16em] text-[#F9F8F5] underline underline-offset-4 hover:text-white"
+            >
+              View recent projects
+            </Link>
+          </motion.div>
+
+          {/* Small trust row – visible on mobile too */}
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.26 }}
+            className="mt-4 flex flex-wrap gap-6 text-[11px] text-[#E5DED7]/90"
+          >
+            <div>
+              <p className="font-semibold text-[#FDFBF7]">20+ years</p>
+              <p>Stone fabrication experience.</p>
+            </div>
+            <div>
+              <p className="font-semibold text-[#FDFBF7]">
+                Kitchen, bath, outdoor
+              </p>
+              <p>From first measure to install.</p>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
-  );
-}
-
-function FeaturedProjectSection() {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-      className="mt-4 space-y-4"
-    >
-      <div className="flex items-baseline justify-between">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-          Featured project
-        </p>
-        <Link
-          href="/portfolio"
-          className="text-xs font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
-        >
-          View portfolio
-        </Link>
-      </div>
-
-      <div className="relative h-[240px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[300px]">
-        {/* Replace with <Image> later */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
-        <div className="absolute bottom-4 left-4 rounded-full bg-white/85 px-3 py-1 text-xs font-medium text-[#4B5563] backdrop-blur-sm">
-          Future project image placeholder
-        </div>
-      </div>
-    </motion.section>
   );
 }
 
@@ -267,7 +227,7 @@ function PortfolioPreviewSection({
             onClick={() => onItemClick(item)}
             className="group flex flex-col gap-2 text-left"
           >
-            <div className="relative h-32 md:h-40 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)] transition-transform duration-200 group-hover:-translate-y-1">
+            <div className="relative h-32 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)] transition-transform duration-200 group-hover:-translate-y-1 md:h-40">
               {/* Replace with <Image> later */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_50%,_#D3C8BD_100%)]" />
             </div>
