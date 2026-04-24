@@ -119,7 +119,12 @@ function HeroSection() {
 
 function FeaturedProjectSection() {
   return (
-    <section className="mt-4 space-y-4">
+    <motion.section
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+      className="mt-4 space-y-4"
+    >
       <div className="flex items-baseline justify-between">
         <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
           Featured project
@@ -139,13 +144,18 @@ function FeaturedProjectSection() {
           Future project image placeholder
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
 function HeroSecondary() {
   return (
-    <section className="space-y-5">
+    <motion.section
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+      className="space-y-5"
+    >
       <div>
         <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
           Who we work with
@@ -180,6 +190,6 @@ function HeroSecondary() {
           </p>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
