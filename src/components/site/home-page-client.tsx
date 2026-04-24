@@ -9,10 +9,11 @@ import Link from "next/link";
 export function HomePageClient() {
   return (
     <div className="bg-[#F3F2EE]">
-      <main className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-16 pt-10 md:gap-12 md:px-6 md:pb-20 md:pt-14">
+      <main className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-20 pt-10 md:gap-12 md:px-6 md:pb-24 md:pt-14">
         <HeroSection />
         <FeaturedProjectSection />
         <HeroSecondary />
+        <PortfolioPreviewSection />
       </main>
     </div>
   );
@@ -189,6 +190,46 @@ function HeroSecondary() {
             Reliable schedules and precise field execution.
           </p>
         </div>
+      </div>
+    </motion.section>
+  );
+}
+
+function PortfolioPreviewSection() {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: 0.25 }}
+      className="space-y-4"
+    >
+      <div className="flex items-baseline justify-between">
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+          Selected projects
+        </p>
+        <Link
+          href="/portfolio"
+          className="text-xs font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
+        >
+          View all
+        </Link>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-4">
+        {["Kitchen", "Bathroom", "Fireplace", "Outdoor"].map((label) => (
+          <div key={label} className="flex flex-col gap-2">
+            <div className="relative h-32 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)]">
+              {/* Replace with <Image> later */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_50%,_#D3C8BD_100%)]" />
+            </div>
+            <p className="text-xs font-medium text-[#1D1D1D]">
+              {label} project
+            </p>
+            <p className="text-xs text-[#4B5563]">
+              Image placeholder for a {label.toLowerCase()} install.
+            </p>
+          </div>
+        ))}
       </div>
     </motion.section>
   );
