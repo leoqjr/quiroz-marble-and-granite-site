@@ -11,8 +11,8 @@ export function HomePageClient() {
     <div className="bg-[#F3F2EE]">
       <main className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-16 pt-10 md:gap-12 md:px-6 md:pb-20 md:pt-14">
         <HeroSection />
-        <HeroSecondary />
         <FeaturedProjectSection />
+        <HeroSecondary />
       </main>
     </div>
   );
@@ -20,35 +20,8 @@ export function HomePageClient() {
 
 function HeroSection() {
   return (
-    <section className="grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-center">
-      {/* Left: Visual first (image placeholder for now) */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98, y: 10 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-        className="relative h-[260px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[340px] lg:h-[380px]"
-      >
-        {/* Image slot – replace with <Image> later */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_40%,_#D3C8BD_100%)]" />
-
-        <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-6 lg:p-7">
-          <div className="flex justify-between text-xs text-[#4B5563]">
-            <span>Future featured kitchen</span>
-            <span>Los Angeles, CA</span>
-          </div>
-          <div className="flex flex-col items-start gap-3">
-            <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563] backdrop-blur-sm">
-              Image placeholder — project hero
-            </span>
-            <p className="max-w-xs text-xs text-[#4B5563]">
-              This block will showcase a hero photo of your work once images are
-              ready.
-            </p>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Right: Short, clear copy */}
+    <section className="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:items-center">
+      {/* Left: Short, clear copy */}
       <div className="space-y-6">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -113,6 +86,59 @@ function HeroSection() {
           </div>
         </motion.div>
       </div>
+
+      {/* Right: Visual (image placeholder for now) */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+        className="relative h-[260px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[340px] lg:h-[380px]"
+      >
+        {/* Image slot – replace with <Image> later */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_40%,_#D3C8BD_100%)]" />
+
+        <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-6 lg:p-7">
+          <div className="flex justify-between text-xs text-[#4B5563]">
+            <span>Future featured kitchen</span>
+            <span>Los Angeles, CA</span>
+          </div>
+          <div className="flex flex-col items-start gap-3">
+            <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563] backdrop-blur-sm">
+              Image placeholder — project hero
+            </span>
+            <p className="max-w-xs text-xs text-[#4B5563]">
+              This block will showcase a hero photo of your work once images are
+              ready.
+            </p>
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+function FeaturedProjectSection() {
+  return (
+    <section className="mt-4 space-y-4">
+      <div className="flex items-baseline justify-between">
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+          Featured project
+        </p>
+        <Link
+          href="/portfolio"
+          className="text-xs font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
+        >
+          View portfolio
+        </Link>
+      </div>
+
+      <div className="relative h-[240px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[300px]">
+        {/* Replace with <Image> later */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
+        <div className="absolute bottom-4 left-4 rounded-full bg-white/85 px-3 py-1 text-xs font-medium text-[#4B5563] backdrop-blur-sm">
+          Future project image placeholder
+        </div>
+      </div>
     </section>
   );
 }
@@ -152,32 +178,6 @@ function HeroSecondary() {
           <p className="mt-2 text-sm text-[#1D1D1D]">
             Reliable schedules and precise field execution.
           </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FeaturedProjectSection() {
-  return (
-    <section className="mt-4 space-y-4">
-      <div className="flex items-baseline justify-between">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-          Featured project
-        </p>
-        <Link
-          href="/portfolio"
-          className="text-xs font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
-        >
-          View portfolio
-        </Link>
-      </div>
-
-      <div className="relative h-[240px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[300px]">
-        {/* Replace with <Image> later */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
-        <div className="absolute bottom-4 left-4 rounded-full bg-white/85 px-3 py-1 text-xs font-medium text-[#4B5563] backdrop-blur-sm">
-          Future project image placeholder
         </div>
       </div>
     </section>
