@@ -71,7 +71,7 @@ function HeroSection() {
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/selected-kitchen.jpg')",
+          backgroundImage: "url('/zac-gudakov-9j9b2L0qAYU-unsplash.jpg')",
         }}
       />
 
@@ -92,20 +92,22 @@ function HeroSection() {
               Los Angeles · Family owned
             </motion.p>
 
+            {/* Headline: slightly smaller on the tiniest screens */}
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-              className="text-balance text-3xl font-semibold tracking-tight text-[#FDFBF7] sm:text-4xl md:text-5xl"
+              className="text-balance text-[1.7rem] font-semibold tracking-tight text-[#FDFBF7] xs:text-[1.85rem] sm:text-4xl md:text-5xl"
             >
               Elevated stone fabrication for calm, modern homes.
             </motion.h1>
 
+            {/* Body: softer line-height on mobile */}
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
-              className="max-w-md text-sm leading-relaxed text-[#F3F2EE]"
+              className="max-w-md text-[0.9rem] leading-relaxed text-[#F3F2EE] sm:text-sm sm:leading-[1.7]"
             >
               Quiroz Marble and Granite designs and installs custom countertops
               and stone surfaces in granite, marble, quartz, and porcelain for
