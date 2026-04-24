@@ -4,8 +4,7 @@
 import { BookingButton } from "@/components/site/booking-button";
 import { motion } from "framer-motion";
 import Link from "next/link";
-// When you have real images, we’ll use this:
-// import Image from "next/image";
+// import Image from "next/image"; // when you add real images
 
 export function HomePageClient() {
   return (
@@ -29,19 +28,19 @@ function HeroSection() {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
         className="relative h-[260px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[340px] lg:h-[380px]"
       >
-        {/* Image slot – replace this block with <Image> later */}
+        {/* Image slot – replace with <Image> later */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_40%,_#D3C8BD_100%)]" />
 
         <div className="absolute inset-0 flex flex-col justify-between p-5 md:p-6 lg:p-7">
-          <div className="flex justify-between text-[11px] text-[#4B5563]">
+          <div className="flex justify-between text-xs text-[#4B5563]">
             <span>Future featured kitchen</span>
             <span>Los Angeles, CA</span>
           </div>
           <div className="flex flex-col items-start gap-3">
-            <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#4B5563] backdrop-blur-sm">
+            <span className="inline-flex rounded-full bg-white/80 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563] backdrop-blur-sm">
               Image placeholder — project hero
             </span>
-            <p className="max-w-xs text-[11px] text-[#4B5563]">
+            <p className="max-w-xs text-xs text-[#4B5563]">
               This block will showcase a hero photo of your work once images are
               ready.
             </p>
@@ -95,11 +94,12 @@ function HeroSection() {
           </Link>
         </motion.div>
 
+        {/* Supporting blurbs: desktop only */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.26 }}
-          className="flex flex-wrap gap-6 pt-2 text-[11px] text-[#4B5563]"
+          className="hidden flex-wrap gap-6 pt-1 text-xs text-[#4B5563] md:flex"
         >
           <div className="space-y-1">
             <p className="font-semibold text-[#1D1D1D]">
@@ -178,7 +178,7 @@ function FeaturedProjectSection() {
         <div className="relative h-[220px] overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.08)] md:h-[260px]">
           {/* Replace with <Image> later */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
-          <div className="absolute bottom-4 left-4 rounded-full bg-white/85 px-3 py-1 text-[11px] font-medium text-[#4B5563] backdrop-blur-sm">
+          <div className="absolute bottom-4 left-4 rounded-full bg-white/85 px-3 py-1 text-xs font-medium text-[#4B5563] backdrop-blur-sm">
             Future project image placeholder
           </div>
         </div>
