@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookingButton } from "./booking-button";
 import { Logo } from "./logo";
 
 const navItems = [
@@ -66,13 +65,8 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:flex">
-          <BookingButton />
-        </div>
-
-        {/* Mobile menu */}
+        {/* Mobile menu trigger only */}
         <div className="flex items-center gap-3 md:hidden">
-          <BookingButton variant="ghost" />
           <MobileMenu />
         </div>
       </div>
@@ -113,9 +107,6 @@ function MobileMenu() {
               </Link>
             );
           })}
-          <div className="mt-4">
-            <BookingButton />
-          </div>
         </div>
       </SheetContent>
     </Sheet>
