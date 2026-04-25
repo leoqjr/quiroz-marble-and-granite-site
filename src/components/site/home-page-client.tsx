@@ -2,6 +2,7 @@
 "use client";
 
 import { BookingButton } from "@/components/site/booking-button";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
@@ -183,8 +184,8 @@ function PortfolioPreviewSection({
         </Link>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-4">
-        {PORTFOLIO_ITEMS.map((item) => {
+      <div className="grid gap-4 md:grid-cols-3 md:auto-rows-[220px] lg:auto-rows-[260px]">
+        {PORTFOLIO_ITEMS.map((item, index) => {
           const imgSrc = IMAGE_MAP[item.id];
 
           const bgPosition =
@@ -194,17 +195,22 @@ function PortfolioPreviewSection({
                 ? "center 30%"
                 : "center";
 
+          const isHero = index === 0;
+
           return (
             <button
               key={item.id}
               type="button"
               onClick={() => onItemClick(item)}
-              className="group flex flex-col gap-2 text-left"
+              className={cn(
+                "group flex flex-col gap-2 text-left",
+                isHero && "md:col-span-2 md:row-span-2",
+              )}
             >
-              <div className="relative h-40 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)] transition-transform duration-200 group-hover:-translate-y-1 md:h-48">
+              <div className="relative h-40 md:h-full overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)] transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_16px_30px_rgba(15,23,42,0.16)]">
                 {imgSrc ? (
                   <div
-                    className="absolute inset-0 bg-cover"
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-out group-hover:scale-105"
                     style={{
                       backgroundImage: `url('${imgSrc}')`,
                       backgroundPosition: bgPosition,
@@ -213,6 +219,7 @@ function PortfolioPreviewSection({
                 ) : (
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_50%,_#D3C8BD_100%)]" />
                 )}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
               <p className="text-xs md:text-[13px] font-medium text-[#1D1D1D]">
                 {item.label} project
@@ -223,6 +230,17 @@ function PortfolioPreviewSection({
             </button>
           );
         })}
+
+        {/* Calm copy sitting in the grid (no box) */}
+        <div className="flex flex-col justify-end gap-2 md:col-span-1 md:row-span-1">
+          <p className="text-[11px] md:text-xs font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+            A calm way to do stone work
+          </p>
+          <p className="text-xs md:text-[13px] text-[#4B5563]">
+            Clear dates, clean installs, and stone that feels built into the
+            space—not dropped in at the end.
+          </p>
+        </div>
       </div>
     </motion.section>
   );
