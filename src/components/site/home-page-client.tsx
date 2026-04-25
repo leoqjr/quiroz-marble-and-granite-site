@@ -48,7 +48,7 @@ export function HomePageClient() {
 
   return (
     <div className="bg-[#F3F2EE]">
-      <main className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-18 pt-8 md:gap-12 md:px-6 md:pb-24 md:pt-14">
+      <main className="mx-auto flex max-w-6xl flex-col gap-8 md:gap-12 px-4 pb-18 pt-8 md:px-6 md:pb-24 md:pt-14">
         {/* Hero */}
         <HeroSection />
 
@@ -86,7 +86,7 @@ function HeroSection() {
           Elevated stone fabrication in Los Angeles.
         </h1>
 
-        <p className="max-w-md text-sm leading-relaxed text-[#4B5563]">
+        <p className="max-w-md md:max-w-lg text-sm md:text-[0.95rem] leading-relaxed text-[#4B5563]">
           Custom countertops and stone surfaces in granite, marble, quartz, and
           porcelain for kitchens, bathrooms, fireplaces, and outdoor spaces.
         </p>
@@ -115,7 +115,7 @@ function HeroSection() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4">
-          <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-[#F9F7F2] backdrop-blur-[3px]">
+          <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] md:text-[11px] font-medium uppercase tracking-[0.22em] text-[#F9F7F2] backdrop-blur-[3px]">
             Los Angeles · Family owned
           </span>
         </div>
@@ -130,13 +130,13 @@ function TrustStrip() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-      className="flex flex-col gap-4 rounded-3xl border border-[#E3D9CE] bg-[#F8F5F0] px-4 py-5 md:flex-row md:items-center md:justify-between md:px-6 md:py-6"
+      className="flex flex-col gap-4 rounded-3xl border border-[#E3D9CE] bg-[#F8F5F0] px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 md:py-6"
     >
       <div className="space-y-1">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+        <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
           A calm way to do stone work
         </p>
-        <p className="max-w-xl text-sm text-[#374151]">
+        <p className="max-w-xl text-sm md:text-[0.95rem] text-[#374151]">
           We guide homeowners, designers, and contractors through template,
           fabrication, and install with clear communication and clean detailing.
         </p>
@@ -149,7 +149,7 @@ function TrustStrip() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className="inline-flex items-center rounded-full border border-[#D8CBC3] bg-[#F9F6F1] px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]"
+            className="inline-flex items-center rounded-full border border-[#D8CBC3] bg-[#F9F6F1] px-3 py-1.5 text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]"
           >
             {label}
           </motion.div>
@@ -172,12 +172,12 @@ function PortfolioPreviewSection({
       className="space-y-4"
     >
       <div className="flex items-baseline justify-between">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+        <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
           Selected projects
         </p>
         <Link
           href="/portfolio"
-          className="text-xs font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
+          className="text-xs md:text-[13px] font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
         >
           View all
         </Link>
@@ -214,10 +214,10 @@ function PortfolioPreviewSection({
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_50%,_#D3C8BD_100%)]" />
                 )}
               </div>
-              <p className="text-xs font-medium text-[#1D1D1D]">
+              <p className="text-xs md:text-[13px] font-medium text-[#1D1D1D]">
                 {item.label} project
               </p>
-              <p className="text-xs text-[#4B5563]">
+              <p className="text-xs md:text-[13px] text-[#4B5563]">
                 Image placeholder for a {item.label.toLowerCase()} install.
               </p>
             </button>
@@ -263,7 +263,7 @@ function PortfolioLightbox({
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-3 text-xs uppercase tracking-[0.18em] text-[#4B5563] hover:text-[#1D1D1D]"
+          className="absolute right-4 top-3 text-[11px] md:text-xs uppercase tracking-[0.18em] text-[#4B5563] hover:text-[#1D1D1D]"
         >
           Close
         </button>
@@ -283,11 +283,13 @@ function PortfolioLightbox({
             )}
           </div>
           <div className="space-y-1">
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+            <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
               {item.label} project
             </p>
-            <p className="text-sm text-[#1D1D1D]">{item.description}</p>
-            <p className="text-xs text-[#4B5563]">
+            <p className="text-sm md:text-[0.95rem] text-[#1D1D1D]">
+              {item.description}
+            </p>
+            <p className="text-xs md:text-[13px] text-[#4B5563]">
               This lightbox will show a large project image and concise details
               once photography is ready.
             </p>
