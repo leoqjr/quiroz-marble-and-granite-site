@@ -71,17 +71,17 @@ function HeroSection() {
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/selected-kitchen.jpg')",
+          backgroundImage: "url('/selected-image.jpg')",
         }}
       />
 
-      {/* Stronger gradient for readability */}
+      {/* Strong gradient for readability */}
       <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/55 to-black/10" />
 
       {/* Content */}
-      <div className="relative px-5 py-9 sm:px-7 sm:py-10 md:px-10 md:py-14">
-        {/* Stronger glass card behind text */}
-        <div className="max-w-xl rounded-2xl bg-black/45 px-4 py-5 sm:px-6 sm:py-6 backdrop-blur-[4px]">
+      <div className="relative px-5 py-7 sm:px-7 sm:py-10 md:px-10 md:py-14">
+        {/* Smaller, lighter glass card on mobile */}
+        <div className="mt-1 max-w-md rounded-2xl bg-black/35 px-4 py-3 sm:mt-0 sm:max-w-xl sm:bg-black/35 sm:px-6 sm:py-6 backdrop-blur-[4px]">
           <div className="space-y-6">
             <motion.p
               initial={{ opacity: 0, y: 10 }}
