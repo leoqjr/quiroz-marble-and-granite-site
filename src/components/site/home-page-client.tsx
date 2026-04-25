@@ -34,6 +34,11 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
     label: "Outdoor",
     description: "Placeholder for an outdoor kitchen or bar.",
   },
+  {
+    id: "island",
+    label: "Island",
+    description: "Placeholder for a stone kitchen island installation.",
+  },
 ];
 
 // Map each portfolio item id to its image in /public
@@ -42,8 +47,8 @@ const IMAGE_MAP: Record<string, string> = {
   bathroom: "/selected-bathroom.jpg",
   fireplace: "/selected-fireplace.jpg",
   outdoor: "/selected-outdoor.jpg",
+  island: "/island.jpg",
 };
-
 export function HomePageClient() {
   const [activeItem, setActiveItem] = useState<PortfolioItem | null>(null);
 
@@ -159,29 +164,44 @@ function TrustStrip() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-      className="flex flex-col gap-4 rounded-3xl border border-[#E3D9CE] bg-[#F8F5F0] px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 md:py-6"
+      className="flex flex-col gap-5 rounded-3xl border border-[#E3D9CE] bg-[#F8F5F0] px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 md:py-6"
     >
-      <div className="space-y-1">
+      <div className="space-y-2 md:max-w-xl">
         <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          A calm way to do stone work
+          Who we work with
         </p>
-        <p className="max-w-xl text-sm md:text-[0.95rem] text-[#374151]">
-          We guide homeowners, designers, and contractors through template,
-          fabrication, and install with clear communication and clean detailing.
+        <p className="text-sm md:text-[0.95rem] text-[#374151]">
+          We keep stone projects calm for homeowners, designers, and contractors
+          who want clear dates and a tidy install.
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2 md:gap-3">
-        {["Homeowners", "Designers", "Contractors"].map((label) => (
-          <motion.div
-            key={label}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className="inline-flex items-center rounded-full border border-[#D8CBC3] bg-[#F9F6F1] px-3 py-1.5 text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]"
+      <div className="grid w-full gap-2 md:w-auto md:grid-cols-3 md:gap-3">
+        {[
+          {
+            label: "Homeowners",
+            copy: "Guidance on materials, layout, and timing.",
+          },
+          {
+            label: "Designers",
+            copy: "Clean details that match your vision.",
+          },
+          {
+            label: "Contractors",
+            copy: "Reliable templates and installs on schedule.",
+          },
+        ].map((item) => (
+          <div
+            key={item.label}
+            className="flex flex-col gap-1 rounded-2xl border border-[#D8CBC3] bg-[#F9F6F1] px-3 py-2 text-left"
           >
-            {label}
-          </motion.div>
+            <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+              {item.label}
+            </span>
+            <span className="text-[11px] md:text-xs text-[#6B7280] leading-snug">
+              {item.copy}
+            </span>
+          </div>
         ))}
       </div>
     </motion.section>
@@ -212,9 +232,9 @@ function PortfolioPreviewSection({
         </Link>
       </div>
 
-      {/* Asymmetric grid: first tile larger on desktop */}
+      {/* Asymmetric grid: kitchen hero, regular tiles, wide island */}
       <div className="grid gap-4 md:grid-cols-3 md:auto-rows-[220px] lg:auto-rows-[260px]">
-        {PORTFOLIO_ITEMS.map((item, index) => {
+        {PORTFOLIO_ITEMS.map((item) => {
           const imgSrc = IMAGE_MAP[item.id];
 
           const bgPosition =
@@ -222,9 +242,12 @@ function PortfolioPreviewSection({
               ? "center 70%"
               : item.id === "fireplace"
                 ? "center 30%"
-                : "center";
+                : item.id === "island"
+                  ? "center 50%"
+                  : "center";
 
-          const isHero = index === 0;
+          const isKitchen = item.id === "kitchen";
+          const isIsland = item.id === "island";
 
           return (
             <button
@@ -233,7 +256,10 @@ function PortfolioPreviewSection({
               onClick={() => onItemClick(item)}
               className={cn(
                 "group flex flex-col gap-2 text-left",
-                isHero && "md:col-span-2 md:row-span-2",
+                // Big hero tile for kitchen
+                isKitchen && "md:col-span-2 md:row-span-2",
+                // Island: wide tile on desktop, same row height as others
+                isIsland && "hidden md:flex md:col-span-2",
               )}
             >
               <div className="relative h-40 md:h-full overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)] transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_16px_30px_rgba(15,23,42,0.16)]">
