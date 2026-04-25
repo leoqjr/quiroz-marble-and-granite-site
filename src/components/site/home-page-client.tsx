@@ -5,7 +5,6 @@ import { BookingButton } from "@/components/site/booking-button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-// import Image from "next/image"; // when you add real images
 
 type PortfolioItem = {
   id: string;
@@ -65,91 +64,58 @@ export function HomePageClient() {
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]">
-      {/* Background image layer – uses selected-image.jpg from /public */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/selected-image.jpg')",
-        }}
-      />
+    <section className="space-y-6 md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center md:gap-10 md:space-y-0">
+      {/* Image-only hero card */}
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]"
+      >
+        <div
+          aria-hidden="true"
+          className="aspect-[3/4] w-full bg-cover bg-center md:aspect-[4/5]"
+          style={{
+            backgroundImage: "url('/selected-image.jpg')",
+          }}
+        />
 
-      {/* Strong gradient for readability */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/55 to-black/10" />
+        {/* Soft gradient at bottom for the label */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
 
-      {/* Content */}
-      <div className="relative px-5 py-7 sm:px-7 sm:py-10 md:px-10 md:py-14">
-        {/* Smaller, lighter glass card on mobile */}
-        <div className="mt-1 max-w-md rounded-2xl bg-black/35 px-4 py-3 sm:mt-0 sm:max-w-xl sm:bg-black/35 sm:px-6 sm:py-6 backdrop-blur-[4px]">
-          <div className="space-y-6">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#F3F2EE]/90"
-            >
-              Los Angeles · Family owned
-            </motion.p>
-
-            {/* Headline: slightly smaller on the tiniest screens */}
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-              className="text-balance text-[1.7rem] font-semibold tracking-tight text-[#FDFBF7] sm:text-4xl md:text-5xl"
-            >
-              Elevated stone fabrication for calm, modern homes.
-            </motion.h1>
-
-            {/* Body: softer line-height on mobile */}
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
-              className="max-w-md text-[0.9rem] leading-relaxed text-[#F3F2EE] sm:text-sm sm:leading-[1.7]"
-            >
-              Quiroz Marble and Granite designs and installs custom countertops
-              and stone surfaces in granite, marble, quartz, and porcelain for
-              kitchens, baths, fireplaces, and outdoor spaces.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-              className="flex flex-wrap items-center gap-4 pt-1"
-            >
-              <BookingButton />
-              <Link
-                href="/portfolio"
-                className="text-xs font-medium uppercase tracking-[0.16em] text-[#FDFBF7] underline underline-offset-4 hover:text-white"
-              >
-                View recent projects
-              </Link>
-            </motion.div>
-
-            {/* Small trust row */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut", delay: 0.26 }}
-              className="mt-4 flex flex-wrap gap-6 text-[11px] text-[#F3F2EE]/90"
-            >
-              <div>
-                <p className="font-semibold text-[#FDFBF7]">20+ years</p>
-                <p>Stone fabrication experience.</p>
-              </div>
-              <div>
-                <p className="font-semibold text-[#FDFBF7]">
-                  Kitchen, bath, outdoor
-                </p>
-                <p>From first measure to install.</p>
-              </div>
-            </motion.div>
-          </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4">
+          <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-[#F9F7F2] backdrop-blur-[3px]">
+            Los Angeles · Family owned
+          </span>
         </div>
-      </div>
+      </motion.div>
+
+      {/* Text block below on mobile, to the right on desktop */}
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+        className="space-y-5 md:space-y-6"
+      >
+        <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#1D1D1D] sm:text-4xl md:text-[2.6rem]">
+          Elevated stone fabrication in Los Angeles.
+        </h1>
+
+        <p className="max-w-md text-sm leading-relaxed text-[#4B5563]">
+          Custom countertops and stone surfaces in granite, marble, quartz, and
+          porcelain for kitchens, bathrooms, fireplaces, and outdoor spaces.
+        </p>
+
+        <div className="flex flex-wrap items-center gap-4 pt-1">
+          <BookingButton />
+          <Link
+            href="/portfolio"
+            className="text-xs font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
+          >
+            View recent projects
+          </Link>
+        </div>
+      </motion.div>
     </section>
   );
 }
@@ -233,7 +199,6 @@ function PortfolioPreviewSection({
             className="group flex flex-col gap-2 text-left"
           >
             <div className="relative h-32 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)] transition-transform duration-200 group-hover:-translate-y-1 md:h-40">
-              {/* Replace with <Image> later */}
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_50%,_#D3C8BD_100%)]" />
             </div>
             <p className="text-xs font-medium text-[#1D1D1D]">
@@ -281,7 +246,6 @@ function PortfolioLightbox({
 
         <div className="space-y-4 pt-4 md:pt-2">
           <div className="relative h-60 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] md:h-72">
-            {/* Replace with <Image> later */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
           </div>
           <div className="space-y-1">
