@@ -76,7 +76,7 @@ function HeroSection() {
           aria-hidden="true"
           className="aspect-[3/4] w-full bg-cover bg-center md:aspect-[4/5]"
           style={{
-            backgroundImage: "url('/selected-image.jpg')",
+            backgroundImage: "url('/selected-kitchen.jpg')",
           }}
         />
 
