@@ -83,8 +83,7 @@ export function HomePageClient() {
 
 function HeroSection() {
   return (
-    <section className="space-y-5 md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-10 md:space-y-0">
-      {/* Text block first (above image on mobile, left on desktop) */}
+    <section className="space-y-6 md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-10 md:space-y-0">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -94,6 +93,10 @@ function HeroSection() {
         <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#1D1D1D] sm:text-4xl md:text-[2.6rem]">
           Elevated stone fabrication in Los Angeles.
         </h1>
+
+        <p className="text-[11px] md:text-xs uppercase tracking-[0.18em] text-[#6B7280]">
+          Since 2000 · Family owned
+        </p>
 
         <p className="max-w-md md:max-w-lg text-sm md:text-[0.95rem] leading-relaxed text-[#4B5563]">
           Custom countertops and stone surfaces in granite, marble, quartz, and
@@ -120,14 +123,8 @@ function HeroSection() {
           }}
         />
 
-        {/* Soft gradient at bottom for the label */}
+        {/* Soft gradient at bottom for the label (you can remove this too if you want zero overlay) */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
-
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4">
-          <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] md:text-[11px] font-medium uppercase tracking-[0.22em] text-[#F9F7F2] backdrop-blur-[3px]">
-            Los Angeles · Family owned
-          </span>
-        </div>
       </motion.div>
     </section>
   );
