@@ -35,6 +35,14 @@ const PORTFOLIO_ITEMS: PortfolioItem[] = [
   },
 ];
 
+// Map each portfolio item id to its image in /public
+const IMAGE_MAP: Record<string, string> = {
+  kitchen: "/kitchen.jpg",
+  bathroom: "/selected-bathroom.jpg",
+  fireplace: "/selected-fireplace.jpg",
+  outdoor: "/selected-outdoor.jpg",
+};
+
 export function HomePageClient() {
   const [activeItem, setActiveItem] = useState<PortfolioItem | null>(null);
 
@@ -146,6 +154,7 @@ function HeroSecondary() {
           <motion.div
             key={item.title}
             whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
             className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5 md:shadow-[0_4px_12px_rgba(15,23,42,0.04)]"
           >
@@ -185,24 +194,45 @@ function PortfolioPreviewSection({
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        {PORTFOLIO_ITEMS.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => onItemClick(item)}
-            className="group flex flex-col gap-2 text-left"
-          >
-            <div className="relative h-32 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)] transition-transform duration-200 group-hover:-translate-y-1 md:h-40">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_50%,_#D3C8BD_100%)]" />
-            </div>
-            <p className="text-xs font-medium text-[#1D1D1D]">
-              {item.label} project
-            </p>
-            <p className="text-xs text-[#4B5563]">
-              Image placeholder for a {item.label.toLowerCase()} install.
-            </p>
-          </button>
-        ))}
+        {PORTFOLIO_ITEMS.map((item) => {
+          const imgSrc = IMAGE_MAP[item.id];
+
+          const bgPosition =
+            item.id === "bathroom"
+              ? "center 70%"
+              : item.id === "fireplace"
+                ? "center 45%"
+                : "center";
+
+          return (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => onItemClick(item)}
+              className="group flex flex-col gap-2 text-left"
+            >
+              <div className="relative h-40 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)] transition-transform duration-200 group-hover:-translate-y-1 md:h-48">
+                {imgSrc ? (
+                  <div
+                    className="absolute inset-0 bg-cover"
+                    style={{
+                      backgroundImage: `url('${imgSrc}')`,
+                      backgroundPosition: bgPosition,
+                    }}
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_50%,_#D3C8BD_100%)]" />
+                )}
+              </div>
+              <p className="text-xs font-medium text-[#1D1D1D]">
+                {item.label} project
+              </p>
+              <p className="text-xs text-[#4B5563]">
+                Image placeholder for a {item.label.toLowerCase()} install.
+              </p>
+            </button>
+          );
+        })}
       </div>
     </motion.section>
   );
@@ -215,6 +245,16 @@ function PortfolioLightbox({
   item: PortfolioItem;
   onClose: () => void;
 }) {
+  const imgSrc = IMAGE_MAP[item.id];
+
+  // Focal points for large view
+  const bgPosition =
+    item.id === "bathroom"
+      ? "center 65%"
+      : item.id === "fireplace"
+        ? "center 45%"
+        : "center";
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -227,7 +267,7 @@ function PortfolioLightbox({
         initial={{ scale: 0.96, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
-        className="relative w-full max-w-3xl rounded-3xl bg-[#F3F2EE] p-4 shadow-[0_22px_45px_rgba(15,23,42,0.35)] md:p-6"
+        className="relative flex w-full max-w-4xl flex-col rounded-3xl bg-[#F3F2EE] p-4 shadow-[0_22px_45px_rgba(15,23,42,0.35)] md:p-6"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -238,10 +278,22 @@ function PortfolioLightbox({
           Close
         </button>
 
-        <div className="space-y-4 pt-4 md:pt-2">
-          <div className="relative h-60 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] md:h-72">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
+        <div className="space-y-4 pt-6 md:pt-4">
+          {/* Taller image area */}
+          <div className="relative h-[420px] overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] md:h-[520px]">
+            {imgSrc ? (
+              <div
+                className="absolute inset-0 bg-cover"
+                style={{
+                  backgroundImage: `url('${imgSrc}')`,
+                  backgroundPosition: bgPosition,
+                }}
+              />
+            ) : (
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
+            )}
           </div>
+
           <div className="space-y-1">
             <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
               {item.label} project
