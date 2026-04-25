@@ -72,10 +72,6 @@ function HeroSection() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="space-y-4 md:space-y-5"
       >
-        <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#6B7280]">
-          Los Angeles · Family owned
-        </p>
-
         <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#1D1D1D] sm:text-4xl md:text-[2.6rem]">
           Elevated stone fabrication in Los Angeles.
         </h1>
@@ -101,7 +97,7 @@ function HeroSection() {
           aria-hidden="true"
           className="aspect-[3/4] w-full bg-cover bg-center md:aspect-[4/5]"
           style={{
-            backgroundImage: "url('/selected-image.jpg')",
+            backgroundImage: "url('/selected-kitchen.jpg')",
           }}
         />
 
