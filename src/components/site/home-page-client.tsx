@@ -129,32 +129,32 @@ function HeroSecondary() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
-        <div className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-            Homeowners
-          </p>
-          <p className="mt-2 text-sm text-[#1D1D1D]">
-            Calm, guided projects for lived-in homes.
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-            Designers
-          </p>
-          <p className="mt-2 text-sm text-[#1D1D1D]">
-            Clean detailing, aligned with your vision.
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-            Contractors
-          </p>
-          <p className="mt-2 text-sm text-[#1D1D1D]">
-            Reliable schedules and precise field execution.
-          </p>
-        </div>
+        {[
+          {
+            title: "Homeowners",
+            text: "Calm, guided projects for lived-in homes.",
+          },
+          {
+            title: "Designers",
+            text: "Clean detailing, aligned with your vision.",
+          },
+          {
+            title: "Contractors",
+            text: "Reliable schedules and precise field execution.",
+          },
+        ].map((item) => (
+          <motion.div
+            key={item.title}
+            whileHover={{ y: -3 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5 md:shadow-[0_4px_12px_rgba(15,23,42,0.04)]"
+          >
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+              {item.title}
+            </p>
+            <p className="mt-2 text-sm text-[#1D1D1D]">{item.text}</p>
+          </motion.div>
+        ))}
       </div>
     </motion.section>
   );
