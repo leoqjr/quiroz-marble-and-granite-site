@@ -76,7 +76,7 @@ function HeroSection() {
           aria-hidden="true"
           className="aspect-[3/4] w-full bg-cover bg-center md:aspect-[4/5]"
           style={{
-            backgroundImage: "url('/selected-kitchen.jpg')",
+            backgroundImage: "url('/selected-image.jpg')",
           }}
         />
 
@@ -108,12 +108,7 @@ function HeroSection() {
 
         <div className="flex flex-wrap items-center gap-4 pt-1">
           <BookingButton />
-          <Link
-            href="/portfolio"
-            className="text-xs font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
-          >
-            View recent projects
-          </Link>
+          {/* Secondary hero link removed for a cleaner, single CTA */}
         </div>
       </motion.div>
     </section>
@@ -246,6 +241,7 @@ function PortfolioLightbox({
 
         <div className="space-y-4 pt-4 md:pt-2">
           <div className="relative h-60 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] md:h-72">
+            {/* Replace with <Image> later */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
           </div>
           <div className="space-y-1">
