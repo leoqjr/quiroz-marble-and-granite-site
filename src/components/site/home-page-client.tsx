@@ -135,7 +135,7 @@ function TrustStrip() {
     >
       <div className="space-y-1">
         <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          A calm way to do stone work
+          who we serve
         </p>
         <p className="max-w-xl text-sm md:text-[0.95rem] text-[#374151]">
           We guide homeowners, designers, and contractors through template,
@@ -184,6 +184,7 @@ function PortfolioPreviewSection({
         </Link>
       </div>
 
+      {/* Asymmetric grid: first tile larger on desktop */}
       <div className="grid gap-4 md:grid-cols-3 md:auto-rows-[220px] lg:auto-rows-[260px]">
         {PORTFOLIO_ITEMS.map((item, index) => {
           const imgSrc = IMAGE_MAP[item.id];
@@ -219,28 +220,15 @@ function PortfolioPreviewSection({
                 ) : (
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_50%,_#D3C8BD_100%)]" />
                 )}
+                {/* Soft gradient overlay on hover */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
               <p className="text-xs md:text-[13px] font-medium text-[#1D1D1D]">
                 {item.label} project
               </p>
-              <p className="text-xs md:text-[13px] text-[#4B5563]">
-                Image placeholder for a {item.label.toLowerCase()} install.
-              </p>
             </button>
           );
         })}
-
-        {/* Calm copy sitting in the grid (no box) */}
-        <div className="flex flex-col justify-end gap-2 md:col-span-1 md:row-span-1">
-          <p className="text-[11px] md:text-xs font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-            A calm way to do stone work
-          </p>
-          <p className="text-xs md:text-[13px] text-[#4B5563]">
-            Clear dates, clean installs, and stone that feels built into the
-            space—not dropped in at the end.
-          </p>
-        </div>
       </div>
     </motion.section>
   );
