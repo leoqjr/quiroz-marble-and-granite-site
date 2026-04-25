@@ -66,12 +66,12 @@ export function HomePageClient() {
 function HeroSection() {
   return (
     <section className="relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]">
-      {/* Background image layer – make sure the path matches your file in /public */}
+      {/* Background image layer – uses selected-image.jpg from /public */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('selected-kitchen.jpg')",
+          backgroundImage: "url('/selected-kitchen.jpg')",
         }}
       />
 
@@ -80,14 +80,14 @@ function HeroSection() {
 
       {/* Content */}
       <div className="relative px-5 py-9 sm:px-7 sm:py-10 md:px-10 md:py-14">
-        {/* Soft glass card behind text */}
-        <div className="max-w-xl rounded-2xl bg-black/25 px-4 py-5 sm:px-6 sm:py-6 backdrop-blur-[2px]">
+        {/* Stronger glass card behind text */}
+        <div className="max-w-xl rounded-2xl bg-black/45 px-4 py-5 sm:px-6 sm:py-6 backdrop-blur-[4px]">
           <div className="space-y-6">
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#F3F2EE]/85"
+              className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#F3F2EE]/90"
             >
               Los Angeles · Family owned
             </motion.p>
@@ -97,7 +97,7 @@ function HeroSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-              className="text-balance text-[1.7rem] font-semibold tracking-tight text-[#FDFBF7] xs:text-[1.85rem] sm:text-4xl md:text-5xl"
+              className="text-balance text-[1.7rem] font-semibold tracking-tight text-[#FDFBF7] sm:text-4xl md:text-5xl"
             >
               Elevated stone fabrication for calm, modern homes.
             </motion.h1>
