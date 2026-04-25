@@ -2,7 +2,7 @@
 "use client";
 
 import { BookingButton } from "@/components/site/booking-button";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -59,13 +59,15 @@ export function HomePageClient() {
         <TrustStrip />
       </main>
 
-      {/* Lightbox overlay */}
-      {activeItem && (
-        <PortfolioLightbox
-          item={activeItem}
-          onClose={() => setActiveItem(null)}
-        />
-      )}
+      {/* Lightbox overlay with animation */}
+      <AnimatePresence>
+        {activeItem && (
+          <PortfolioLightbox
+            item={activeItem}
+            onClose={() => setActiveItem(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -251,9 +253,10 @@ function PortfolioLightbox({
       onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.96, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
+        initial={{ opacity: 0, y: 24, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 16, scale: 0.97 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
         className="relative flex w-full max-w-4xl flex-col rounded-3xl bg-[#F3F2EE] p-4 shadow-[0_22px_45px_rgba(15,23,42,0.35)] md:p-6"
         onClick={(e) => e.stopPropagation()}
       >

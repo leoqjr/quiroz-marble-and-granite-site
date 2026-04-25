@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { Logo } from "./logo";
 
 const navItems = [
@@ -76,17 +77,23 @@ export function Header() {
 
 function MobileMenu() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => setOpen(false);
 
   return (
-    <Sheet>
-      <SheetTrigger className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E2E0DA] bg-white text-[#1F2933] shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md">
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger
+        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E2E0DA] bg-[#F3F2EE]/90 text-[#1F2933] shadow-sm backdrop-blur-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+        aria-label="Toggle navigation"
+      >
         <Menu className="h-4 w-4" />
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-64 border-l border-[#E2E0DA] bg-[#F8F7F4]"
+        className="w-64 border-l border-[#E2E0DA] bg-[#F8F7F4] px-5 pt-8 pb-6"
       >
-        <div className="mt-8 flex flex-col gap-4">
+        <nav className="flex flex-col gap-4">
           {navItems.map((item) => {
             const isActive =
               item.href === "/"
@@ -97,6 +104,7 @@ function MobileMenu() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={handleClose}
                 className={cn(
                   "text-xs font-medium uppercase tracking-[0.16em] text-[#6B7280]",
                   "transition-colors duration-200 ease-out hover:text-[#111827]",
@@ -107,7 +115,7 @@ function MobileMenu() {
               </Link>
             );
           })}
-        </div>
+        </nav>
       </SheetContent>
     </Sheet>
   );
