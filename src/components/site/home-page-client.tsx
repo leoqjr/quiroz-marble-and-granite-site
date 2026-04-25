@@ -53,6 +53,9 @@ export function HomePageClient() {
         {/* Hero */}
         <HeroSection />
 
+        {/* How we work strip */}
+        <HowWeWorkStrip />
+
         {/* Selected projects */}
         <PortfolioPreviewSection onItemClick={setActiveItem} />
 
@@ -125,6 +128,31 @@ function HeroSection() {
   );
 }
 
+function HowWeWorkStrip() {
+  return (
+    <section className="border-y border-[#E3D9CE]/70 py-5 md:py-6">
+      <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+        <p className="text-[11px] md:text-sm font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+          How we work
+        </p>
+        <div className="grid gap-3 md:grid-cols-3 md:gap-6 text-sm md:text-[0.95rem] text-[#4B5563]">
+          <div className="space-y-1 md:border-r md:border-[#E3D9CE]/70 md:pr-4 last:md:border-r-0">
+            <p>Templates, fabrication, and installation handled by one team.</p>
+          </div>
+          <div className="space-y-1 md:border-r md:border-[#E3D9CE]/70 md:px-4 last:md:border-r-0">
+            <p>
+              Clear dates and communication from first measure to final install.
+            </p>
+          </div>
+          <div className="space-y-1 md:pl-4">
+            <p>Careful seams, edges, and site protection on every project.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function TrustStrip() {
   return (
     <motion.section
@@ -135,7 +163,7 @@ function TrustStrip() {
     >
       <div className="space-y-1">
         <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          who we serve
+          A calm way to do stone work
         </p>
         <p className="max-w-xl text-sm md:text-[0.95rem] text-[#374151]">
           We guide homeowners, designers, and contractors through template,
