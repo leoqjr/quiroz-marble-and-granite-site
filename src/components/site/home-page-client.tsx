@@ -129,7 +129,7 @@ function HeroSecondary() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
-        <div className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5 transition-transform transition-colors duration-200 ease-out hover:-translate-y-0.5 hover:border-[#C4B7AA] hover:bg-[#EDE5DC]">
+        <div className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
             Homeowners
           </p>
@@ -138,7 +138,7 @@ function HeroSecondary() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5 transition-transform transition-colors duration-200 ease-out hover:-translate-y-0.5 hover:border-[#C4B7AA] hover:bg-[#EDE5DC]">
+        <div className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
             Designers
           </p>
@@ -147,7 +147,7 @@ function HeroSecondary() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5 transition-transform transition-colors duration-200 ease-out hover:-translate-y-0.5 hover:border-[#C4B7AA] hover:bg-[#EDE5DC]">
+        <div className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
             Contractors
           </p>
