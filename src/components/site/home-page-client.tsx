@@ -40,7 +40,7 @@ export function HomePageClient() {
 
   return (
     <div className="bg-[#F3F2EE]">
-      <main className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-20 pt-10 md:gap-12 md:px-6 md:pb-24 md:pt-14">
+      <main className="mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-18 pt-8 md:gap-12 md:px-6 md:pb-24 md:pt-14">
         {/* Hero */}
         <HeroSection />
 
@@ -64,39 +64,18 @@ export function HomePageClient() {
 
 function HeroSection() {
   return (
-    <section className="space-y-6 md:grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:items-center md:gap-10 md:space-y-0">
-      {/* Image-only hero card */}
+    <section className="space-y-5 md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-10 md:space-y-0">
+      {/* Text block first (above image on mobile, left on desktop) */}
       <motion.div
-        initial={{ opacity: 0, y: 14 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]"
+        className="space-y-4 md:space-y-5"
       >
-        <div
-          aria-hidden="true"
-          className="aspect-[3/4] w-full bg-cover bg-center md:aspect-[4/5]"
-          style={{
-            backgroundImage: "url('/selected-image.jpg')",
-          }}
-        />
+        <p className="text-[11px] font-medium uppercase tracking-[0.24em] text-[#6B7280]">
+          Los Angeles · Family owned
+        </p>
 
-        {/* Soft gradient at bottom for the label */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
-
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4">
-          <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-[#F9F7F2] backdrop-blur-[3px]">
-            Los Angeles · Family owned
-          </span>
-        </div>
-      </motion.div>
-
-      {/* Text block below on mobile, to the right on desktop */}
-      <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-        className="space-y-5 md:space-y-6"
-      >
         <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#1D1D1D] sm:text-4xl md:text-[2.6rem]">
           Elevated stone fabrication in Los Angeles.
         </h1>
@@ -108,7 +87,31 @@ function HeroSection() {
 
         <div className="flex flex-wrap items-center gap-4 pt-1">
           <BookingButton />
-          {/* Secondary hero link removed for a cleaner, single CTA */}
+        </div>
+      </motion.div>
+
+      {/* Image hero card */}
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
+        className="relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]"
+      >
+        <div
+          aria-hidden="true"
+          className="aspect-[3/4] w-full bg-cover bg-center md:aspect-[4/5]"
+          style={{
+            backgroundImage: "url('/selected-image.jpg')",
+          }}
+        />
+
+        {/* Soft gradient at bottom for the label */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
+
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4">
+          <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-[#F9F7F2] backdrop-blur-[3px]">
+            Los Angeles · Family owned
+          </span>
         </div>
       </motion.div>
     </section>
@@ -241,7 +244,6 @@ function PortfolioLightbox({
 
         <div className="space-y-4 pt-4 md:pt-2">
           <div className="relative h-60 overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] md:h-72">
-            {/* Replace with <Image> later */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
           </div>
           <div className="space-y-1">
