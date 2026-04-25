@@ -55,8 +55,8 @@ export function HomePageClient() {
         {/* Selected projects */}
         <PortfolioPreviewSection onItemClick={setActiveItem} />
 
-        {/* Who we work with */}
-        <HeroSecondary />
+        {/* Elegant trust strip */}
+        <TrustStrip />
       </main>
 
       {/* Lightbox overlay */}
@@ -122,46 +122,34 @@ function HeroSection() {
   );
 }
 
-function HeroSecondary() {
+function TrustStrip() {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-      className="space-y-5"
+      transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+      className="flex flex-col gap-4 rounded-3xl border border-[#E3D9CE] bg-[#F8F5F0] px-4 py-5 md:flex-row md:items-center md:justify-between md:px-6 md:py-6"
     >
-      <div>
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-          Who we work with
+      <div className="space-y-1">
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+          A calm way to do stone work
+        </p>
+        <p className="max-w-xl text-sm text-[#374151]">
+          We guide homeowners, designers, and contractors through template,
+          fabrication, and install with clear communication and clean detailing.
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        {[
-          {
-            title: "Homeowners",
-            text: "Calm, guided projects for lived-in homes.",
-          },
-          {
-            title: "Designers",
-            text: "Clean detailing, aligned with your vision.",
-          },
-          {
-            title: "Contractors",
-            text: "Reliable schedules and precise field execution.",
-          },
-        ].map((item) => (
+      <div className="flex flex-wrap gap-2 md:gap-3">
+        {["Homeowners", "Designers", "Contractors"].map((label) => (
           <motion.div
-            key={item.title}
-            whileHover={{ y: -3 }}
-            whileTap={{ scale: 0.98 }}
+            key={label}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className="rounded-2xl border border-[#D8CBC3] bg-[#F3F2EE] px-4 py-5 md:shadow-[0_4px_12px_rgba(15,23,42,0.04)]"
+            className="inline-flex items-center rounded-full border border-[#D8CBC3] bg-[#F9F6F1] px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]"
           >
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-              {item.title}
-            </p>
-            <p className="mt-2 text-sm text-[#1D1D1D]">{item.text}</p>
+            {label}
           </motion.div>
         ))}
       </div>
@@ -201,7 +189,7 @@ function PortfolioPreviewSection({
             item.id === "bathroom"
               ? "center 70%"
               : item.id === "fireplace"
-                ? "center 45%"
+                ? "center 30%"
                 : "center";
 
           return (
@@ -247,12 +235,11 @@ function PortfolioLightbox({
 }) {
   const imgSrc = IMAGE_MAP[item.id];
 
-  // Focal points for large view
   const bgPosition =
     item.id === "bathroom"
       ? "center 65%"
       : item.id === "fireplace"
-        ? "center 45%"
+        ? "center 30%"
         : "center";
 
   return (
@@ -279,7 +266,6 @@ function PortfolioLightbox({
         </button>
 
         <div className="space-y-4 pt-6 md:pt-4">
-          {/* Taller image area */}
           <div className="relative h-[420px] overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] md:h-[520px]">
             {imgSrc ? (
               <div
@@ -293,7 +279,6 @@ function PortfolioLightbox({
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#E5DED7_45%,_#D3C8BD_100%)]" />
             )}
           </div>
-
           <div className="space-y-1">
             <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
               {item.label} project
