@@ -36,9 +36,7 @@ export default function PortfolioPageClient() {
         </h1>
         <p className="max-w-2xl text-sm leading-relaxed text-[#4B5563]">
           A sample of kitchens, bathrooms, fireplaces, outdoor spaces, and
-          commercial interiors completed by Quiroz Marble and Granite. Each
-          project is tailored to the space, materials, and people who live or
-          work there.
+          commercial interiors completed by Quiroz Marble and Granite.
         </p>
       </div>
 
@@ -74,25 +72,21 @@ export default function PortfolioPageClient() {
                        transition-all duration-200 ease-out
                        hover:-translate-y-0.5 hover:shadow-md"
           >
-            {/* Image placeholder – later we can use next/image with real photos */}
-            <div className="relative h-40 bg-[#F3F1EB] md:h-44">
+            {/* Image placeholder – later replace with next/image + real photos */}
+            <div className="relative h-60 bg-[#F3F1EB] md:h-64">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#F3F1EB_45%,_#E5E1D8_100%)]" />
-              <div className="absolute bottom-3 left-3 rounded-full bg-white/80 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#4B5563] backdrop-blur-sm">
+              <div className="absolute bottom-3 left-3 rounded-full bg-white/85 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#4B5563] backdrop-blur-sm">
                 {project.category}
               </div>
             </div>
-            <div className="flex flex-1 flex-col justify-between p-4 md:p-5">
-              <div className="space-y-1.5">
-                <h2 className="text-sm font-semibold tracking-tight text-[#111827]">
-                  {project.title}
-                </h2>
-                <p className="text-[11px] uppercase tracking-[0.16em] text-[#6B7280]">
-                  {project.location}
-                </p>
-                <p className="text-[13px] leading-relaxed text-[#4B5563]">
-                  {project.description}
-                </p>
-              </div>
+
+            <div className="flex flex-1 flex-col justify-between px-4 py-3 md:px-5 md:py-3.5">
+              <h2 className="text-sm font-semibold tracking-tight text-[#111827]">
+                {project.title}
+              </h2>
+              <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-[#6B7280]">
+                {project.location}
+              </p>
             </div>
           </article>
         ))}

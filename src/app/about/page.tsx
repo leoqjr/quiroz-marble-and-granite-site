@@ -1,6 +1,7 @@
 // src/app/about/page.tsx
 import { BookingButton } from "@/components/site/booking-button";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About Quiroz Marble and Granite",
@@ -10,155 +11,113 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
-      {/* Intro */}
-      <div className="space-y-4 md:space-y-6">
+    <div className="mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
+      {/* 1. Intro */}
+      <section className="space-y-4 md:space-y-5 text-center">
         <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
           About
         </p>
         <h1 className="text-2xl font-medium tracking-tight text-[#111827] md:text-3xl">
-          Quiroz Marble and Granite.
+          Quiroz Marble and Granite
         </h1>
-        <p className="max-w-2xl text-sm leading-relaxed text-[#4B5563]">
-          Quiroz Marble and Granite is a family-run stone shop focused on
+        <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+          A family-run stone shop in the greater Los Angeles area, focused on
           precise fabrication, clean installation, and a calm experience from
-          first estimate to final walkthrough. We combine traditional craft with
-          modern equipment to deliver stonework that feels tailored rather than
-          generic.
+          first estimate to final walkthrough.
         </p>
-      </div>
+      </section>
 
-      {/* Story + values */}
-      <div className="mt-10 grid gap-10 md:mt-12 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)] md:items-start">
-        <div className="space-y-5 text-sm leading-relaxed text-[#4B5563]">
-          <p>
-            Over the years, we’ve partnered with homeowners, designers,
-            contractors, and builders on projects ranging from single-vanity
-            refreshes to full home renovations and commercial interiors. Across
-            all of them, our approach stays the same: listen carefully, plan
-            thoroughly, and execute with attention to detail.
-          </p>
-          <p>
-            In the shop, that means tight seams, thoughtful veining layouts,
-            clean edge work, and dry-fitting complex pieces before they ever
-            leave our floor. On site, it means protecting finished surfaces,
-            communicating clearly with clients and trades, and leaving the space
-            as orderly as we found it.
-          </p>
-          <p>
-            Whether we’re fabricating a waterfall island, a set of guest
-            vanities, or an outdoor kitchen that needs to handle sun and
-            weather, the goal is the same: stonework that feels quietly
-            luxurious and performs as well as it looks.
-          </p>
-        </div>
-
-        {/* Quick facts */}
-        <div
-          className="space-y-5 rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] p-5 shadow-sm md:p-6
-                     transition-all duration-200 ease-out
-                     hover:-translate-y-0.5 hover:shadow-md"
-        >
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-            At a glance
-          </p>
-          <div className="space-y-4 text-[13px] text-[#4B5563]">
-            <div>
-              <p className="font-semibold text-[#111827]">Who we work with</p>
-              <p>
-                Homeowners, interior designers, architects, contractors, and
-                builders across residential and commercial projects.
-              </p>
-            </div>
-            <div>
-              <p className="font-semibold text-[#111827]">What we handle</p>
-              <p>
-                Templating, fabrication, and installation for kitchens,
-                bathrooms, fireplaces, outdoor spaces, and commercial interiors.
-              </p>
-            </div>
-            <div>
-              <p className="font-semibold text-[#111827]">How we work</p>
-              <p>
-                Clear communication, coordinated scheduling, and a focus on
-                details that hold up to close inspection.
-              </p>
-            </div>
+      {/* 2. Image block */}
+      <section className="mt-10">
+        <div className="relative overflow-hidden rounded-3xl border border-[#E2E0DA] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]">
+          <div className="relative aspect-[5/7] w-full">
+            <Image
+              src="/about-shop.jpg"
+              alt="Stone fabrication in progress at Quiroz Marble and Granite"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 720px"
+            />
+          </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4 flex justify-between items-end text-[10px] md:text-[11px] uppercase tracking-[0.18em] text-[#F9F7F2]">
+            <span className="inline-flex rounded-full bg-black/55 px-3 py-1 backdrop-blur-[3px]">
+              In‑house fabrication
+            </span>
+            <span className="hidden sm:inline-flex rounded-full bg-black/40 px-3 py-1 backdrop-blur-[3px]">
+              Los Angeles, California
+            </span>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Values / promises */}
-      <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-3">
-        <div
-          className="space-y-2 rounded-2xl border border-transparent p-3
-                     transition-all duration-200 ease-out
-                     hover:-translate-y-0.5 hover:border-[#E2E0DA] hover:bg-[#FDFCF9] hover:shadow-sm"
-        >
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-            Craftsmanship
-          </p>
-          <p className="text-sm font-semibold text-[#111827]">
-            Details that read as one continuous surface.
-          </p>
-          <p className="text-[13px] leading-relaxed text-[#4B5563]">
-            From edge profiles to seam placement, we work to make each piece
-            feel intentional rather than simply “installed to fit.”
-          </p>
-        </div>
-        <div
-          className="space-y-2 rounded-2xl border border-transparent p-3
-                     transition-all duration-200 ease-out
-                     hover:-translate-y-0.5 hover:border-[#E2E0DA] hover:bg-[#FDFCF9] hover:shadow-sm"
-        >
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-            Communication
-          </p>
-          <p className="text-sm font-semibold text-[#111827]">
-            Clear expectations, fewer surprises.
-          </p>
-          <p className="text-[13px] leading-relaxed text-[#4B5563]">
-            We outline timelines, site requirements, and what to expect on
-            install day—so clients and trade partners know where things stand.
-          </p>
-        </div>
-        <div
-          className="space-y-2 rounded-2xl border border-transparent p-3
-                     transition-all duration-200 ease-out
-                     hover:-translate-y-0.5 hover:border-[#E2E0DA] hover:bg-[#FDFCF9] hover:shadow-sm"
-        >
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-            Respect for the space
-          </p>
-          <p className="text-sm font-semibold text-[#111827]">
-            Careful install, clean finish.
-          </p>
-          <p className="text-[13px] leading-relaxed text-[#4B5563]">
-            We protect surrounding finishes, manage dust as much as possible,
-            and leave the work area tidy when the stonework is complete.
-          </p>
-        </div>
-      </div>
+      {/* 3. Story */}
+      <section className="mt-10 space-y-4 text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+        <p>
+          Most of our projects begin with spaces people live in every day—
+          kitchens, baths, fireplaces, and outdoor rooms that need to feel
+          settled, not showy. Our work is to make the stone feel like it has
+          always belonged there.
+        </p>
+        <p>
+          That means paying attention to how veining moves across an island, how
+          seams land in a room, and how every edge feels in the hand. It also
+          means respecting the home or jobsite around the stone: protecting
+          finishes, coordinating with other trades, and leaving the space in
+          good order when we’re done.
+        </p>
+      </section>
 
-      {/* CTA strip */}
-      <div
+      {/* 4. Three principles */}
+      <section className="mt-12 space-y-6">
+        <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+          How we think about the work
+        </div>
+
+        <div className="space-y-5">
+          <div className="space-y-1.5">
+            <p className="text-sm font-semibold text-[#111827]">Craft</p>
+            <p className="text-[13px] leading-relaxed text-[#4B5563]">
+              Edges, seams, layouts, and finishes are treated as design
+              decisions, not afterthoughts.
+            </p>
+          </div>
+          <div className="space-y-1.5">
+            <p className="text-sm font-semibold text-[#111827]">Clarity</p>
+            <p className="text-[13px] leading-relaxed text-[#4B5563]">
+              Timelines, site needs, and next steps are laid out plainly so
+              clients and trade partners know what to expect.
+            </p>
+          </div>
+          <div className="space-y-1.5">
+            <p className="text-sm font-semibold text-[#111827]">Care</p>
+            <p className="text-[13px] leading-relaxed text-[#4B5563]">
+              Homes and job sites are treated with respect—from protection and
+              dust management to the final wipe‑down.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CTA */}
+      <section
         className="mt-12 rounded-2xl border border-[#E2E0DA] bg-[#F3F1EB] px-5 py-6 md:mt-16 md:flex md:items-center md:justify-between md:px-6
                    transition-all duration-200 ease-out
                    hover:-translate-y-0.5 hover:shadow-md"
       >
         <div className="space-y-1">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-            Ready to discuss a project?
+            Talk through a project
           </p>
           <p className="text-sm text-[#111827]">
-            Start with a free estimate or share plans and drawings—We’ll review
-            the scope and outline a clear path forward.
+            Share your plans, drawings, or a simple description of the space,
+            and we’ll walk you through what working together can look like.
           </p>
         </div>
         <div className="mt-4 md:mt-0">
           <BookingButton />
         </div>
-      </div>
+      </section>
     </div>
   );
 }

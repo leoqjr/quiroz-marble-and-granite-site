@@ -86,19 +86,25 @@ export default function MaterialsPageClient() {
         </p>
       </div>
 
-      {/* Material selector + highlight panel */}
-      <div className="mt-10 grid gap-8 md:mt-12 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-start">
-        {/* Left: Material cards */}
-        <div className="grid gap-4 md:grid-cols-2">
+      {/* Master–detail layout */}
+      <div className="mt-8 md:mt-10 md:grid md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:gap-8 md:items-start">
+        {/* Left: Vertical list of materials */}
+        <div className="space-y-3 md:space-y-4">
           {materials.map((material) => {
             const isActive = activeMaterial === material.key;
             return (
               <button
                 key={material.key}
                 type="button"
-                onClick={() => setActiveMaterial(material.key)}
+                onClick={() => {
+                  setActiveMaterial(material.key);
+                  const el = document.getElementById("material-highlight");
+                  if (el && window.innerWidth < 768) {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
                 className={
-                  "flex flex-col items-start rounded-2xl border px-4 py-4 text-left md:px-5 md:py-5 " +
+                  "w-full rounded-2xl border px-4 py-4 text-left md:px-5 md:py-5 " +
                   "transition-all duration-200 ease-out " +
                   (isActive
                     ? "border-[#1F2933] bg-[#1F2933] text-[#FDFCF9]"
@@ -127,9 +133,10 @@ export default function MaterialsPageClient() {
           })}
         </div>
 
-        {/* Right: Highlight / visualizer-lite panel */}
+        {/* Right: Highlight / visualizer panel */}
         <div
-          className="rounded-3xl border border-[#E2E0DA] bg-[#FDFCF9] p-5 shadow-sm md:p-6
+          id="material-highlight"
+          className="mt-8 rounded-3xl border border-[#E2E0DA] bg-[#FDFCF9] p-5 shadow-sm md:mt-0 md:p-6
                      transition-all duration-200 ease-out
                      hover:-translate-y-0.5 hover:shadow-md"
         >
@@ -158,11 +165,7 @@ export default function MaterialsPageClient() {
               </div>
               <div className="mt-3 grid gap-3 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:items-center">
                 <div className="relative h-32 overflow-hidden rounded-xl border border-[#E2E0DA] bg-white md:h-36">
-                  {/* Simple “countertop” silhouette */}
                   <div className="absolute inset-0 bg-[#F9FAFB]" />
-                  <div className="absolute inset-x-6 bottom-5 h-8 rounded-t-[12px] bg-[#E5E1D8]" />
-                  <div className="absolute inset-x-6 bottom-5 h-8 rounded-t-[12px] bg-opacity-70" />
-                  <div className="absolute inset-x-6 bottom-5 h-8 rounded-t-[12px]" />
                   <div
                     className={
                       "absolute inset-x-6 bottom-5 h-8 rounded-t-[12px] transition-colors duration-200 ease-out " +

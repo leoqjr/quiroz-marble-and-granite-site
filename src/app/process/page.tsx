@@ -13,39 +13,39 @@ const steps = [
     number: "01",
     title: "Initial conversation & estimate",
     summary:
-      "We listen first—then provide a clear, no‑pressure estimate based on your space, materials, and scope.",
+      "We listen first, then share a clear estimate based on your space and scope.",
     details:
-      "Share inspiration, rough dimensions, and any drawings or plans you may have. We’ll discuss how you use the space, budget considerations, and timing so our estimate reflects the real project.",
+      "Share inspiration, rough dimensions, and any drawings or plans you may have. We’ll talk through how you use the space, budget, and timing so the estimate reflects the real project.",
   },
   {
     number: "02",
     title: "Material selection & slab review",
     summary:
-      "We guide you through stone and engineered surface options based on how you live and maintain your home.",
+      "We narrow materials to what fits your home, maintenance style, and budget.",
     details:
-      "Together we review slabs and samples, talk through performance, and refine edge profiles, splash heights, and other details. For natural stone, we focus on veining, movement, and how each slab will lay out.",
+      "Together we review slabs and samples, talk through performance, and refine edges, splash heights, and other details. For natural stone, we focus on veining, movement, and how each slab will lay out.",
   },
   {
     number: "03",
     title: "Field measurements & templating",
     summary:
-      "We come on site to capture precise measurements so fabrication matches real‑world conditions.",
+      "We capture precise measurements once cabinets and substrates are set.",
     details:
-      "After cabinets and substrates are set, our team visits to create digital or physical templates. We confirm overhangs, seams, and any cutouts for sinks, cooktops, and fixtures.",
+      "Our team visits to create digital or physical templates, confirming overhangs, seams, and any cutouts for sinks, cooktops, and fixtures before anything is cut.",
   },
   {
     number: "04",
     title: "Fabrication in our shop",
     summary:
-      "Your slabs are cut, finished, and dry‑fitted in our shop before anything arrives at your home or jobsite.",
+      "Your slabs are cut, finished, and dry‑fitted before arriving on site.",
     details:
-      "We shape edges, polish finishes, and review seams and corners for a clean, continuous look. For complex projects, we can walk you through the layout before installation.",
+      "We shape edges, polish finishes, and review seams and corners for a clean, continuous look. For more complex projects, we can walk you through the layout in the shop.",
   },
   {
     number: "05",
     title: "Delivery, installation & finishing",
     summary:
-      "Our installation team handles the heavy lifting with careful protection of your home or site.",
+      "Our installers handle the heavy lifting and protect your home or site.",
     details:
       "We set, level, and seam the tops, then complete final polishing and sealing where appropriate. At the end, we walk the space with you and review basic care and maintenance.",
   },
@@ -55,24 +55,24 @@ export default function ProcessPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
       {/* Intro */}
-      <div className="space-y-4 md:space-y-6">
+      <div className="space-y-4 md:space-y-6 md:max-w-3xl">
         <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
           Our Process
         </p>
         <h1 className="text-2xl font-medium tracking-tight text-[#111827] md:text-3xl">
           A clear path from first measure to final install.
         </h1>
-        <p className="max-w-2xl text-sm leading-relaxed text-[#4B5563]">
+        <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
           Stone projects feel simplest when you know what to expect. We follow a
-          consistent process—from initial estimate through templating,
+          consistent process—from first estimate through templating,
           fabrication, and installation—so you can focus on the space, not the
           logistics.
         </p>
       </div>
 
       {/* Steps timeline */}
-      <div className="mt-10 space-y-6 border-l border-[#E2E0DA] pl-4 md:mt-12 md:space-y-8 md:pl-6">
-        {steps.map((step) => (
+      <div className="mt-10 space-y-6 border-l border-[#E2E0DA] pl-4 md:mt-12 md:space-y-7 md:pl-6">
+        {steps.map((step, index) => (
           <div key={step.number} className="relative pl-4 md:pl-6">
             {/* Timeline dot */}
             <div className="absolute left-[-0.8rem] top-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-[#F8F7F4] md:left-[-1rem]">
@@ -98,6 +98,17 @@ export default function ProcessPage() {
               <p className="mt-2 text-[13px] leading-relaxed text-[#6B7280]">
                 {step.details}
               </p>
+
+              {/* Small tag at the bottom right for context */}
+              <div className="mt-3 flex justify-end">
+                <span className="inline-flex items-center rounded-full bg-[#F3F1EB] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[#6B7280]">
+                  {index === 0 && "Planning"}
+                  {index === 1 && "Materials"}
+                  {index === 2 && "On‑site"}
+                  {index === 3 && "In‑shop"}
+                  {index === 4 && "Install"}
+                </span>
+              </div>
             </div>
           </div>
         ))}
