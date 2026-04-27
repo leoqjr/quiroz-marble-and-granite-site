@@ -14,7 +14,7 @@ const navItems = [
   { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/materials", label: "Materials" },
-  { href: "/process", label: "Process" },
+  // removed Process
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -51,7 +51,6 @@ export function Header() {
                 )}
               >
                 {item.label}
-                {/* Active / hover underline */}
                 <span
                   className={cn(
                     "pointer-events-none absolute -bottom-1 left-0 h-px w-full origin-left bg-[#111827]",

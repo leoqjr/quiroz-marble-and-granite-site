@@ -49,22 +49,31 @@ const IMAGE_MAP: Record<string, string> = {
   outdoor: "/selected-outdoor.jpg",
   island: "/island.jpg",
 };
+
 export function HomePageClient() {
   const [activeItem, setActiveItem] = useState<PortfolioItem | null>(null);
 
   return (
     <div className="bg-[#F3F2EE]">
-      <main className="mx-auto flex max-w-6xl flex-col gap-8 md:gap-12 px-4 pb-18 pt-8 md:px-6 md:pb-24 md:pt-14">
+      <main className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-18 pt-8 md:gap-12 md:px-6 md:pb-24 md:pt-14">
         {/* Hero */}
         <HeroSection />
+
+        {/* Scroll hint */}
+        <div className="flex justify-center pt-2 md:pt-0">
+          <div className="flex flex-col items-center text-[10px] uppercase tracking-[0.2em] text-[#6B7280]">
+            <span>Scroll</span>
+            <span className="mt-1 h-6 w-px bg-[#D1D5DB]" />
+          </div>
+        </div>
 
         {/* How we work strip */}
         <HowWeWorkStrip />
 
-        {/* Selected projects */}
+        {/* Selected / signature projects */}
         <PortfolioPreviewSection onItemClick={setActiveItem} />
 
-        {/* Elegant trust strip */}
+        {/* Who we work with / trust strip */}
         <TrustStrip />
       </main>
 
@@ -83,13 +92,17 @@ export function HomePageClient() {
 
 function HeroSection() {
   return (
-    <section className="space-y-6 md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-10 md:space-y-0">
+    <section className="space-y-8 md:space-y-0 md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-10 pt-2 md:pt-0">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="space-y-4 md:space-y-5"
+        className="space-y-5 md:space-y-6"
       >
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+          Stone fabrication · Los Angeles
+        </p>
+
         <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#1D1D1D] sm:text-4xl md:text-[2.6rem]">
           Elevated stone fabrication in Los Angeles.
         </h1>
@@ -105,6 +118,12 @@ function HeroSection() {
 
         <div className="flex flex-wrap items-center gap-4 pt-1">
           <BookingButton />
+          <Link
+            href="/portfolio"
+            className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
+          >
+            View our work
+          </Link>
         </div>
       </motion.div>
 
@@ -122,8 +141,6 @@ function HeroSection() {
             backgroundImage: "url('/selected-kitchen.jpg')",
           }}
         />
-
-        {/* Soft gradient at bottom for the label (you can remove this too if you want zero overlay) */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
       </motion.div>
     </section>
@@ -132,7 +149,7 @@ function HeroSection() {
 
 function HowWeWorkStrip() {
   return (
-    <section className="border-y border-[#E3D9CE]/70 py-5 md:py-6">
+    <section className="border-y border-[#E3D9CE]/70 py-6 md:py-7">
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <p className="text-[11px] md:text-sm font-medium uppercase tracking-[0.18em] text-[#6B7280]">
           How we work
@@ -159,7 +176,8 @@ function TrustStrip() {
   return (
     <motion.section
       initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
       className="flex flex-col gap-5 rounded-3xl border border-[#E3D9CE] bg-[#F8F5F0] px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 md:py-6"
     >
@@ -213,19 +231,20 @@ function PortfolioPreviewSection({
   return (
     <motion.section
       initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut", delay: 0.25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
       className="space-y-4"
     >
       <div className="flex items-baseline justify-between">
         <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-          Selected projects
+          Signature work
         </p>
         <Link
           href="/portfolio"
           className="text-xs md:text-[13px] font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
         >
-          View all
+          View portfolio
         </Link>
       </div>
 
@@ -275,7 +294,7 @@ function PortfolioPreviewSection({
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
               <p className="text-xs md:text-[13px] font-medium text-[#1D1D1D]">
-                {item.label} project
+                {item.label}
               </p>
             </button>
           );
@@ -341,7 +360,7 @@ function PortfolioLightbox({
           </div>
           <div className="space-y-1">
             <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
-              {item.label} project
+              {item.label}
             </p>
             <p className="text-sm md:text-[0.95rem] text-[#1D1D1D]">
               {item.description}
