@@ -2,8 +2,9 @@
 "use client";
 
 import { BookingButton } from "@/components/site/booking-button";
-import { SectionHeader } from "@/components/site/section-header";
 import { projects, type ProjectCategory } from "@/lib/data/projects";
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const filters: { label: string; value: "all" | ProjectCategory }[] = [
@@ -28,14 +29,8 @@ export default function PortfolioPageClient() {
   return (
     <div className="bg-background">
       <main className="mx-auto max-w-6xl space-y-10 px-4 py-12 md:space-y-12 md:px-6 md:py-16">
-        {/* Intro */}
-        <section>
-          <SectionHeader
-            eyebrow="Portfolio"
-            title="Selected projects."
-            body="A sample of kitchens, bathrooms, fireplaces, outdoor spaces, and commercial interiors completed by Quiroz Marble and Granite."
-          />
-        </section>
+        {/* Hero */}
+        <HeroSection />
 
         {/* Filters */}
         <section>
@@ -99,7 +94,7 @@ export default function PortfolioPageClient() {
                 See something you like?
               </p>
               <p className="text-sm text-foreground">
-                Share a few details about your space and we’ll discuss
+                Share a few details about your space and we&apos;ll discuss
                 materials, finishes, and a tailored estimate for a similar
                 project.
               </p>
@@ -111,5 +106,54 @@ export default function PortfolioPageClient() {
         </section>
       </main>
     </div>
+  );
+}
+
+function HeroSection() {
+  return (
+    <section className="md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:gap-10">
+      {/* Text */}
+      <div className="space-y-4 md:space-y-5">
+        <p className="eyebrow text-muted-foreground">Portfolio</p>
+        <h1 className="font-heading text-2xl font-medium tracking-tight text-foreground md:text-3xl">
+          Selected stone projects in Los Angeles.
+        </h1>
+        <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
+          Kitchens, bathrooms, fireplaces, outdoor spaces, and commercial
+          interiors—each project tailored to the home, the client, and the way
+          the space is used.
+        </p>
+        <div className="flex flex-wrap items-center gap-4 pt-1">
+          <BookingButton />
+          <Link
+            href="/services"
+            className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
+          >
+            View our services
+          </Link>
+        </div>
+      </div>
+
+      {/* Image */}
+      <div className="mt-8 md:mt-0">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
+          <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
+            <Image
+              src="/portfolio-hero.jpg"
+              alt="Stone kitchen and living space by Quiroz Marble and Granite"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 420px"
+            />
+          </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4">
+            <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-card md:text-[11px] backdrop-blur-[3px]">
+              Kitchens · Baths · Fireplaces · Outdoor
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

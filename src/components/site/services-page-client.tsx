@@ -167,18 +167,18 @@ function ServicesGridSection() {
         {services.map((service) => (
           <article
             key={service.key}
-            className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
+            className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
           >
-            <div className="relative h-44 w-full md:h-52">
-              <Image
-                src={service.image}
-                alt={service.title}
-                fill
-                className="object-cover transition-transform duration-300 ease-out hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
-              />
+            {/* Image-style area, matching portfolio feel */}
+            <div className="relative h-44 md:h-48 bg-secondary">
+              {/* For now, use a soft gradient; later you can swap to real photos like on Portfolio */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#F3F1EB_45%,_#E5E1D8_100%)]" />
+              <div className="absolute bottom-3 left-3 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-sm">
+                {service.key}
+              </div>
             </div>
-            <div className="flex flex-1 flex-col justify-between p-4 md:p-5">
+
+            <div className="flex flex-1 flex-col justify-between px-4 py-3 md:px-5 md:py-4">
               <div className="space-y-1.5">
                 <h2 className="text-[15px] font-semibold tracking-tight text-foreground md:text-[16px]">
                   {service.title}
