@@ -1,15 +1,34 @@
+/* ==============================
+   Tailwind / shadcn base imports
+   ============================== */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* 
+  Dark variant configuration for Tailwind v4.
+  This lets you use `dark:` classes with a `.dark` parent.
+*/
 @custom-variant dark (&:is(.dark *));
+
+/* ==============================
+   Tailwind theme variable bridge
+   ============================== */
+/* 
+  Map Tailwind's semantic tokens to our CSS variables.
+  This keeps shadcn components and Tailwind utilities in sync
+  while we control the actual colors below in :root / .dark.
+*/
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-heading);
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -18,113 +37,257 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
+
   --color-destructive: var(--destructive);
+
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
+
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
+
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
+
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
+
+  /* Radius scale tuned for softer, premium feel */
+  --radius-sm: calc(var(--radius) * 0.7);
+  --radius-md: calc(var(--radius) * 0.95);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 2.4);
+  --radius-4xl: calc(var(--radius) * 2.8);
 }
+
+/* ==============================
+   Light theme: warm luxury palette
+   ============================== */
+/*
+  Overall direction:
+  - Background: warm stone / cream, not pure white
+  - Foreground: deep warm charcoal (soft black)
+  - Accent: champagne / beige‑gold (subtle, not yellow)
+  - Muted/secondary: soft warm grays that let imagery pop
+*/
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* 
+    Typography variables
+    (These should be set in layout.tsx using Next fonts)
+    --font-sans: Inter or similar
+    --font-heading: Playfair Display (for hero/section titles)
+  */
+
+  /* Base surface + text */
+  --background: oklch(0.97 0.02 90); /* warm light cream */
+  --foreground: oklch(0.16 0.03 40); /* deep warm charcoal */
+
+  /* Cards & popovers slightly lifted from background */
+  --card: oklch(0.985 0.015 95); /* soft off‑white card */
+  --card-foreground: var(--foreground);
+
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+
+  /* Primary: warm charcoal for main CTAs & key text */
+  --primary: oklch(0.2 0.03 40); /* rich warm near‑black */
+  --primary-foreground: oklch(0.985 0.01 95); /* soft cream */
+
+  /* Secondary: subtle warm stone surface */
+  --secondary: oklch(0.93 0.02 80); /* light stone beige */
+  --secondary-foreground: oklch(0.23 0.03 40);
+
+  /* Muted: copy, labels, dividers */
+  --muted: oklch(0.93 0.015 80); /* background for muted chips */
+  --muted-foreground: oklch(0.52 0.02 50); /* warm mid-gray for body copy */
+
+  /* Accent: champagne / brushed gold for details (not backgrounds) */
+  --accent: oklch(0.82 0.07 85); /* soft champagne */
+  --accent-foreground: oklch(0.23 0.03 40);
+
+  /* Destructive */
+  --destructive: oklch(0.63 0.16 25); /* warm red‑brown */
+  --destructive-foreground: oklch(0.99 0 0);
+
+  /* Borders & inputs: subtle, warm and soft */
+  --border: oklch(0.88 0.015 80); /* light warm gray */
+  --input: oklch(0.9 0.015 80); /* slightly stronger than background */
+
+  /* Ring (focus outlines) */
+  --ring: oklch(0.73 0.07 85); /* champagne focus ring */
+
+  /* Charts (not critical for marketing, but kept coherent) */
+  --chart-1: oklch(0.78 0.08 80);
+  --chart-2: oklch(0.62 0.07 40);
+  --chart-3: oklch(0.55 0.06 30);
+  --chart-4: oklch(0.45 0.05 40);
+  --chart-5: oklch(0.36 0.04 50);
+
+  /* Radius base: slightly larger for softer cards/buttons */
+  --radius: 0.75rem; /* 12px baseline, then scaled in @theme */
+
+  /* Sidebar colors (if you ever use them) kept in same family */
+  --sidebar: oklch(0.965 0.018 90);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
+/* ==============================
+   Dark theme: optional, kept soft
+   ============================== */
+/*
+  Still warm and soft; more for completeness.
+  You can leave dark mode off in the UI if you prefer.
+*/
+
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: oklch(0.17 0.03 40); /* deep warm charcoal */
+  --foreground: oklch(0.97 0.015 95); /* soft light cream */
+
+  --card: oklch(0.2 0.03 40);
+  --card-foreground: var(--foreground);
+
+  --popover: oklch(0.21 0.03 40);
+  --popover-foreground: var(--foreground);
+
+  --primary: oklch(0.86 0.04 90); /* light warm sand */
+  --primary-foreground: oklch(0.18 0.03 40);
+
+  --secondary: oklch(0.27 0.02 40);
+  --secondary-foreground: oklch(0.95 0.015 95);
+
+  --muted: oklch(0.24 0.02 40);
+  --muted-foreground: oklch(0.78 0.03 85);
+
+  --accent: oklch(0.78 0.07 85); /* champagne accent still works */
+  --accent-foreground: oklch(0.18 0.03 40);
+
+  --destructive: oklch(0.63 0.16 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.29 0.02 40 / 0.5);
+  --input: oklch(0.29 0.02 40 / 0.7);
+  --ring: oklch(0.78 0.07 85);
+
+  --chart-1: oklch(0.78 0.08 80);
+  --chart-2: oklch(0.62 0.07 40);
+  --chart-3: oklch(0.55 0.06 30);
+  --chart-4: oklch(0.45 0.05 40);
+  --chart-5: oklch(0.36 0.04 50);
+
+  --sidebar: oklch(0.19 0.03 40);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: oklch(0.78 0.07 85);
+  --sidebar-primary-foreground: oklch(0.16 0.03 40);
+  --sidebar-accent: oklch(0.27 0.02 40);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: oklch(0.29 0.02 40 / 0.6);
+  --sidebar-ring: var(--ring);
 }
+
+/* ==============================
+   Base layer: typography & layout
+   ============================== */
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    /* 
+      Subtle, unified border + outline system.
+      This makes cards, inputs, and buttons feel cohesive.
+    */
+    @apply border-border outline-ring/40;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
+
   html {
+    /*
+      Set body font (Inter or similar) via CSS variable
+      wired up through Next.js font in layout.tsx.
+    */
     @apply font-sans;
+    font-feature-settings:
+      "liga" 1,
+      "calt" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    /*
+      Warm background and high-contrast but soft foreground text.
+      Extra letter-spacing is handled at the component level for labels.
+    */
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* 
+    Headings: use a display serif for a luxury feel.
+    Ensure you set `--font-heading` in layout.tsx (e.g. Playfair Display).
+  */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family:
+      var(--font-heading),
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Helvetica Neue",
+      sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 3vw, 2.85rem);
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 2.3vw, 2rem);
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  /* 
+    Utility class you can use for small uppercase labels
+    (eyebrows, chip labels, etc.) to keep them consistent.
+  */
+  .eyebrow {
+    font-size: 0.7rem; /* ~11px */
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
   }
 }

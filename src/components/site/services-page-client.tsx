@@ -81,8 +81,8 @@ const processSteps = [
 
 export function ServicesPageClient() {
   return (
-    <div className="bg-[#F3F2EE]">
-      <main className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-20 space-y-16 md:space-y-20">
+    <div className="bg-background">
+      <main className="mx-auto max-w-6xl space-y-16 px-4 py-12 md:space-y-20 md:px-6 md:py-20">
         <HeroSection />
         <ExpertiseSection />
         <ServicesGridSection />
@@ -99,13 +99,11 @@ function HeroSection() {
     <section className="md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:gap-10">
       {/* Text */}
       <div className="space-y-4 md:space-y-5">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          Services
-        </p>
-        <h1 className="text-2xl font-medium tracking-tight text-[#111827] md:text-3xl">
+        <p className="eyebrow text-muted-foreground">Services</p>
+        <h1 className="font-heading text-2xl font-medium tracking-tight text-foreground md:text-3xl">
           Precision stone surfaces, tailored to you.
         </h1>
-        <p className="max-w-xl text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+        <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
           Stone, tailored to the way you live. Templating, fabrication, and
           installation—handled start to finish by one dedicated team.
         </p>
@@ -113,7 +111,7 @@ function HeroSection() {
           <BookingButton />
           <Link
             href="/materials"
-            className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563] underline underline-offset-4 hover:text-[#111827]"
+            className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
           >
             Explore our materials
           </Link>
@@ -122,7 +120,7 @@ function HeroSection() {
 
       {/* Image */}
       <div className="mt-8 md:mt-0">
-        <div className="relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
           <div className="relative aspect-[4/5] w-full">
             <Image
               src="/services-kitchen.jpg"
@@ -134,7 +132,7 @@ function HeroSection() {
           </div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4">
-            <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] md:text-[11px] font-medium uppercase tracking-[0.22em] text-[#F9F7F2] backdrop-blur-[3px]">
+            <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-card md:text-[11px] backdrop-blur-[3px]">
               In‑house fabrication · Los Angeles
             </span>
           </div>
@@ -169,8 +167,7 @@ function ServicesGridSection() {
         {services.map((service) => (
           <article
             key={service.key}
-            className="flex flex-col overflow-hidden rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] shadow-sm
-                       transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md hover:border-[#C5A77B]"
+            className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
           >
             <div className="relative h-40 w-full md:h-44">
               <Image
@@ -183,20 +180,20 @@ function ServicesGridSection() {
             </div>
             <div className="flex flex-1 flex-col justify-between p-4 md:p-5">
               <div className="space-y-2">
-                <h2 className="text-[15px] md:text-[16px] font-semibold tracking-tight text-[#111827]">
+                <h2 className="text-[15px] font-semibold tracking-tight text-foreground md:text-[16px]">
                   {service.title}
                 </h2>
-                <p className="text-[13px] md:text-[14px] leading-relaxed text-[#4B5563]">
+                <p className="text-[13px] leading-relaxed text-muted-foreground md:text-[14px]">
                   {service.subtitle}
                 </p>
-                <p className="text-[12px] md:text-[13px] text-[#6B7280]">
+                <p className="text-[12px] text-muted-foreground md:text-[13px]">
                   {service.note}
                 </p>
               </div>
               <div className="mt-3">
                 <Link
                   href="/portfolio"
-                  className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563] underline underline-offset-4 hover:text-[#111827]"
+                  className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
                 >
                   See examples
                 </Link>
@@ -220,21 +217,21 @@ function ProcessSection() {
       {/* Desktop timeline */}
       <div className="hidden md:block">
         <div className="relative">
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t border-[#C5A77B]/40" />
+          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t border-accent/40" />
           <div className="relative grid gap-6 md:grid-cols-5">
             {processSteps.map((step) => (
               <div
                 key={step.step}
-                className="relative flex flex-col items-start gap-3 rounded-2xl bg-[#FDFCF9] p-4 shadow-sm"
+                className="relative flex flex-col items-start gap-3 rounded-2xl bg-card p-4 shadow-sm"
               >
-                <div className="inline-flex items-center justify-center rounded-full border border-[#C5A77B] bg-[#F8F5F0] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+                <div className="inline-flex items-center justify-center rounded-full border border-accent bg-secondary px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                   Step {step.step}
                 </div>
                 <div className="space-y-1">
-                  <p className="text-sm font-semibold text-[#111827]">
+                  <p className="text-sm font-semibold text-foreground">
                     {step.title}
                   </p>
-                  <p className="text-[13px] leading-relaxed text-[#4B5563]">
+                  <p className="text-[13px] leading-relaxed text-muted-foreground">
                     {step.body}
                   </p>
                 </div>
@@ -249,13 +246,15 @@ function ProcessSection() {
         {processSteps.map((step) => (
           <div
             key={step.step}
-            className="flex flex-col gap-2 rounded-2xl bg-[#FDFCF9] p-4 shadow-sm"
+            className="flex flex-col gap-2 rounded-2xl bg-card p-4 shadow-sm"
           >
-            <div className="inline-flex items-center justify-center rounded-full border border-[#C5A77B] bg-[#F8F5F0] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+            <div className="inline-flex items-center justify-center rounded-full border border-accent bg-secondary px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
               Step {step.step}
             </div>
-            <p className="text-sm font-semibold text-[#111827]">{step.title}</p>
-            <p className="text-[13px] leading-relaxed text-[#4B5563]">
+            <p className="text-sm font-semibold text-foreground">
+              {step.title}
+            </p>
+            <p className="text-[13px] leading-relaxed text-muted-foreground">
               {step.body}
             </p>
           </div>
@@ -292,12 +291,12 @@ function WhoWeServeSection() {
         {audiences.map((audience) => (
           <div
             key={audience.label}
-            className="flex flex-col gap-2 rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] px-4 py-4 shadow-sm"
+            className="flex flex-col gap-2 rounded-2xl border border-border bg-card px-4 py-4 shadow-sm"
           >
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
               {audience.label}
             </p>
-            <p className="text-[13px] leading-relaxed text-[#4B5563]">
+            <p className="text-[13px] leading-relaxed text-muted-foreground">
               {audience.body}
             </p>
           </div>
@@ -310,20 +309,17 @@ function WhoWeServeSection() {
 function FinalCTASection() {
   return (
     <section className="mt-4">
-      <div
-        className="rounded-2xl border border-[#E2E0DA] bg-[#F3F1EB] px-5 py-6 md:flex md:items-center md:justify-between md:px-6 md:py-7
-                   transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
-      >
+      <div className="rounded-2xl border border-border bg-secondary/80 px-5 py-6 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md md:flex md:items-center md:justify-between md:px-6 md:py-7">
         <div className="space-y-1.5 md:max-w-xl">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Ready to transform your space?
           </p>
-          <p className="text-sm text-[#111827]">
+          <p className="text-sm text-foreground">
             Book a free estimate to review your project, materials, and timing
             with a family-run team that&apos;s been working with stone since
             2000.
           </p>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#6B7280]">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             No obligation · Clear timeline · Family-owned since 2000
           </p>
         </div>

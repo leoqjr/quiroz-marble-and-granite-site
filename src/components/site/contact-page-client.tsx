@@ -38,8 +38,8 @@ export default function ContactPageClient() {
   }
 
   return (
-    <div className="bg-[#F3F2EE]">
-      <main className="mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16 space-y-10 md:space-y-12">
+    <div className="bg-background">
+      <main className="mx-auto max-w-3xl space-y-10 px-4 py-12 md:space-y-12 md:px-6 md:py-16">
         {/* Intro */}
         <section className="text-center">
           <SectionHeader
@@ -54,9 +54,7 @@ export default function ContactPageClient() {
         <section>
           <form
             onSubmit={handleSubmit}
-            className="space-y-5 rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] p-5 shadow-sm md:p-6
-                       transition-all duration-200 ease-out
-                       hover:-translate-y-0.5 hover:shadow-md"
+            className="space-y-5 rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md md:p-6"
           >
             <SectionHeader
               eyebrow="Project details"
@@ -66,63 +64,55 @@ export default function ContactPageClient() {
 
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-1.5">
-                <label className="text-[12px] font-medium text-[#111827]">
+                <label className="text-[12px] font-medium text-foreground">
                   Name
                 </label>
                 <input
                   required
                   type="text"
                   name="name"
-                  className="w-full rounded-lg border border-[#D2D6DB] bg-white px-3 py-2 text-sm text-[#111827]
-                             outline-none ring-0 transition-colors duration-200 ease-out
-                             focus:border-[#1F2933]"
+                  className="h-9 w-full min-w-0 rounded-2xl border border-border/70 bg-input/70 px-3 py-1.5 text-sm text-foreground outline-none transition-colors duration-150 ease-out placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50"
                 />
               </div>
               <div className="space-y-1.5">
-                <label className="text-[12px] font-medium text-[#111827]">
+                <label className="text-[12px] font-medium text-foreground">
                   Email
                 </label>
                 <input
                   required
                   type="email"
                   name="email"
-                  className="w-full rounded-lg border border-[#D2D6DB] bg-white px-3 py-2 text-sm text-[#111827]
-                             outline-none ring-0 transition-colors duration-200 ease-out
-                             focus:border-[#1F2933]"
+                  className="h-9 w-full min-w-0 rounded-2xl border border-border/70 bg-input/70 px-3 py-1.5 text-sm text-foreground outline-none transition-colors duration-150 ease-out placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50"
                 />
               </div>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-1.5">
-                <label className="text-[12px] font-medium text-[#111827]">
+                <label className="text-[12px] font-medium text-foreground">
                   Phone
                 </label>
                 <input
                   type="tel"
                   name="phone"
-                  className="w-full rounded-lg border border-[#D2D6DB] bg-white px-3 py-2 text-sm text-[#111827]
-                             outline-none ring-0 transition-colors duration-200 ease-out
-                             focus:border-[#1F2933]"
+                  className="h-9 w-full min-w-0 rounded-2xl border border-border/70 bg-input/70 px-3 py-1.5 text-sm text-foreground outline-none transition-colors duration-150 ease-out placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50"
                 />
               </div>
               <div className="space-y-1.5">
-                <label className="text-[12px] font-medium text-[#111827]">
+                <label className="text-[12px] font-medium text-foreground">
                   Project city / area
                 </label>
                 <input
                   type="text"
                   name="location"
                   placeholder="e.g., Los Angeles, San Fernando Valley"
-                  className="w-full rounded-lg border border-[#D2D6DB] bg-white px-3 py-2 text-sm text-[#111827]
-                             outline-none ring-0 transition-colors duration-200 ease-out
-                             focus:border-[#1F2933]"
+                  className="h-9 w-full min-w-0 rounded-2xl border border-border/70 bg-input/70 px-3 py-1.5 text-sm text-foreground outline-none transition-colors duration-150 ease-out placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50"
                 />
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[12px] font-medium text-[#111827]">
+              <label className="text-[12px] font-medium text-foreground">
                 Project details
               </label>
               <textarea
@@ -130,23 +120,16 @@ export default function ContactPageClient() {
                 name="details"
                 rows={5}
                 placeholder="Kitchen, bathrooms, fireplace, or other spaces. Include any timelines or materials you’re considering."
-                className="w-full rounded-lg border border-[#D2D6DB] bg-white px-3 py-2 text-sm text-[#111827]
-                           outline-none ring-0 transition-colors duration-200 ease-out
-                           focus:border-[#1F2933]"
+                className="w-full rounded-2xl border border-border/70 bg-input/70 px-3 py-2 text-sm text-foreground outline-none transition-colors duration-150 ease-out placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50"
               />
             </div>
 
-            <div className="flex flex-col gap-3 border-t border-[#E2E0DA] pt-4 text-[12px] text-[#6B7280] md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-3 border-t border-border/80 pt-4 text-[12px] text-muted-foreground md:flex-row md:items-center md:justify-between">
               <p>We typically respond within one business day.</p>
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="inline-flex items-center justify-center rounded-full border border-[#1F2933] bg-[#1F2933] px-5 py-2.5
-                           text-[12px] font-medium uppercase tracking-[0.16em] text-[#FDFCF9]
-                           transition-all duration-200 ease-out
-                           hover:bg-[#111827] hover:-translate-y-0.5 hover:shadow-sm
-                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C5A77B] focus-visible:ring-offset-2
-                           disabled:cursor-not-allowed disabled:border-[#9CA3AF] disabled:bg-[#9CA3AF]"
+                className="inline-flex items-center justify-center rounded-full border border-primary bg-primary px-5 py-2.5 text-[12px] font-medium uppercase tracking-[0.16em] text-primary-foreground transition-all duration-200 ease-out hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:border-muted disabled:bg-muted disabled:text-muted-foreground"
               >
                 {status === "submitted"
                   ? "Submitted"
@@ -157,13 +140,13 @@ export default function ContactPageClient() {
             </div>
 
             {status === "submitted" && (
-              <p className="text-[11px] text-[#059669]">
+              <p className="text-[11px] text-emerald-600">
                 Thank you—your message has been sent. We’ll follow up within one
                 business day.
               </p>
             )}
             {status === "error" && (
-              <p className="text-[11px] text-[#B91C1C]">
+              <p className="text-[11px] text-red-600">
                 Something went wrong sending your message. Please try again or
                 contact us directly.
               </p>
@@ -172,13 +155,9 @@ export default function ContactPageClient() {
         </section>
 
         {/* Direct contact card */}
-        <section
-          className="rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] px-5 py-5 md:px-6
-                     transition-all duration-200 ease-out
-                     hover:-translate-y-0.5 hover:shadow-sm"
-        >
-          <div className="space-y-3 text-[13px] text-[#4B5563]">
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+        <section className="rounded-2xl border border-border bg-card px-5 py-5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-sm md:px-6">
+          <div className="space-y-3 text-[13px] text-muted-foreground">
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
               Prefer to reach out directly?
             </p>
             <p>
@@ -187,19 +166,24 @@ export default function ContactPageClient() {
             </p>
             <div className="grid gap-4 sm:grid-cols-2 sm:items-center">
               <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+                <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                   Phone
                 </p>
-                <p className="mt-1 text-sm font-semibold text-[#111827]">
+                <p className="mt-1 text-sm font-semibold text-foreground">
                   (000) 000-0000 {/* replace with real number */}
                 </p>
               </div>
               <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+                <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                   Email
                 </p>
-                <p className="mt-1 text-sm font-semibold text-[#111827]">
-                  hello@quirozmarbleandgranite.com {/* replace if needed */}
+                <p className="mt-1 text-sm font-semibold text-foreground">
+                  <a
+                    href="mailto:hello@quirozmarbleandgranite.com"
+                    className="underline underline-offset-2 hover:text-muted-foreground"
+                  >
+                    hello@quirozmarbleandgranite.com
+                  </a>
                 </p>
               </div>
             </div>

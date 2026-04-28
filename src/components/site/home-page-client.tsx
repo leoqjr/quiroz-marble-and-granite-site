@@ -54,16 +54,16 @@ export function HomePageClient() {
   const [activeItem, setActiveItem] = useState<PortfolioItem | null>(null);
 
   return (
-    <div className="bg-[#F3F2EE]">
-      <main className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-18 pt-8 md:gap-12 md:px-6 md:pb-24 md:pt-14">
+    <div className="bg-background">
+      <main className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-20 pt-10 md:gap-12 md:px-6 md:pb-24 md:pt-16">
         {/* Hero */}
         <HeroSection />
 
         {/* Scroll hint */}
         <div className="flex justify-center pt-2 md:pt-0">
-          <div className="flex flex-col items-center text-[10px] uppercase tracking-[0.2em] text-[#6B7280]">
+          <div className="flex flex-col items-center text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
             <span>Scroll</span>
-            <span className="mt-1 h-6 w-px bg-[#D1D5DB]" />
+            <span className="mt-1 h-6 w-px bg-border/70" />
           </div>
         </div>
 
@@ -92,26 +92,26 @@ export function HomePageClient() {
 
 function HeroSection() {
   return (
-    <section className="space-y-8 md:space-y-0 md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-10 pt-2 md:pt-0">
+    <section className="pt-2 md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-10 md:pt-0">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="space-y-5 md:space-y-6"
       >
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+        <p className="eyebrow text-muted-foreground">
           Stone fabrication · Los Angeles
         </p>
 
-        <h1 className="text-balance text-3xl font-semibold tracking-tight text-[#1D1D1D] sm:text-4xl md:text-[2.6rem]">
+        <h1 className="text-balance text-3xl font-heading font-medium tracking-tight text-foreground sm:text-4xl md:text-[2.7rem]">
           Elevated stone fabrication in Los Angeles.
         </h1>
 
-        <p className="text-[11px] md:text-xs uppercase tracking-[0.18em] text-[#6B7280]">
+        <p className="text-[11px] md:text-xs uppercase tracking-[0.18em] text-muted-foreground">
           Since 2000 · Family owned
         </p>
 
-        <p className="max-w-md md:max-w-lg text-sm md:text-[0.95rem] leading-relaxed text-[#4B5563]">
+        <p className="max-w-md text-sm leading-relaxed text-muted-foreground md:max-w-lg md:text-[0.95rem]">
           Custom countertops and stone surfaces in granite, marble, quartz, and
           porcelain for kitchens, bathrooms, fireplaces, and outdoor spaces.
         </p>
@@ -120,7 +120,7 @@ function HeroSection() {
           <BookingButton />
           <Link
             href="/portfolio"
-            className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
+            className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
           >
             View our work
           </Link>
@@ -132,7 +132,7 @@ function HeroSection() {
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-        className="relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_18px_35px_rgba(15,23,42,0.10)]"
+        className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]"
       >
         <div
           aria-hidden="true"
@@ -149,16 +149,16 @@ function HeroSection() {
 
 function HowWeWorkStrip() {
   return (
-    <section className="border-y border-[#E3D9CE]/70 py-6 md:py-7">
+    <section className="border-y border-border/70 bg-card/60 py-6 md:py-7">
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-        <p className="text-[11px] md:text-sm font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+        <p className="text-[11px] md:text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">
           How we work
         </p>
-        <div className="grid gap-3 md:grid-cols-3 md:gap-6 text-sm md:text-[0.95rem] text-[#4B5563]">
-          <div className="space-y-1 md:border-r md:border-[#E3D9CE]/70 md:pr-4 last:md:border-r-0">
+        <div className="grid gap-3 text-sm text-muted-foreground md:grid-cols-3 md:gap-6 md:text-[0.95rem]">
+          <div className="space-y-1 md:border-r md:border-border/60 md:pr-4 last:md:border-r-0">
             <p>Templates, fabrication, and installation handled by one team.</p>
           </div>
-          <div className="space-y-1 md:border-r md:border-[#E3D9CE]/70 md:px-4 last:md:border-r-0">
+          <div className="space-y-1 md:border-r md:border-border/60 md:px-4 last:md:border-r-0">
             <p>
               Clear dates and communication from first measure to final install.
             </p>
@@ -179,13 +179,13 @@ function TrustStrip() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-      className="flex flex-col gap-5 rounded-3xl border border-[#E3D9CE] bg-[#F8F5F0] px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 md:py-6"
+      className="flex flex-col gap-5 rounded-3xl border border-border bg-card px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 md:py-6"
     >
       <div className="space-y-2 md:max-w-xl">
-        <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+        <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
           Who we work with
         </p>
-        <p className="text-sm md:text-[0.95rem] text-[#374151]">
+        <p className="text-sm text-foreground md:text-[0.95rem]">
           We keep stone projects calm for homeowners, designers, and contractors
           who want clear dates and a tidy install.
         </p>
@@ -208,12 +208,12 @@ function TrustStrip() {
         ].map((item) => (
           <div
             key={item.label}
-            className="flex flex-col gap-1 rounded-2xl border border-[#D8CBC3] bg-[#F9F6F1] px-3 py-2 text-left"
+            className="flex flex-col gap-1 rounded-2xl border border-border bg-secondary/70 px-3 py-2 text-left"
           >
-            <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+            <span className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-foreground">
               {item.label}
             </span>
-            <span className="text-[11px] md:text-xs text-[#6B7280] leading-snug">
+            <span className="text-[11px] leading-snug text-muted-foreground md:text-xs">
               {item.copy}
             </span>
           </div>
@@ -237,19 +237,19 @@ function PortfolioPreviewSection({
       className="space-y-4"
     >
       <div className="flex items-baseline justify-between">
-        <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+        <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
           Signature work
         </p>
         <Link
           href="/portfolio"
-          className="text-xs md:text-[13px] font-medium uppercase tracking-[0.16em] text-[#4B5563] underline underline-offset-4 hover:text-[#1D1D1D]"
+          className="text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground underline underline-offset-4 hover:text-foreground md:text-[13px]"
         >
           View portfolio
         </Link>
       </div>
 
       {/* Asymmetric grid: kitchen hero, regular tiles, wide island */}
-      <div className="grid gap-4 md:grid-cols-3 md:auto-rows-[220px] lg:auto-rows-[260px]">
+      <div className="grid gap-4 md:auto-rows-[220px] md:grid-cols-3 lg:auto-rows-[260px]">
         {PORTFOLIO_ITEMS.map((item) => {
           const imgSrc = IMAGE_MAP[item.id];
 
@@ -272,13 +272,11 @@ function PortfolioPreviewSection({
               onClick={() => onItemClick(item)}
               className={cn(
                 "group flex flex-col gap-2 text-left",
-                // Big hero tile for kitchen
                 isKitchen && "md:col-span-2 md:row-span-2",
-                // Island: wide tile on desktop, same row height as others
                 isIsland && "hidden md:flex md:col-span-2",
               )}
             >
-              <div className="relative h-40 md:h-full overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] shadow-[0_10px_20px_rgba(15,23,42,0.06)] transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_16px_30px_rgba(15,23,42,0.16)]">
+              <div className="relative h-40 overflow-hidden rounded-2xl border border-border bg-secondary shadow-[0_10px_20px_rgba(15,23,42,0.08)] transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_16px_30px_rgba(15,23,42,0.2)] md:h-full">
                 {imgSrc ? (
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-300 ease-out group-hover:scale-105"
@@ -293,7 +291,7 @@ function PortfolioPreviewSection({
                 {/* Soft gradient overlay on hover */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
-              <p className="text-xs md:text-[13px] font-medium text-[#1D1D1D]">
+              <p className="text-xs font-medium text-foreground md:text-[13px]">
                 {item.label}
               </p>
             </button>
@@ -325,7 +323,7 @@ function PortfolioLightbox({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-40 flex items-center justify-center bg-black/50 px-4"
+      className="fixed inset-0 z-40 flex items-center justify-center bg-black/55 px-4"
       onClick={onClose}
     >
       <motion.div
@@ -333,19 +331,19 @@ function PortfolioLightbox({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 16, scale: 0.97 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
-        className="relative flex w-full max-w-4xl flex-col rounded-3xl bg-[#F3F2EE] p-4 shadow-[0_22px_45px_rgba(15,23,42,0.35)] md:p-6"
+        className="relative flex w-full max-w-4xl flex-col rounded-3xl bg-background p-4 shadow-[0_22px_50px_rgba(15,23,42,0.55)] md:p-6"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-3 text-[11px] md:text-xs uppercase tracking-[0.18em] text-[#4B5563] hover:text-[#1D1D1D]"
+          className="absolute right-4 top-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground md:text-xs"
         >
           Close
         </button>
 
         <div className="space-y-4 pt-6 md:pt-4">
-          <div className="relative h-[420px] overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7] md:h-[520px]">
+          <div className="relative h-[420px] overflow-hidden rounded-2xl border border-border bg-secondary md:h-[520px]">
             {imgSrc ? (
               <div
                 className="absolute inset-0 bg-cover"
@@ -359,13 +357,13 @@ function PortfolioLightbox({
             )}
           </div>
           <div className="space-y-1">
-            <p className="text-[11px] md:text-[12px] font-medium uppercase tracking-[0.18em] text-[#4B5563]">
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground md:text-[12px]">
               {item.label}
             </p>
-            <p className="text-sm md:text-[0.95rem] text-[#1D1D1D]">
+            <p className="text-sm text-foreground md:text-[0.95rem]">
               {item.description}
             </p>
-            <p className="text-xs md:text-[13px] text-[#4B5563]">
+            <p className="text-xs text-muted-foreground md:text-[13px]">
               This lightbox will show a large project image and concise details
               once photography is ready.
             </p>

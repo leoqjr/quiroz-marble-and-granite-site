@@ -19,29 +19,34 @@ export function SectionHeader({
   className = "",
 }: SectionHeaderProps) {
   const alignment =
-    align === "center" ? "text-center items-center mx-auto" : "text-left";
+    align === "center"
+      ? "mx-auto items-center text-center"
+      : "text-left items-start";
 
   return (
     <div
-      className={`space-y-2 md:space-y-3 ${alignment} max-w-xl ${className}`}
+      className={`max-w-xl space-y-2 md:space-y-3 ${alignment} ${className}`}
     >
       {eyebrow && (
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
           {eyebrow}
         </p>
       )}
+
       {title && (
-        <p className="text-sm font-medium text-[#111827] md:text-[0.95rem]">
+        <h2 className="font-heading text-base font-medium tracking-tight text-foreground md:text-[1.05rem]">
           {title}
-        </p>
+        </h2>
       )}
+
       {body && (
-        <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+        <div className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
           {body}
-        </p>
+        </div>
       )}
+
       {kicker && (
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#6B7280]">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
           {kicker}
         </p>
       )}

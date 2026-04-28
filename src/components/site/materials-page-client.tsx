@@ -76,10 +76,10 @@ export function MaterialsPageClient() {
   const [activeMaterial, setActiveMaterial] = useState<Material | null>(null);
 
   return (
-    <div className="bg-[#F3F2EE]">
+    <div className="bg-background">
       <main className="mx-auto max-w-6xl px-0 pb-16 md:px-0 md:pb-20">
         <HeroSection />
-        <div className="px-4 md:px-6 space-y-16 md:space-y-20">
+        <div className="space-y-16 px-4 md:space-y-20 md:px-6">
           <PhilosophySection />
           <MaterialFamiliesStrip />
           <MaterialsExplorerSection onOpenMaterial={setActiveMaterial} />
@@ -105,7 +105,7 @@ export function MaterialsPageClient() {
 
 function HeroSection() {
   return (
-    <section className="relative h-[340px] md:h-[420px] lg:h-[480px] overflow-hidden">
+    <section className="relative h-[340px] overflow-hidden md:h-[420px] lg:h-[480px]">
       <motion.div
         initial={{ scale: 1.03, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -130,14 +130,14 @@ function HeroSection() {
         className="relative h-full"
       >
         <div className="flex h-full items-end px-4 pb-6 md:px-6 md:pb-10">
-          <div className="inline-flex max-w-md flex-col gap-3 rounded-2xl bg-black/55 px-4 py-4 text-[#F9F7F2] backdrop-blur-sm md:px-5 md:py-5">
-            <p className="text-[10px] md:text-[11px] font-medium uppercase tracking-[0.2em] text-[#E5E7EB]">
+          <div className="inline-flex max-w-md flex-col gap-3 rounded-2xl bg-black/55 px-4 py-4 text-card backdrop-blur-sm md:px-5 md:py-5">
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted/80 md:text-[11px]">
               Materials
             </p>
-            <h1 className="text-lg font-medium tracking-tight md:text-[1.6rem]">
+            <h1 className="font-heading text-lg font-medium tracking-tight md:text-[1.6rem]">
               Discover our curated materials.
             </h1>
-            <p className="text-[12px] md:text-[13px] leading-relaxed text-[#E5E7EB]">
+            <p className="text-[12px] leading-relaxed text-muted/80 md:text-[13px]">
               From timeless natural stone to engineered surfaces—each slab tells
               its own story in light, movement, and color.
             </p>
@@ -145,7 +145,7 @@ function HeroSection() {
               <BookingButton />
               <a
                 href="#explorer"
-                className="text-[10px] md:text-[11px] font-medium uppercase tracking-[0.18em] text-[#E5E7EB] underline underline-offset-4 hover:text-white"
+                className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted/80 underline underline-offset-4 hover:text-card md:text-[11px]"
               >
                 Browse all materials
               </a>
@@ -178,12 +178,12 @@ function MaterialFamiliesStrip() {
   return (
     <section className="mt-6 md:mt-8">
       <div className="overflow-x-auto">
-        <div className="flex gap-3 border-y border-[#E2E0DA]/70 bg-[#F7F4EE] px-4 py-3 text-[11px] uppercase tracking-[0.18em] text-[#4B5563] md:justify-center">
+        <div className="flex gap-3 border-y border-border/70 bg-card/70 px-4 py-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground md:justify-center">
           {["Granite", "Marble", "Quartz", "Quartzite", "Porcelain"].map(
             (label) => (
               <div
                 key={label}
-                className="inline-flex items-center rounded-full border border-[#D8CBC3] bg-[#FDFBF6] px-3 py-1"
+                className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1"
               >
                 {label}
               </div>
@@ -217,7 +217,7 @@ function MaterialsExplorerSection({
             onClick={() => onOpenMaterial(material)}
             whileHover={{ y: -4 }}
             transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            className="group relative overflow-hidden rounded-3xl border border-[#D8CBC3] bg-[#E5DED7] text-left shadow-[0_14px_32px_rgba(15,23,42,0.14)]"
+            className="group relative overflow-hidden rounded-3xl border border-border bg-secondary text-left shadow-[0_14px_32px_rgba(15,23,42,0.18)]"
           >
             <div className="relative h-56 w-full md:h-72">
               <Image
@@ -232,21 +232,21 @@ function MaterialsExplorerSection({
 
             <div className="pointer-events-none absolute inset-0 flex items-end">
               <div className="w-full px-4 pb-4 md:px-5 md:pb-5">
-                <div className="inline-flex flex-col gap-1 rounded-2xl bg-black/55 px-3 py-2 text-[#FDFBF6] backdrop-blur-sm md:px-4 md:py-3">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#E5E7EB]">
+                <div className="inline-flex flex-col gap-1 rounded-2xl bg-black/55 px-3 py-2 text-card backdrop-blur-sm md:px-4 md:py-3">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted/80">
                     {material.name}
                   </p>
-                  <p className="text-[12px] md:text-[13px] leading-snug">
+                  <p className="text-[12px] leading-snug md:text-[13px]">
                     {material.tagline}
                   </p>
                 </div>
-                <div className="mt-2 inline-flex items-center rounded-full bg-[#FDFBF6]/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#4B5563] shadow-sm">
+                <div className="mt-2 inline-flex items-center rounded-full bg-card/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground shadow-sm">
                   Explore
                 </div>
               </div>
             </div>
 
-            <div className="pointer-events-none absolute inset-0 rounded-3xl border border-transparent transition-colors duration-300 group-hover:border-[#C5A77B]" />
+            <div className="pointer-events-none absolute inset-0 rounded-3xl border border-transparent transition-colors duration-300 group-hover:border-accent" />
           </motion.button>
         ))}
       </div>
@@ -276,19 +276,19 @@ function MaterialLightbox({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.97 }}
         transition={{ duration: 0.22, ease: "easeOut" }}
-        className="relative flex w-full max-w-4xl flex-col rounded-3xl bg-[#F3F2EE] p-4 shadow-[0_22px_50px_rgba(15,23,42,0.6)] md:p-6"
+        className="relative flex w-full max-w-4xl flex-col rounded-3xl bg-background p-4 shadow-[0_22px_50px_rgba(15,23,42,0.6)] md:p-6"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-3 text-[11px] md:text-[12px] uppercase tracking-[0.18em] text-[#4B5563] hover:text-[#111827]"
+          className="absolute right-4 top-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground md:text-[12px]"
         >
           Close
         </button>
 
         <div className="space-y-4 pt-5 md:pt-4">
-          <div className="relative overflow-hidden rounded-2xl border border-[#D8CBC3] bg-[#E5DED7]">
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-secondary">
             <div className="relative h-[260px] w-full md:h-[340px]">
               <Image
                 src={material.image}
@@ -300,24 +300,26 @@ function MaterialLightbox({
             </div>
           </div>
           <div className="space-y-2">
-            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
               {material.name}
             </p>
-            <p className="text-sm font-medium text-[#111827]">
+            <p className="text-sm font-medium text-foreground">
               {material.tagline}
             </p>
-            <p className="text-sm text-[#4B5563]">{material.description}</p>
-            <div className="mt-2 grid gap-3 text-[12px] text-[#4B5563] md:grid-cols-2">
+            <p className="text-sm text-muted-foreground">
+              {material.description}
+            </p>
+            <div className="mt-2 grid gap-3 text-[12px] text-muted-foreground md:grid-cols-2">
               <p>
-                <span className="font-medium text-[#111827]">Best for:</span>{" "}
+                <span className="font-medium text-foreground">Best for:</span>{" "}
                 {material.bestFor}
               </p>
               <p>
-                <span className="font-medium text-[#111827]">Care level:</span>{" "}
+                <span className="font-medium text-foreground">Care level:</span>{" "}
                 {material.careLevel}
               </p>
             </div>
-            <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#6B7280]">
+            <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
               Like this material? Share it when you book a free estimate and
               we&apos;ll review options together.
             </p>
@@ -381,10 +383,10 @@ function ComparisonSection() {
         body="A quick view of how core materials differ. We’ll fill in the nuances when we review specific options for your project."
       />
 
-      <div className="overflow-x-auto rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9]">
+      <div className="overflow-x-auto rounded-2xl border border-border bg-card">
         <table className="min-w-[640px] w-full border-collapse text-[12px] md:text-[13px]">
           <thead>
-            <tr className="border-b border-[#E2E0DA] bg-[#F7F4EE] text-[#4B5563]">
+            <tr className="border-b border-border bg-secondary/70 text-muted-foreground">
               <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em]">
                 Attribute
               </th>
@@ -404,9 +406,9 @@ function ComparisonSection() {
             {rows.map((row) => (
               <tr
                 key={row.label}
-                className="border-t border-[#E2E0DA]/70 text-[#4B5563]"
+                className="border-t border-border/70 text-muted-foreground"
               >
-                <td className="px-4 py-3 text-[11px] font-medium uppercase tracking-[0.16em] text-[#6B7280]">
+                <td className="px-4 py-3 text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                   {row.label}
                 </td>
                 <td className="px-4 py-3">{row.granite}</td>
@@ -433,9 +435,9 @@ function HowWeReviewMaterialsSection() {
         body="We look at materials alongside your cabinets, floors, and lighting so you can see how everything works together before we cut a single piece of stone."
       />
 
-      <div className="grid gap-4 md:grid-cols-3 md:gap-6 text-[13px] text-[#4B5563]">
-        <div className="rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] px-4 py-4">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+      <div className="grid gap-4 text-[13px] text-muted-foreground md:grid-cols-3 md:gap-6">
+        <div className="rounded-2xl border border-border bg-card px-4 py-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Photos & inspiration
           </p>
           <p className="mt-1">
@@ -443,8 +445,8 @@ function HowWeReviewMaterialsSection() {
             We&apos;ll narrow down which materials support your vision.
           </p>
         </div>
-        <div className="rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] px-4 py-4">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+        <div className="rounded-2xl border border-border bg-card px-4 py-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Samples & supplier slabs
           </p>
           <p className="mt-1">
@@ -452,8 +454,8 @@ function HowWeReviewMaterialsSection() {
             you can see the stone at a larger scale.
           </p>
         </div>
-        <div className="rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] px-4 py-4">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+        <div className="rounded-2xl border border-border bg-card px-4 py-4">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Practical guidance
           </p>
           <p className="mt-1">
@@ -471,19 +473,16 @@ function HowWeReviewMaterialsSection() {
 function FinalCTASection() {
   return (
     <section className="pt-10 md:pt-14">
-      <div
-        className="mx-4 rounded-2xl border border-[#E2E0DA] bg-[#F3F1EB] px-5 py-6 md:mx-0 md:flex md:items-center md:justify-between md:px-6 md:py-7
-                   transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
-      >
+      <div className="mx-4 rounded-2xl border border-border bg-secondary/80 px-5 py-6 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md md:mx-0 md:flex md:items-center md:justify-between md:px-6 md:py-7">
         <div className="space-y-1.5 md:max-w-xl">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Ready to find the perfect stone?
           </p>
-          <p className="text-sm text-[#111827]">
+          <p className="text-sm text-foreground">
             Book a free estimate and we&apos;ll review materials, samples, and
             options tailored to your space, timeline, and budget.
           </p>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#6B7280]">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             Real projects · Clear guidance · Family-owned since 2000
           </p>
         </div>

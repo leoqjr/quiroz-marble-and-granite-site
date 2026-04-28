@@ -3,8 +3,23 @@ import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
+import { Inter, Playfair_Display } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
+
+// Body / UI font
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+// Heading / display font for hero & section titles
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-heading",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -33,9 +48,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      // Attach font variables here so globals.css can use them
+      className={`${inter.variable} ${playfair.variable}`}
+    >
       <body className="antialiased">
-        <div className="flex min-h-screen flex-col bg-[#F3F2EE] text-foreground">
+        <div className="flex min-h-screen flex-col bg-background text-foreground">
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

@@ -14,7 +14,6 @@ const navItems = [
   { href: "/services", label: "Services" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/materials", label: "Materials" },
-  // removed Process
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -23,7 +22,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[#E2E0DA]/70 bg-[#F8F7F4]/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:h-20 md:px-6">
         <Link
           href="/"
@@ -45,15 +44,15 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "group relative text-[11px] font-medium uppercase tracking-[0.16em] text-[#6B7280]",
-                  "transition-colors duration-200 ease-out hover:text-[#111827]",
-                  isActive && "text-[#111827]",
+                  "group relative text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground",
+                  "transition-colors duration-200 ease-out hover:text-foreground",
+                  isActive && "text-foreground",
                 )}
               >
                 {item.label}
                 <span
                   className={cn(
-                    "pointer-events-none absolute -bottom-1 left-0 h-px w-full origin-left bg-[#111827]",
+                    "pointer-events-none absolute -bottom-1 left-0 h-px w-full origin-left bg-foreground",
                     "transition-transform duration-200 ease-out",
                     isActive
                       ? "scale-x-100"
@@ -83,14 +82,14 @@ function MobileMenu() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E2E0DA] bg-[#F3F2EE]/90 text-[#1F2933] shadow-sm backdrop-blur-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+        className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/90 text-foreground shadow-sm backdrop-blur-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
         aria-label="Toggle navigation"
       >
         <Menu className="h-4 w-4" />
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-64 border-l border-[#E2E0DA] bg-[#F8F7F4] px-5 pt-8 pb-6"
+        className="w-64 border-l border-border bg-card px-5 pb-6 pt-8"
       >
         <nav className="flex flex-col gap-4">
           {navItems.map((item) => {
@@ -105,9 +104,9 @@ function MobileMenu() {
                 href={item.href}
                 onClick={handleClose}
                 className={cn(
-                  "text-xs font-medium uppercase tracking-[0.16em] text-[#6B7280]",
-                  "transition-colors duration-200 ease-out hover:text-[#111827]",
-                  isActive && "text-[#111827]",
+                  "text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground",
+                  "transition-colors duration-200 ease-out hover:text-foreground",
+                  isActive && "text-foreground",
                 )}
               >
                 {item.label}
