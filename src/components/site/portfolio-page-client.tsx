@@ -2,6 +2,7 @@
 "use client";
 
 import { BookingButton } from "@/components/site/booking-button";
+import { SectionHeader } from "@/components/site/section-header";
 import { projects, type ProjectCategory } from "@/lib/data/projects";
 import { useState } from "react";
 
@@ -25,92 +26,96 @@ export default function PortfolioPageClient() {
       : projects.filter((project) => project.category === activeFilter);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16">
-      {/* Intro */}
-      <div className="space-y-4 md:space-y-6">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          Portfolio
-        </p>
-        <h1 className="text-2xl font-medium tracking-tight text-[#111827] md:text-3xl">
-          Selected projects.
-        </h1>
-        <p className="max-w-2xl text-sm leading-relaxed text-[#4B5563]">
-          A sample of kitchens, bathrooms, fireplaces, outdoor spaces, and
-          commercial interiors completed by Quiroz Marble and Granite.
-        </p>
-      </div>
+    <div className="bg-[#F3F2EE]">
+      <main className="mx-auto max-w-6xl px-4 py-12 md:px-6 md:py-16 space-y-10 md:space-y-12">
+        {/* Intro */}
+        <section>
+          <SectionHeader
+            eyebrow="Portfolio"
+            title="Selected projects."
+            body="A sample of kitchens, bathrooms, fireplaces, outdoor spaces, and commercial interiors completed by Quiroz Marble and Granite."
+          />
+        </section>
 
-      {/* Filters */}
-      <div className="mt-8 flex flex-wrap gap-2 md:mt-10">
-        {filters.map((filter) => {
-          const isActive = activeFilter === filter.value;
-          return (
-            <button
-              key={filter.value}
-              type="button"
-              onClick={() => setActiveFilter(filter.value)}
-              className={
-                "rounded-full border px-4 py-1.5 text-[11px] uppercase tracking-[0.16em] " +
-                "transition-all duration-200 ease-out " +
-                (isActive
-                  ? "border-[#1F2933] bg-[#1F2933] text-[#F8F7F4]"
-                  : "border-[#E2E0DA] bg-white text-[#6B7280] hover:border-[#C5A77B] hover:text-[#111827] hover:-translate-y-0.5 hover:shadow-sm")
-              }
-            >
-              {filter.label}
-            </button>
-          );
-        })}
-      </div>
+        {/* Filters */}
+        <section>
+          <div className="mt-4 flex flex-wrap gap-2 md:mt-6">
+            {filters.map((filter) => {
+              const isActive = activeFilter === filter.value;
+              return (
+                <button
+                  key={filter.value}
+                  type="button"
+                  onClick={() => setActiveFilter(filter.value)}
+                  className={
+                    "rounded-full border px-4 py-1.5 text-[11px] uppercase tracking-[0.16em] " +
+                    "transition-all duration-200 ease-out " +
+                    (isActive
+                      ? "border-[#1F2933] bg-[#1F2933] text-[#F8F7F4]"
+                      : "border-[#E2E0DA] bg-white text-[#6B7280] hover:border-[#C5A77B] hover:text-[#111827] hover:-translate-y-0.5 hover:shadow-sm")
+                  }
+                >
+                  {filter.label}
+                </button>
+              );
+            })}
+          </div>
+        </section>
 
-      {/* Projects grid */}
-      <div className="mt-8 grid gap-6 md:mt-10 md:grid-cols-2 lg:grid-cols-3">
-        {filteredProjects.map((project) => (
-          <article
-            key={project.id}
-            className="flex flex-col overflow-hidden rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] shadow-sm
+        {/* Projects grid */}
+        <section>
+          <div className="mt-6 grid gap-6 md:mt-8 md:grid-cols-2 lg:grid-cols-3">
+            {filteredProjects.map((project) => (
+              <article
+                key={project.id}
+                className="flex flex-col overflow-hidden rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] shadow-sm
+                           transition-all duration-200 ease-out
+                           hover:-translate-y-0.5 hover:shadow-md"
+              >
+                {/* Image placeholder – later replace with next/image + real photos */}
+                <div className="relative h-60 bg-[#F3F1EB] md:h-64">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#F3F1EB_45%,_#E5E1D8_100%)]" />
+                  <div className="absolute bottom-3 left-3 rounded-full bg-white/85 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#4B5563] backdrop-blur-sm">
+                    {project.category}
+                  </div>
+                </div>
+
+                <div className="flex flex-1 flex-col justify-between px-4 py-3 md:px-5 md:py-3.5">
+                  <h2 className="text-sm font-semibold tracking-tight text-[#111827]">
+                    {project.title}
+                  </h2>
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-[#6B7280]">
+                    {project.location}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA strip */}
+        <section>
+          <div
+            className="mt-8 rounded-2xl border border-[#E2E0DA] bg-[#F3F1EB] px-5 py-6 md:mt-10 md:flex md:items-center md:justify-between md:px-6
                        transition-all duration-200 ease-out
                        hover:-translate-y-0.5 hover:shadow-md"
           >
-            {/* Image placeholder – later replace with next/image + real photos */}
-            <div className="relative h-60 bg-[#F3F1EB] md:h-64">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#F3F1EB_45%,_#E5E1D8_100%)]" />
-              <div className="absolute bottom-3 left-3 rounded-full bg-white/85 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#4B5563] backdrop-blur-sm">
-                {project.category}
-              </div>
-            </div>
-
-            <div className="flex flex-1 flex-col justify-between px-4 py-3 md:px-5 md:py-3.5">
-              <h2 className="text-sm font-semibold tracking-tight text-[#111827]">
-                {project.title}
-              </h2>
-              <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-[#6B7280]">
-                {project.location}
+            <div className="space-y-1">
+              <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+                See something you like?
+              </p>
+              <p className="text-sm text-[#111827]">
+                Share a few details about your space and we’ll discuss
+                materials, finishes, and a tailored estimate for a similar
+                project.
               </p>
             </div>
-          </article>
-        ))}
-      </div>
-
-      {/* CTA strip */}
-      <div
-        className="mt-12 rounded-2xl border border-[#E2E0DA] bg-[#F3F1EB] px-5 py-6 md:mt-16 md:flex md:items-center md:justify-between md:px-6
-                   transition-all duration-200 ease-out
-                   hover:-translate-y-0.5 hover:shadow-md"
-      >
-        <div className="space-y-1">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-            See something you like?
-          </p>
-          <p className="text-sm text-[#111827]">
-            Share a few details about your space and we’ll discuss materials,
-            finishes, and a tailored estimate for a similar project.
-          </p>
-        </div>
-        <div className="mt-4 md:mt-0">
-          <BookingButton />
-        </div>
-      </div>
+            <div className="mt-4 md:mt-0">
+              <BookingButton />
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

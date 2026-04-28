@@ -2,6 +2,7 @@
 "use client";
 
 import { BookingButton } from "@/components/site/booking-button";
+import { SectionHeader } from "@/components/site/section-header";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -39,7 +40,7 @@ function HeroSection() {
         className="absolute inset-0"
       >
         <Image
-          src="/about-hero.jpg" // replace with workshop/family/process image you have
+          src="/about-hero.jpg"
           alt="Stone fabrication in progress at Quiroz Marble and Granite"
           fill
           className="object-cover"
@@ -91,34 +92,35 @@ function StorySection() {
       {...fadeUp}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="mx-auto max-w-3xl space-y-4 pt-10 md:pt-12 text-center md:text-left"
+      className="mx-auto max-w-3xl space-y-4 pt-10 md:pt-12"
     >
-      <div className="flex flex-col items-center md:items-start gap-2">
-        <div className="h-px w-12 bg-[#C5A77B]" />
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          Our story
-        </p>
-      </div>
-      <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-        Quiroz Marble and Granite began in 2000 as a small, family-run shop
-        serving the greater Los Angeles area. Over the years, we’ve grown with
-        our clients—working in homes, condos, and projects across the city—while
-        keeping the same focus on careful, one-at-a-time stone work.
-      </p>
-      <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-        We believe stone should feel like it has always belonged in the room.
-        That means quiet seams, thoughtful veining layouts, and surfaces that
-        support how you actually cook, gather, and live—not just how a photo
-        looks on installation day.
-      </p>
-      <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-        From first measure to final walkthrough, templating, fabrication, and
-        installation are handled by one dedicated team. You’ll see the same
-        names and faces as your project moves from plans to finished stone.
-      </p>
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#6B7280]">
-        Family-owned · Since 2000 · Los Angeles
-      </p>
+      <SectionHeader
+        eyebrow="Our story"
+        body={
+          <>
+            <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+              Quiroz Marble and Granite began in 2000 as a small, family-run
+              shop serving the greater Los Angeles area. Over the years,
+              we&apos;ve grown with our clients—working in homes, condos, and
+              projects across the city—while keeping the same focus on careful,
+              one-at-a-time stone work.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+              We believe stone should feel like it has always belonged in the
+              room. That means quiet seams, thoughtful veining layouts, and
+              surfaces that support how you actually cook, gather, and live—not
+              just how a photo looks on installation day.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+              From first measure to final walkthrough, templating, fabrication,
+              and installation are handled by one dedicated team. You&apos;ll
+              see the same names and faces as your project moves from plans to
+              finished stone.
+            </p>
+          </>
+        }
+        kicker="Family-owned · Since 2000 · Los Angeles"
+      />
     </motion.section>
   );
 }
@@ -146,16 +148,12 @@ function ValuesSection() {
       {...fadeUp}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.05 }}
-      className="space-y-5"
+      className="space-y-6"
     >
-      <div className="space-y-2 md:space-y-3">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          What guides our work
-        </p>
-        <p className="max-w-xl text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-          Three simple principles shape every project in our shop and on site.
-        </p>
-      </div>
+      <SectionHeader
+        eyebrow="What guides our work"
+        body="Three simple principles shape every project in our shop and on site."
+      />
 
       <div className="grid gap-4 md:grid-cols-3 md:gap-6">
         {values.map((value) => (
@@ -192,24 +190,30 @@ function CraftsmanshipSection() {
       className="md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-10 space-y-6 md:space-y-0"
     >
       <div className="space-y-3 md:space-y-4">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          The Quiroz approach to stone
-        </p>
-        <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-          Every project starts with a conversation about how you use the space.
-          From there, we look at materials, veining, and edge profiles that make
-          sense for your home and the way you cook, gather, and live.
-        </p>
-        <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-          In the shop, we plan seam placement, veining movement, and joints on
-          full-sized slabs—not just on paper. Edges are shaped and finished by
-          hand, and we check each surface under good light before it leaves.
-        </p>
-        <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-          On site, our team protects floors and finishes, keeps dust under
-          control, and leaves your space tidy. The goal is a calm install and a
-          finished project that feels settled from day one.
-        </p>
+        <SectionHeader
+          eyebrow="The Quiroz approach to stone"
+          body={
+            <>
+              <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+                Every project starts with a conversation about how you use the
+                space. From there, we look at materials, veining, and edge
+                profiles that make sense for your home and the way you cook,
+                gather, and live.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+                In the shop, we plan seam placement, veining movement, and
+                joints on full-sized slabs—not just on paper. Edges are shaped
+                and finished by hand, and we check each surface under good light
+                before it leaves.
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
+                On site, our team protects floors and finishes, keeps dust under
+                control, and leaves your space tidy. The goal is a calm install
+                and a finished project that feels settled from day one.
+              </p>
+            </>
+          }
+        />
       </div>
 
       <div className="mt-2 md:mt-0">
@@ -250,18 +254,12 @@ function WhyChooseSection() {
       {...fadeUp}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-      className="space-y-4"
+      className="space-y-6"
     >
-      <div className="space-y-2 md:space-y-3">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          Why families and professionals choose us
-        </p>
-        <p className="max-w-xl text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-          We work directly with homeowners, alongside designers, and as a
-          trusted trade partner for contractors—keeping stone projects calm from
-          first measure to final install.
-        </p>
-      </div>
+      <SectionHeader
+        eyebrow="Why families and professionals choose us"
+        body="We work directly with homeowners, alongside designers, and as a trusted trade partner for contractors—keeping stone projects calm from first measure to final install."
+      />
 
       <div className="grid gap-2 md:grid-cols-2 md:gap-3">
         {items.map((item) => (

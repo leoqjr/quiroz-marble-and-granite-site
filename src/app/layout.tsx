@@ -3,7 +3,7 @@ import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-[#F3F2EE] text-[#1D1D1D] antialiased">
-        <div className="flex min-h-screen flex-col">
+      <body className="antialiased">
+        <div className="flex min-h-screen flex-col bg-[#F3F2EE] text-foreground">
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

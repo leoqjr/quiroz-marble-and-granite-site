@@ -2,6 +2,7 @@
 "use client";
 
 import { BookingButton } from "@/components/site/booking-button";
+import { SectionHeader } from "@/components/site/section-header";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
@@ -160,18 +161,13 @@ function HeroSection() {
 
 function PhilosophySection() {
   return (
-    <section className="mx-auto max-w-3xl space-y-3 text-center pt-10 md:pt-12">
-      <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-        Our material philosophy
-      </p>
-      <p className="text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-        We personally select every material for beauty, quality, and
-        performance. Our role is to help you find the stone that matches your
-        vision and the way you actually live.
-      </p>
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#6B7280]">
-        Samples · Supplier slabs · Honest recommendations
-      </p>
+    <section className="mx-auto max-w-3xl pt-10 md:pt-12">
+      <SectionHeader
+        align="center"
+        eyebrow="Our material philosophy"
+        body="We personally select every material for beauty, quality, and performance. Our role is to help you find the stone that matches your vision and the way you actually live."
+        kicker="Samples · Supplier slabs · Honest recommendations"
+      />
     </section>
   );
 }
@@ -208,15 +204,10 @@ function MaterialsExplorerSection({
 }) {
   return (
     <section id="explorer" className="space-y-4 pt-10 md:pt-12">
-      <div className="space-y-2 md:space-y-3">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          Materials explorer
-        </p>
-        <p className="max-w-xl text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-          Browse our core material families the way you would in a showroom:
-          large slab imagery first, details on demand.
-        </p>
-      </div>
+      <SectionHeader
+        eyebrow="Materials explorer"
+        body="Browse our core material families the way you would in a showroom: large slab imagery first, details on demand."
+      />
 
       <div className="grid gap-5 md:grid-cols-2">
         {MATERIALS.map((material) => (
@@ -385,15 +376,10 @@ function ComparisonSection() {
 
   return (
     <section className="space-y-4 pt-10 md:pt-12">
-      <div className="space-y-2 md:space-y-3">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          Compare at a glance
-        </p>
-        <p className="max-w-xl text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-          A quick view of how core materials differ. We&apos;ll fill in the
-          nuances when we review specific options for your project.
-        </p>
-      </div>
+      <SectionHeader
+        eyebrow="Compare at a glance"
+        body="A quick view of how core materials differ. We’ll fill in the nuances when we review specific options for your project."
+      />
 
       <div className="overflow-x-auto rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9]">
         <table className="min-w-[640px] w-full border-collapse text-[12px] md:text-[13px]">
@@ -442,16 +428,10 @@ function ComparisonSection() {
 function HowWeReviewMaterialsSection() {
   return (
     <section className="space-y-6 pt-10 md:pt-12">
-      <div className="space-y-2 md:space-y-3">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
-          How we review materials together
-        </p>
-        <p className="max-w-xl text-sm leading-relaxed text-[#4B5563] md:text-[0.95rem]">
-          We look at materials alongside your cabinets, floors, and lighting so
-          you can see how everything works together before we cut a single piece
-          of stone.
-        </p>
-      </div>
+      <SectionHeader
+        eyebrow="How we review materials together"
+        body="We look at materials alongside your cabinets, floors, and lighting so you can see how everything works together before we cut a single piece of stone."
+      />
 
       <div className="grid gap-4 md:grid-cols-3 md:gap-6 text-[13px] text-[#4B5563]">
         <div className="rounded-2xl border border-[#E2E0DA] bg-[#FDFCF9] px-4 py-4">
