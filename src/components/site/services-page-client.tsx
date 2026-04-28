@@ -55,34 +55,34 @@ const processSteps = [
   {
     step: 1,
     title: "Consultation & measurement",
-    body: "We review your plans or space, discuss how you use the area, and schedule on-site measurements where needed.",
+    body: "We review your plans or space and schedule on-site measurements where needed.",
   },
   {
     step: 2,
-    title: "Material selection & design",
-    body: "We align on stone type, color, edge profiles, and veining layouts so the surfaces feel calm and intentional.",
+    title: "Material & layout",
+    body: "We align on stone type, color, edges, and seam layout so the surfaces feel calm.",
   },
   {
     step: 3,
-    title: "Precision fabrication",
-    body: "Templates are translated into clean cuts, edges, and seams in our fabrication shop, with veining and joints carefully considered.",
+    title: "Fabrication",
+    body: "Templates are translated into clean cuts, edges, and seams in our shop.",
   },
   {
     step: 4,
-    title: "Professional installation",
-    body: "Our team installs, protects surrounding finishes, and coordinates with other trades on site to keep the day organized.",
+    title: "Installation",
+    body: "Our team installs, protects surrounding finishes, and coordinates with other trades.",
   },
   {
     step: 5,
-    title: "Final walkthrough & care",
-    body: "We walk the space with you, confirm details, and review care and maintenance so the stone wears well over time.",
+    title: "Walkthrough & care",
+    body: "We walk the space with you and review care so the stone wears well over time.",
   },
 ];
 
 export function ServicesPageClient() {
   return (
     <div className="bg-background">
-      <main className="mx-auto max-w-6xl space-y-16 px-4 py-12 md:space-y-20 md:px-6 md:py-20">
+      <main className="mx-auto max-w-6xl space-y-14 px-4 py-12 md:space-y-18 md:px-6 md:py-20">
         <HeroSection />
         <ExpertiseSection />
         <ServicesGridSection />
@@ -104,8 +104,8 @@ function HeroSection() {
           Precision stone surfaces, tailored to you.
         </h1>
         <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-          Stone, tailored to the way you live. Templating, fabrication, and
-          installation—handled start to finish by one dedicated team.
+          Templating, fabrication, and installation handled by one team that
+          knows stone and the way you live with it every day.
         </p>
         <div className="flex flex-wrap items-center gap-4 pt-1">
           <BookingButton />
@@ -121,7 +121,7 @@ function HeroSection() {
       {/* Image */}
       <div className="mt-8 md:mt-0">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
-          <div className="relative aspect-[4/5] w-full">
+          <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
             <Image
               src="/services-kitchen.jpg"
               alt="Stone kitchen installation by Quiroz Marble and Granite"
@@ -148,7 +148,7 @@ function ExpertiseSection() {
       <SectionHeader
         align="center"
         eyebrow="Our expertise"
-        body="Quiroz Marble and Granite is a family-run shop serving the greater Los Angeles area with full-service stone work—from first measurements to final walkthrough. We manage templating, fabrication, and installation under one roof so details stay consistent throughout the project."
+        body="Quiroz Marble and Granite is a family-run shop serving the greater Los Angeles area with full-service stone work—measurements, shop work, and installation handled under one roof."
         kicker="25+ years · Family-owned · Greater Los Angeles"
       />
     </section>
@@ -157,10 +157,10 @@ function ExpertiseSection() {
 
 function ServicesGridSection() {
   return (
-    <section className="space-y-8">
+    <section className="space-y-7 md:space-y-8">
       <SectionHeader
         eyebrow="Our services"
-        body="Kitchens, baths, fireplaces, outdoor spaces, and custom details fabricated and installed by one team that focuses on calm, clean stonework."
+        body="Kitchens, baths, fireplaces, outdoor spaces, and custom details—fabricated and installed by one team that focuses on calm, clean stonework."
       />
 
       <div className="grid gap-6 md:grid-cols-3">
@@ -169,7 +169,7 @@ function ServicesGridSection() {
             key={service.key}
             className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
           >
-            <div className="relative h-40 w-full md:h-44">
+            <div className="relative h-44 w-full md:h-52">
               <Image
                 src={service.image}
                 alt={service.title}
@@ -179,7 +179,7 @@ function ServicesGridSection() {
               />
             </div>
             <div className="flex flex-1 flex-col justify-between p-4 md:p-5">
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <h2 className="text-[15px] font-semibold tracking-tight text-foreground md:text-[16px]">
                   {service.title}
                 </h2>
@@ -208,10 +208,10 @@ function ServicesGridSection() {
 
 function ProcessSection() {
   return (
-    <section className="space-y-8">
+    <section className="space-y-7 md:space-y-8">
       <SectionHeader
         eyebrow="Our process"
-        body="A calm, five-step process that keeps stone projects organized from first conversation to final walkthrough."
+        body="A simple five-step process that keeps stone projects organized from first conversation to final walkthrough."
       />
 
       {/* Desktop timeline */}
@@ -268,20 +268,20 @@ function WhoWeServeSection() {
   const audiences = [
     {
       label: "Homeowners",
-      body: "Guidance on materials, layouts, and timing, with a focus on clean installs and respect for your home.",
+      body: "Guidance on materials, layouts, and timing, with clean installs and respect for your home.",
     },
     {
       label: "Interior designers & architects",
-      body: "Stone execution that supports your design intent—seam placement, veining, and details that read as one continuous surface.",
+      body: "Stone execution that supports your design intent—seams, veining, and details that read as one surface.",
     },
     {
       label: "Contractors & builders",
-      body: "Reliable scheduling, clear communication, and a single team handling templates through installation.",
+      body: "Reliable scheduling, clear communication, and one team handling templates through installation.",
     },
   ];
 
   return (
-    <section className="space-y-8">
+    <section className="space-y-7 md:space-y-8">
       <SectionHeader
         eyebrow="Who we serve"
         body="We work directly with homeowners, alongside designers and architects, and as a trusted partner to contractors and builders."
@@ -308,19 +308,15 @@ function WhoWeServeSection() {
 
 function FinalCTASection() {
   return (
-    <section className="mt-4">
+    <section className="mt-2 md:mt-4">
       <div className="rounded-2xl border border-border bg-secondary/80 px-5 py-6 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md md:flex md:items-center md:justify-between md:px-6 md:py-7">
         <div className="space-y-1.5 md:max-w-xl">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-            Ready to transform your space?
+            Ready to start?
           </p>
           <p className="text-sm text-foreground">
-            Book a free estimate to review your project, materials, and timing
-            with a family-run team that&apos;s been working with stone since
-            2000.
-          </p>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-            No obligation · Clear timeline · Family-owned since 2000
+            Share a few details about your project and we&apos;ll follow up with
+            timing, next steps, and a clear path forward.
           </p>
         </div>
         <div className="mt-4 md:mt-0">

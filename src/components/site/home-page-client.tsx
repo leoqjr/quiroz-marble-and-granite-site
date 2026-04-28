@@ -59,14 +59,6 @@ export function HomePageClient() {
         {/* Hero */}
         <HeroSection />
 
-        {/* Scroll hint */}
-        <div className="flex justify-center pt-2 md:pt-0">
-          <div className="flex flex-col items-center text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            <span>Scroll</span>
-            <span className="mt-1 h-6 w-px bg-border/70" />
-          </div>
-        </div>
-
         {/* How we work strip */}
         <HowWeWorkStrip />
 
@@ -116,8 +108,12 @@ function HeroSection() {
           porcelain for kitchens, bathrooms, fireplaces, and outdoor spaces.
         </p>
 
-        <div className="flex flex-wrap items-center gap-4 pt-1">
-          <BookingButton />
+        {/* Button row */}
+        <div className="mt-4 flex flex-wrap items-center gap-4">
+          <Link href="/contact">
+            <BookingButton />
+          </Link>
+
           <Link
             href="/portfolio"
             className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
@@ -132,7 +128,7 @@ function HeroSection() {
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.05 }}
-        className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]"
+        className="relative mt-8 overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)] md:mt-0"
       >
         <div
           aria-hidden="true"
