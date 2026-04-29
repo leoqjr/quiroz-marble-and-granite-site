@@ -13,42 +13,42 @@ const services = [
     title: "Kitchen countertops",
     subtitle: "Islands, backsplashes, and full runs.",
     note: "Granite, marble, quartz, and porcelain.",
-    image: "/services-kitchen.jpg",
+    image: "/services-kitchen-hero.jpg",
   },
   {
     key: "bathroom",
     title: "Bathroom vanities & surfaces",
     subtitle: "Vanity tops, surrounds, and ledges.",
     note: "Primary suites, guest baths, and powder rooms.",
-    image: "/services-bathroom.jpg",
+    image: "/services-bathroom-hero.jpg",
   },
   {
     key: "fireplace",
     title: "Fireplaces & feature walls",
     subtitle: "Surrounds, mantels, and slab walls.",
     note: "Aligned veining and quiet focal points.",
-    image: "/services-fireplace.jpg",
+    image: "/services-fireplace-hero.jpg",
   },
   {
     key: "outdoor",
     title: "Outdoor kitchens & bars",
     subtitle: "BBQ counters, bar tops, and prep space.",
     note: "Weather‑considered stone for outdoor use.",
-    image: "/services-outdoor.jpg",
+    image: "/services-outdoor-hero.jpg",
   },
   {
     key: "commercial",
     title: "Commercial interiors",
     subtitle: "Reception, meeting, and back‑of‑house.",
     note: "Offices, hospitality, and multi‑unit work.",
-    image: "/services-commercial.jpg",
+    image: "/services-commercial-hero.jpg",
   },
   {
     key: "custom",
     title: "Custom fabrication",
     subtitle: "Sills, thresholds, shelves, and one‑offs.",
     note: "Bring drawings or concepts for review.",
-    image: "/services-detail.jpg",
+    image: "/services-detail-hero.jpg",
   },
 ];
 
@@ -160,7 +160,7 @@ function HeroSection() {
         <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
           <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
             <Image
-              src="/services-kitchen.jpg"
+              src="/services-hero.jpg"
               alt="Stone kitchen installation by Quiroz Marble and Granite"
               fill
               className="object-cover object-bottom"
