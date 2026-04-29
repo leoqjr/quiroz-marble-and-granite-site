@@ -5,6 +5,7 @@ import { BookingButton } from "@/components/site/booking-button";
 import { SectionHeader } from "@/components/site/section-header";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const services = [
   {
@@ -12,14 +13,14 @@ const services = [
     title: "Kitchen countertops",
     subtitle: "Islands, backsplashes, and full runs.",
     note: "Granite, marble, quartz, and porcelain.",
-    image: "/services-kitchen-hero.jpg", // update to your final kitchen image
+    image: "/services-kitchen-hero.jpg",
   },
   {
     key: "bathroom",
     title: "Bathroom vanities & surfaces",
     subtitle: "Vanity tops, surrounds, and ledges.",
     note: "Primary suites, guest baths, and powder rooms.",
-    image: "/services-bathroom-hero.jpg", // update if needed
+    image: "/services-bathroom-hero.jpg",
   },
   {
     key: "fireplace",
@@ -80,16 +81,52 @@ const processSteps = [
 ];
 
 export function ServicesPageClient() {
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [lightboxAlt, setLightboxAlt] = useState<string>("");
+
   return (
     <div className="bg-background">
       <main className="mx-auto max-w-6xl space-y-14 px-4 py-12 md:space-y-18 md:px-6 md:py-20">
         <HeroSection />
         <ExpertiseSection />
-        <ServicesGridSection />
+        <ServicesGridSection
+          onOpenImage={(src, alt) => {
+            setLightboxImage(src);
+            setLightboxAlt(alt);
+          }}
+        />
         <ProcessSection />
         <WhoWeServeSection />
         <FinalCTASection />
       </main>
+
+      {/* Lightbox modal */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-40 flex items-center justify-center bg-black/70 px-4"
+          onClick={() => setLightboxImage(null)}
+        >
+          <div
+            className="relative h-[80vh] w-full max-w-4xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightboxImage}
+              alt={lightboxAlt}
+              fill
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 1024px"
+            />
+            <button
+              type="button"
+              onClick={() => setLightboxImage(null)}
+              className="absolute right-3 top-3 rounded-full bg-black/70 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-card"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -107,7 +144,7 @@ function HeroSection() {
           Templating, fabrication, and installation handled by one team that
           knows stone and the way you live with it every day.
         </p>
-        <div className="flex flex-wrap items-center gap-4 pt-1">
+        <div className="flex flex-row flex-wrap items-center gap-3 pt-1">
           <BookingButton />
           <Link
             href="/materials"
@@ -123,10 +160,10 @@ function HeroSection() {
         <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
           <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
             <Image
-              src="/services-hero.jpg" // update to your chosen hero if different
+              src="/services-hero.jpg"
               alt="Stone kitchen installation by Quiroz Marble and Granite"
               fill
-              className="object-cover"
+              className="object-cover object-bottom"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 420px"
             />
           </div>
@@ -144,7 +181,7 @@ function HeroSection() {
 
 function ExpertiseSection() {
   return (
-    <section className="mx-auto max-w-3xl">
+    <section className="mx-auto max-w-3xl pt-2 md:pt-4">
       <SectionHeader
         align="center"
         eyebrow="Our expertise"
@@ -155,7 +192,11 @@ function ExpertiseSection() {
   );
 }
 
-function ServicesGridSection() {
+function ServicesGridSection({
+  onOpenImage,
+}: {
+  onOpenImage: (src: string, alt: string) => void;
+}) {
   return (
     <section className="space-y-7 md:space-y-8">
       <SectionHeader
@@ -167,17 +208,21 @@ function ServicesGridSection() {
         {services.map((service) => (
           <article
             key={service.key}
-            className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
+            className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
           >
-            <div className="relative h-44 w-full md:h-52">
+            <button
+              type="button"
+              onClick={() => onOpenImage(service.image, service.title)}
+              className="relative h-44 w-full cursor-zoom-in md:h-52"
+            >
               <Image
                 src={service.image}
                 alt={service.title}
                 fill
-                className="object-cover transition-transform duration-300 ease-out hover:scale-105"
+                className="object-cover object-bottom transition-transform duration-300 ease-out group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
               />
-            </div>
+            </button>
             <div className="flex flex-1 flex-col justify-between p-4 md:p-5">
               <div className="space-y-1.5">
                 <h2 className="text-[15px] font-semibold tracking-tight text-foreground md:text-[16px]">
