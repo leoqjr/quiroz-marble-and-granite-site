@@ -161,11 +161,11 @@ function HeroSection() {
 
 function PhilosophySection() {
   return (
-    <section className="mx-auto max-w-3xl pt-10 md:pt-12">
+    <section className="mx-auto max-w-3xl pt-8 md:pt-12">
       <SectionHeader
         align="center"
         eyebrow="Our material philosophy"
-        body="We personally select every material for beauty, quality, and performance. Our role is to help you find the stone that matches your vision and the way you actually live."
+        body="We select every material for beauty, performance, and how it will live in your space. Our job is to guide you to the stone that fits your vision and day-to-day life."
         kicker="Samples · Supplier slabs · Honest recommendations"
       />
     </section>
@@ -176,7 +176,7 @@ function PhilosophySection() {
 
 function MaterialFamiliesStrip() {
   return (
-    <section className="mt-6 md:mt-8">
+    <section className="mt-10 md:mt-12">
       <div className="overflow-x-auto">
         <div className="flex gap-3 border-y border-border/70 bg-card/70 px-4 py-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground md:justify-center">
           {["Granite", "Marble", "Quartz", "Quartzite", "Porcelain"].map(
@@ -203,7 +203,7 @@ function MaterialsExplorerSection({
   onOpenMaterial: (m: Material) => void;
 }) {
   return (
-    <section id="explorer" className="space-y-4 pt-10 md:pt-12">
+    <section id="explorer" className="space-y-4 pt-12 md:pt-14">
       <SectionHeader
         eyebrow="Materials explorer"
         body="Browse our core material families the way you would in a showroom: large slab imagery first, details on demand."
@@ -217,9 +217,10 @@ function MaterialsExplorerSection({
             onClick={() => onOpenMaterial(material)}
             whileHover={{ y: -4 }}
             transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            className="group relative overflow-hidden rounded-3xl border border-border bg-secondary text-left shadow-[0_14px_32px_rgba(15,23,42,0.18)]"
+            className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card text-left shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
           >
-            <div className="relative h-56 w-full md:h-72">
+            {/* Image area, Portfolio-style */}
+            <div className="relative h-56 bg-secondary md:h-64">
               <Image
                 src={material.image}
                 alt={material.name}
@@ -227,33 +228,34 @@ function MaterialsExplorerSection({
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 520px"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
-            </div>
-
-            <div className="pointer-events-none absolute inset-0 flex items-end">
-              <div className="w-full px-4 pb-4 md:px-5 md:pb-5">
-                <div className="inline-flex flex-col gap-1 rounded-2xl bg-black/55 px-3 py-2 text-card backdrop-blur-sm md:px-4 md:py-3">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-muted/80">
-                    {material.name}
-                  </p>
-                  <p className="text-[12px] leading-snug md:text-[13px]">
-                    {material.tagline}
-                  </p>
-                </div>
-                <div className="mt-2 inline-flex items-center rounded-full bg-card/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground shadow-sm">
-                  Explore
-                </div>
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+              <div className="absolute bottom-3 left-3 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-sm">
+                {material.name}
               </div>
             </div>
 
-            <div className="pointer-events-none absolute inset-0 rounded-3xl border border-transparent transition-colors duration-300 group-hover:border-accent" />
+            {/* Text area */}
+            <div className="flex flex-1 flex-col justify-between px-4 py-3 md:px-5 md:py-4">
+              <div className="space-y-1">
+                <p className="text-[13px] font-medium text-foreground md:text-[14px]">
+                  {material.tagline}
+                </p>
+                <p className="text-[12px] leading-relaxed text-muted-foreground md:text-[13px]">
+                  {material.bestFor}
+                </p>
+              </div>
+              <div className="mt-3">
+                <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 group-hover:text-foreground">
+                  View details
+                </span>
+              </div>
+            </div>
           </motion.button>
         ))}
       </div>
     </section>
   );
 }
-
 /* Lightbox */
 
 function MaterialLightbox({
@@ -474,16 +476,13 @@ function FinalCTASection() {
   return (
     <section className="pt-10 md:pt-14">
       <div className="mx-4 rounded-2xl border border-border bg-secondary/80 px-5 py-6 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md md:mx-0 md:flex md:items-center md:justify-between md:px-6 md:py-7">
-        <div className="space-y-1.5 md:max-w-xl">
+        <div className="space-y-1 md:max-w-xl">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-            Ready to find the perfect stone?
+            Ready to start?
           </p>
           <p className="text-sm text-foreground">
-            Book a free estimate and we&apos;ll review materials, samples, and
-            options tailored to your space, timeline, and budget.
-          </p>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-            Real projects · Clear guidance · Family-owned since 2000
+            Tell us about your project and we&apos;ll help you choose the right
+            stone.
           </p>
         </div>
         <div className="mt-4 md:mt-0">

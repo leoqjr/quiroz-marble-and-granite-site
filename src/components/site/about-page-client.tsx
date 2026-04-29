@@ -16,7 +16,7 @@ export function AboutPageClient() {
     <div className="bg-background">
       <main className="mx-auto max-w-6xl pb-16 md:pb-20">
         <HeroSection />
-        <div className="space-y-16 px-4 md:space-y-20 md:px-6">
+        <div className="space-y-14 px-4 pt-10 md:space-y-18 md:px-6 md:pt-14">
           <StorySection />
           <ValuesSection />
           <CraftsmanshipSection />
@@ -62,10 +62,11 @@ function HeroSection() {
               About Quiroz Marble and Granite
             </p>
             <h1 className="font-heading text-lg font-medium tracking-tight md:text-[1.6rem]">
-              A family tradition since 2000.
+              A family stone shop in Los Angeles.
             </h1>
             <p className="text-[12px] leading-relaxed text-muted/80 md:text-[13px]">
-              Crafted with care in Los Angeles. From our family to yours.
+              Since 2000, we&apos;ve helped homes, designers, and builders bring
+              calm stonework into everyday spaces.
             </p>
             <div className="mt-1 flex flex-wrap items-center gap-3">
               <BookingButton />
@@ -83,7 +84,7 @@ function HeroSection() {
   );
 }
 
-/* Our Story – narrative */
+/* Our Story – narrative, condensed */
 
 function StorySection() {
   return (
@@ -92,30 +93,23 @@ function StorySection() {
       {...fadeUp}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="mx-auto max-w-3xl space-y-4 pt-10 md:pt-12"
+      className="mx-auto max-w-3xl space-y-4"
     >
       <SectionHeader
+        align="center"
         eyebrow="Our story"
         body={
           <>
             <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
               Quiroz Marble and Granite began in 2000 as a small, family-run
-              shop serving the greater Los Angeles area. Over the years,
-              we&apos;ve grown with our clients—working in homes, condos, and
-              projects across the city—while keeping the same focus on careful,
-              one-at-a-time stone work.
+              shop serving the greater Los Angeles area. We&apos;ve grown with
+              our clients while keeping the same focus on careful, one-at-a-time
+              stone work.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
               We believe stone should feel like it has always belonged in the
-              room. That means quiet seams, thoughtful veining layouts, and
-              surfaces that support how you actually cook, gather, and live—not
-              just how a photo looks on installation day.
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-              From first measure to final walkthrough, templating, fabrication,
-              and installation are handled by one dedicated team. You&apos;ll
-              see the same names and faces as your project moves from plans to
-              finished stone.
+              room—quiet seams, thoughtful veining, and surfaces that support
+              how you actually cook, gather, and live.
             </p>
           </>
         }
@@ -131,15 +125,15 @@ function ValuesSection() {
   const values = [
     {
       label: "Craft",
-      body: "Edges, seams, and layouts are treated as design decisions. We think about how veining moves, how light hits the surface, and how each detail feels in the hand.",
+      body: "Edges, seams, and layouts are treated as design decisions, not afterthoughts.",
     },
     {
       label: "Clarity",
-      body: "Honest timelines, clear communication, and straightforward estimates. You always know what’s happening next, and who will be on site.",
+      body: "Straightforward estimates, clear timelines, and a single team you can reach.",
     },
     {
       label: "Care",
-      body: "Respect for homes and job sites—protection, dust control, and clean, tidy installs. We leave spaces as we’d want our own homes left.",
+      body: "Respect for homes and job sites—protection, dust control, and clean installs.",
     },
   ];
 
@@ -179,7 +173,7 @@ function ValuesSection() {
   );
 }
 
-/* Family craftsmanship */
+/* Family craftsmanship – condensed */
 
 function CraftsmanshipSection() {
   return (
@@ -195,21 +189,14 @@ function CraftsmanshipSection() {
           body={
             <>
               <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                Every project starts with a conversation about how you use the
-                space. From there, we look at materials, veining, and edge
-                profiles that make sense for your home and the way you cook,
-                gather, and live.
+                Every project starts with how you use the space. We look at
+                materials, veining, and edge profiles that make sense for your
+                home and the way you live.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                In the shop, we plan seam placement, veining movement, and
-                joints on full-sized slabs—not just on paper. Edges are shaped
-                and finished by hand, and we check each surface under good light
-                before it leaves.
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                On site, our team protects floors and finishes, keeps dust under
-                control, and leaves your space tidy. The goal is a calm install
-                and a finished project that feels settled from day one.
+                In the shop, we plan seams and movement on full slabs—not just
+                on paper—and check each surface under good light before it
+                leaves.
               </p>
             </>
           }
@@ -239,7 +226,7 @@ function CraftsmanshipSection() {
   );
 }
 
-/* Why choose us */
+/* Why choose us – tightened */
 
 function WhyChooseSection() {
   const items = [
@@ -257,8 +244,8 @@ function WhyChooseSection() {
       className="space-y-6"
     >
       <SectionHeader
-        eyebrow="Why families and professionals choose us"
-        body="We work directly with homeowners, alongside designers, and as a trusted trade partner for contractors—keeping stone projects calm from first measure to final install."
+        eyebrow="Why people work with us"
+        body="We work with homeowners, designers, and contractors who want calm, reliable stone projects."
       />
 
       <div className="grid gap-2 md:grid-cols-2 md:gap-3">
@@ -276,7 +263,7 @@ function WhyChooseSection() {
   );
 }
 
-/* Final CTA */
+/* Final CTA – short and consistent */
 
 function FinalCTASection() {
   return (
@@ -284,19 +271,15 @@ function FinalCTASection() {
       {...fadeUp}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
-      className="pt-4 md:pt-6"
+      className="pt-6 md:pt-8"
     >
       <div className="mx-4 rounded-2xl border border-border bg-secondary/80 px-5 py-6 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md md:mx-0 md:flex md:items-center md:justify-between md:px-6 md:py-7">
-        <div className="space-y-1.5 md:max-w-xl">
+        <div className="space-y-1 md:max-w-xl">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-            Ready to bring your vision to life?
+            Ready to start?
           </p>
           <p className="text-sm text-foreground">
-            Share your project and we&apos;ll walk through materials, layout,
-            and timing with you—no obligation, just a clear next step.
-          </p>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-            Family-owned stone fabrication · Since 2000
+            Tell us about your project and we&apos;ll help you plan the stone.
           </p>
         </div>
         <div className="mt-4 md:mt-0">
