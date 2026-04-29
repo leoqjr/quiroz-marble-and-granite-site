@@ -13,42 +13,42 @@ const services = [
     title: "Kitchen countertops",
     subtitle: "Islands, backsplashes, and full runs.",
     note: "Granite, marble, quartz, and porcelain.",
-    image: "/services-kitchen-hero.jpg",
+    image: "/services-kitchen.jpg",
   },
   {
     key: "bathroom",
     title: "Bathroom vanities & surfaces",
     subtitle: "Vanity tops, surrounds, and ledges.",
     note: "Primary suites, guest baths, and powder rooms.",
-    image: "/services-bathroom-hero.jpg",
+    image: "/services-bathroom.jpg",
   },
   {
     key: "fireplace",
     title: "Fireplaces & feature walls",
     subtitle: "Surrounds, mantels, and slab walls.",
     note: "Aligned veining and quiet focal points.",
-    image: "/services-fireplace-hero.jpg",
+    image: "/services-fireplace.jpg",
   },
   {
     key: "outdoor",
     title: "Outdoor kitchens & bars",
     subtitle: "BBQ counters, bar tops, and prep space.",
     note: "Weather‑considered stone for outdoor use.",
-    image: "/services-outdoor-hero.jpg",
+    image: "/services-outdoor.jpg",
   },
   {
     key: "commercial",
     title: "Commercial interiors",
     subtitle: "Reception, meeting, and back‑of‑house.",
     note: "Offices, hospitality, and multi‑unit work.",
-    image: "/services-commercial-hero.jpg",
+    image: "/services-commercial.jpg",
   },
   {
     key: "custom",
     title: "Custom fabrication",
     subtitle: "Sills, thresholds, shelves, and one‑offs.",
     note: "Bring drawings or concepts for review.",
-    image: "/services-detail-hero.jpg",
+    image: "/services-detail.jpg",
   },
 ];
 
@@ -144,11 +144,11 @@ function HeroSection() {
           Templating, fabrication, and installation handled by one team that
           knows stone and the way you live with it every day.
         </p>
-        <div className="flex flex-row flex-wrap items-center gap-3 pt-1">
+        <div className="flex flex-row flex-nowrap items-center gap-3 pt-1">
           <BookingButton />
           <Link
             href="/materials"
-            className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            className="shrink text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
           >
             Explore our materials
           </Link>
@@ -160,7 +160,7 @@ function HeroSection() {
         <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
           <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
             <Image
-              src="/services-hero.jpg"
+              src="/services-kitchen.jpg"
               alt="Stone kitchen installation by Quiroz Marble and Granite"
               fill
               className="object-cover object-bottom"
@@ -181,7 +181,7 @@ function HeroSection() {
 
 function ExpertiseSection() {
   return (
-    <section className="mx-auto max-w-3xl pt-2 md:pt-4">
+    <section className="mx-auto max-w-3xl pt-6 md:pt-8">
       <SectionHeader
         align="center"
         eyebrow="Our expertise"
