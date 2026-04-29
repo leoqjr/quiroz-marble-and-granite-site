@@ -12,42 +12,42 @@ const services = [
     title: "Kitchen countertops",
     subtitle: "Islands, backsplashes, and full runs.",
     note: "Granite, marble, quartz, and porcelain.",
-    image: "/services-kitchen.jpg",
+    image: "/services-kitchen-hero.jpg", // update to your final kitchen image
   },
   {
     key: "bathroom",
     title: "Bathroom vanities & surfaces",
     subtitle: "Vanity tops, surrounds, and ledges.",
     note: "Primary suites, guest baths, and powder rooms.",
-    image: "/services-bathroom.jpg",
+    image: "/services-bathroom-hero.jpg", // update if needed
   },
   {
     key: "fireplace",
     title: "Fireplaces & feature walls",
     subtitle: "Surrounds, mantels, and slab walls.",
     note: "Aligned veining and quiet focal points.",
-    image: "/services-fireplace.jpg",
+    image: "/services-fireplace-hero.jpg",
   },
   {
     key: "outdoor",
     title: "Outdoor kitchens & bars",
     subtitle: "BBQ counters, bar tops, and prep space.",
     note: "Weather‑considered stone for outdoor use.",
-    image: "/services-outdoor.jpg",
+    image: "/services-outdoor-hero.jpg",
   },
   {
     key: "commercial",
     title: "Commercial interiors",
     subtitle: "Reception, meeting, and back‑of‑house.",
     note: "Offices, hospitality, and multi‑unit work.",
-    image: "/services-commercial.jpg",
+    image: "/services-commercial-hero.jpg",
   },
   {
     key: "custom",
     title: "Custom fabrication",
     subtitle: "Sills, thresholds, shelves, and one‑offs.",
     note: "Bring drawings or concepts for review.",
-    image: "/services-detail.jpg",
+    image: "/services-detail-hero.jpg",
   },
 ];
 
@@ -123,7 +123,7 @@ function HeroSection() {
         <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
           <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
             <Image
-              src="/services-kitchen.jpg"
+              src="/services-hero.jpg" // update to your chosen hero if different
               alt="Stone kitchen installation by Quiroz Marble and Granite"
               fill
               className="object-cover"
@@ -167,18 +167,18 @@ function ServicesGridSection() {
         {services.map((service) => (
           <article
             key={service.key}
-            className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+            className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:border-accent hover:shadow-md"
           >
-            {/* Image-style area, matching portfolio feel */}
-            <div className="relative h-44 md:h-48 bg-secondary">
-              {/* For now, use a soft gradient; later you can swap to real photos like on Portfolio */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#F3F1EB_45%,_#E5E1D8_100%)]" />
-              <div className="absolute bottom-3 left-3 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-sm">
-                {service.key}
-              </div>
+            <div className="relative h-44 w-full md:h-52">
+              <Image
+                src={service.image}
+                alt={service.title}
+                fill
+                className="object-cover transition-transform duration-300 ease-out hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
+              />
             </div>
-
-            <div className="flex flex-1 flex-col justify-between px-4 py-3 md:px-5 md:py-4">
+            <div className="flex flex-1 flex-col justify-between p-4 md:p-5">
               <div className="space-y-1.5">
                 <h2 className="text-[15px] font-semibold tracking-tight text-foreground md:text-[16px]">
                   {service.title}
