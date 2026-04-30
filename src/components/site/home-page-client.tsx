@@ -134,7 +134,7 @@ function HeroSection() {
           aria-hidden="true"
           className="aspect-[3/4] w-full bg-cover bg-center md:aspect-[4/5]"
           style={{
-            backgroundImage: "url('/selected-kitchen.jpg')",
+            backgroundImage: "url('/services-hero(2).jpg')",
           }}
         />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />

@@ -160,7 +160,7 @@ function HeroSection() {
         <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
           <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
             <Image
-              src="/services-hero(2).jpg"
+              src="/selected-kitchen.jpg"
               alt="Stone kitchen installation by Quiroz Marble and Granite"
               fill
               className="object-cover object-bottom"
