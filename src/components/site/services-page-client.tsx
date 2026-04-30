@@ -150,7 +150,7 @@ function HeroSection() {
             href="/materials"
             className="shrink text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
           >
-            Explore our materials
+            Explore materials
           </Link>
         </div>
       </div>
@@ -160,7 +160,7 @@ function HeroSection() {
         <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
           <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
             <Image
-              src="/services-hero.jpg"
+              src="/services-hero(2).jpg"
               alt="Stone kitchen installation by Quiroz Marble and Granite"
               fill
               className="object-cover object-bottom"
@@ -181,12 +181,11 @@ function HeroSection() {
 
 function ExpertiseSection() {
   return (
-    <section className="mx-auto max-w-3xl pt-6 md:pt-8">
+    <section className="mx-auto max-w-3xl pt-10 md:pt-12">
       <SectionHeader
         align="center"
         eyebrow="Our expertise"
         body="Quiroz Marble and Granite is a family-run shop serving the greater Los Angeles area with full-service stone work—measurements, shop work, and installation handled under one roof."
-        kicker="25+ years · Family-owned · Greater Los Angeles"
       />
     </section>
   );
