@@ -16,7 +16,7 @@ export function AboutPageClient() {
     <div className="bg-background">
       <main className="mx-auto max-w-6xl pb-16 md:pb-20">
         <HeroSection />
-        <div className="space-y-14 px-4 pt-10 md:space-y-18 md:px-6 md:pt-14">
+        <div className="space-y-10 px-4 pt-10 md:space-y-16 md:px-6 md:pt-14">
           <StorySection />
           <ValuesSection />
           <CraftsmanshipSection />
@@ -68,7 +68,7 @@ function HeroSection() {
               Since 2000, we&apos;ve helped homes, designers, and builders bring
               calm stonework into everyday spaces.
             </p>
-            <div className="mt-1 flex flex-wrap items-center gap-3">
+            <div className="mt-1 flex flex-row flex-wrap items-center gap-3">
               <BookingButton />
               <a
                 href="#story"
@@ -263,7 +263,7 @@ function WhyChooseSection() {
   );
 }
 
-/* Final CTA – short and consistent */
+/* Final CTA – short and consistent, aligned on mobile */
 
 function FinalCTASection() {
   return (
@@ -273,7 +273,7 @@ function FinalCTASection() {
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
       className="pt-6 md:pt-8"
     >
-      <div className="mx-4 rounded-2xl border border-border bg-secondary/80 px-5 py-6 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md md:mx-0 md:flex md:items-center md:justify-between md:px-6 md:py-7">
+      <div className="rounded-2xl border border-border bg-secondary/80 px-4 py-5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md md:flex md:items-center md:justify-between md:px-6 md:py-7">
         <div className="space-y-1 md:max-w-xl">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Ready to start?
@@ -282,8 +282,10 @@ function FinalCTASection() {
             Tell us about your project and we&apos;ll help you plan the stone.
           </p>
         </div>
-        <div className="mt-4 md:mt-0">
-          <BookingButton />
+        <div className="mt-4 w-full md:mt-0 md:w-auto md:text-right">
+          <div className="inline-block w-full md:w-auto">
+            <BookingButton />
+          </div>
         </div>
       </div>
     </motion.section>
