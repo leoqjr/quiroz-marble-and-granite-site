@@ -207,7 +207,7 @@ function CraftsmanshipSection() {
         <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.2)]">
           <div className="relative aspect-[4/3] w-full">
             <Image
-              src="/about-craft.jpg"
+              src="/about-us-craftsmanship.jpg"
               alt="Hands working on a stone edge in the Quiroz shop"
               fill
               className="object-cover"

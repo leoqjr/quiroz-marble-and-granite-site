@@ -3,6 +3,7 @@
 
 import { BookingButton } from "@/components/site/booking-button";
 import { SectionHeader } from "@/components/site/section-header";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -86,18 +87,21 @@ export function ServicesPageClient() {
 
   return (
     <div className="bg-background">
-      <main className="mx-auto max-w-6xl space-y-14 px-4 py-12 md:space-y-18 md:px-6 md:py-20">
+      <main className="mx-auto max-w-6xl pb-16 md:pb-20">
         <HeroSection />
-        <ExpertiseSection />
-        <ServicesGridSection
-          onOpenImage={(src, alt) => {
-            setLightboxImage(src);
-            setLightboxAlt(alt);
-          }}
-        />
-        <ProcessSection />
-        <WhoWeServeSection />
-        <FinalCTASection />
+
+        <div className="space-y-14 px-4 pt-10 md:space-y-18 md:px-6 md:pt-14">
+          <ExpertiseSection />
+          <ServicesGridSection
+            onOpenImage={(src, alt) => {
+              setLightboxImage(src);
+              setLightboxAlt(alt);
+            }}
+          />
+          <ProcessSection />
+          <WhoWeServeSection />
+          <FinalCTASection />
+        </div>
       </main>
 
       {/* Lightbox modal */}
@@ -131,57 +135,62 @@ export function ServicesPageClient() {
   );
 }
 
+/* Hero – same pattern as About, marble background, services copy */
+
 function HeroSection() {
   return (
-    <section className="md:grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center md:gap-10">
-      {/* Text */}
-      <div className="space-y-4 md:space-y-5">
-        <p className="eyebrow text-muted-foreground">Services</p>
-        <h1 className="font-heading text-2xl font-medium tracking-tight text-foreground md:text-3xl">
-          Precision stone surfaces, tailored to you.
-        </h1>
-        <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
-          Templating, fabrication, and installation handled by one team that
-          knows stone and the way you live with it every day.
-        </p>
-        <div className="flex flex-row flex-nowrap items-center gap-3 pt-1">
-          <BookingButton />
-          <Link
-            href="/materials"
-            className="shrink text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
-          >
-            Explore materials
-          </Link>
-        </div>
-      </div>
+    <section className="relative h-[340px] overflow-hidden md:h-[420px] lg:h-[460px]">
+      <motion.div
+        initial={{ scale: 1.03, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        className="absolute inset-0"
+      >
+        <Image
+          src="/background-image1.jpg"
+          alt="Marble backdrop for stone services"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent" />
+      </motion.div>
 
-      {/* Image */}
-      <div className="mt-8 md:mt-0">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-secondary shadow-[0_18px_35px_rgba(15,23,42,0.16)]">
-          <div className="relative aspect-[4/5] w-full md:aspect-[5/4]">
-            <Image
-              src="/selected-kitchen.jpg"
-              alt="Stone kitchen installation by Quiroz Marble and Granite"
-              fill
-              className="object-cover object-bottom"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 420px"
-            />
-          </div>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4">
-            <span className="inline-flex rounded-full bg-black/60 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-card md:text-[11px] backdrop-blur-[3px]">
-              In‑house fabrication · Los Angeles
-            </span>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+        className="relative h-full"
+      >
+        <div className="flex h-full items-end px-4 pb-6 md:px-6 md:pb-10">
+          <div className="inline-flex max-w-md flex-col gap-3 rounded-2xl bg-black/60 px-4 py-4 text-card backdrop-blur-sm md:max-w-lg md:px-5 md:py-5">
+            <h1 className="font-heading text-lg font-medium tracking-tight md:text-[1.6rem]">
+              Precision stone surfaces, tailored to you.
+            </h1>
+            <p className="text-[12px] leading-relaxed text-muted/80 md:text-[13px]">
+              Templating, fabrication, and installation handled by one team that
+              knows stone and the way you live with it every day.
+            </p>
+            <div className="mt-1 flex flex-row flex-wrap items-center gap-3">
+              <BookingButton />
+              <Link
+                href="/materials"
+                className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted/80 underline underline-offset-4 hover:text-card md:text-[11px]"
+              >
+                Explore materials
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
 
 function ExpertiseSection() {
   return (
-    <section className="mx-auto max-w-3xl pt-10 md:pt-12">
+    <section className="mx-auto max-w-3xl pt-2 md:pt-4">
       <SectionHeader
         align="center"
         eyebrow="Our expertise"
