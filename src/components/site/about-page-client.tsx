@@ -40,7 +40,7 @@ function HeroSection() {
         className="absolute inset-0"
       >
         <Image
-          src="/about-hero.jpg"
+          src="/materials-hero.jpg"
           alt="Stone fabrication in progress at Quiroz Marble and Granite"
           fill
           className="object-cover"
