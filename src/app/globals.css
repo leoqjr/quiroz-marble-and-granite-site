@@ -79,14 +79,14 @@
 }
 
 /* ==============================
-   Light theme: clean neutral + elegant blue
+   Light theme: almost-white + warm stone
    ============================== */
 /*
-  Overall direction:
-  - Background: almost-white neutral (clean, minimal)
+  Direction:
+  - Background: almost-white neutral (clean, airy)
   - Foreground: neutral charcoal
-  - Primary: deep, muted blue for CTAs
-  - Accent: soft blue-gray for subtle details
+  - Primary: rich clay brown for CTAs
+  - Accent: muted brass / warm metal for details
 */
 
 :root {
@@ -98,31 +98,33 @@
   */
 
   /* Base surface + text */
-  --background: oklch(0.985 0.003 270); /* almost-white neutral */
-  --foreground: oklch(0.22 0.02 260); /* neutral charcoal */
+  /* Almost-white neutral background (very close to your original) */
+  --background: oklch(0.985 0.003 270);
+  /* Neutral charcoal for text */
+  --foreground: oklch(0.22 0.02 260);
 
   /* Cards & popovers slightly lifted from background */
-  --card: oklch(0.97 0.004 270); /* very light neutral card */
+  --card: oklch(0.97 0.004 270);
   --card-foreground: var(--foreground);
 
   --popover: var(--card);
   --popover-foreground: var(--foreground);
 
-  /* Primary: deep, elegant blue for main CTAs */
-  --primary: oklch(0.42 0.08 250); /* muted deep blue */
-  --primary-foreground: oklch(0.97 0.005 270); /* near-white text */
+  /* Primary: rich clay brown for main CTAs (approx #8A5A3B) */
+  --primary: oklch(0.55 0.09 55);
+  --primary-foreground: oklch(0.98 0.01 95);
 
-  /* Secondary: subtle gray surface */
-  --secondary: oklch(0.93 0.01 260); /* light gray */
-  --secondary-foreground: oklch(0.25 0.02 260);
+  /* Secondary: very light neutral surface for subtle buttons / chips */
+  --secondary: oklch(0.95 0.01 260);
+  --secondary-foreground: oklch(0.28 0.02 260);
 
-  /* Muted: copy, labels, dividers */
-  --muted: oklch(0.95 0.005 260); /* light gray for chips / backgrounds */
-  --muted-foreground: oklch(0.55 0.02 260); /* mid neutral gray for body copy */
+  /* Muted: labels, meta text, soft dividers */
+  --muted: oklch(0.96 0.006 260);
+  --muted-foreground: oklch(0.55 0.02 260);
 
-  /* Accent: softer blue-gray for small details (chips, links, badges) */
-  --accent: oklch(0.72 0.05 245); /* soft blue-gray */
-  --accent-foreground: oklch(0.22 0.02 260);
+  /* Accent: muted brass / champagne (approx #C4975A) */
+  --accent: oklch(0.75 0.09 75);
+  --accent-foreground: oklch(0.24 0.03 40);
 
   /* Destructive */
   --destructive: oklch(0.6 0.16 25);
@@ -130,23 +132,23 @@
 
   /* Borders & inputs: subtle, neutral */
   --border: oklch(0.9 0.01 260);
-  --input: oklch(0.93 0.01 260);
+  --input: oklch(0.94 0.01 260);
 
-  /* Ring (focus outlines) */
-  --ring: oklch(0.72 0.06 245); /* blue-gray ring */
+  /* Ring (focus outlines) – use accent brass for a premium feel */
+  --ring: var(--accent);
 
-  /* Charts (aligned with blue accent) */
-  --chart-1: oklch(0.72 0.05 245);
-  --chart-2: oklch(0.6 0.06 245);
-  --chart-3: oklch(0.48 0.07 245);
-  --chart-4: oklch(0.36 0.07 245);
-  --chart-5: oklch(0.26 0.07 245);
+  /* Charts – warm neutrals so they sit with the brand */
+  --chart-1: oklch(0.72 0.07 75); /* brass */
+  --chart-2: oklch(0.64 0.07 55); /* clay */
+  --chart-3: oklch(0.8 0.04 95); /* light neutral */
+  --chart-4: oklch(0.6 0.05 45); /* darker stone */
+  --chart-5: oklch(0.5 0.05 30); /* deep neutral */
 
   /* Radius base: slightly larger for softer cards/buttons */
   --radius: 0.75rem; /* 12px baseline, then scaled in @theme */
 
   /* Sidebar colors aligned with main palette */
-  --sidebar: oklch(0.97 0.004 270);
+  --sidebar: oklch(0.98 0.003 270);
   --sidebar-foreground: var(--foreground);
   --sidebar-primary: var(--primary);
   --sidebar-primary-foreground: var(--primary-foreground);
@@ -157,16 +159,18 @@
 }
 
 /* ==============================
-   Dark theme: neutral with blue accent
+   Dark theme: neutral with warm accent
    ============================== */
 /*
-  Neutral dark mode with the same blue family.
-  Ignore if you don't use dark mode; it only applies with `.dark`.
+  Neutral charcoal dark mode with the same clay/brass family.
+  Only applies with `.dark`.
 */
 
 .dark {
-  --background: oklch(0.16 0.02 260); /* deep neutral charcoal */
-  --foreground: oklch(0.97 0.005 270); /* soft light neutral */
+  /* Deep neutral charcoal */
+  --background: oklch(0.16 0.02 260);
+  /* Soft light neutral for text */
+  --foreground: oklch(0.97 0.005 270);
 
   --card: oklch(0.19 0.02 260);
   --card-foreground: var(--foreground);
@@ -174,9 +178,9 @@
   --popover: oklch(0.2 0.02 260);
   --popover-foreground: var(--foreground);
 
-  /* Primary: lighter version of the same blue for CTAs on dark */
-  --primary: oklch(0.74 0.06 245); /* light blue on dark */
-  --primary-foreground: oklch(0.18 0.02 260);
+  /* Primary: lighter clay for CTAs on dark */
+  --primary: oklch(0.7 0.09 55);
+  --primary-foreground: oklch(0.16 0.02 260);
 
   --secondary: oklch(0.23 0.02 260);
   --secondary-foreground: oklch(0.95 0.005 270);
@@ -184,8 +188,8 @@
   --muted: oklch(0.24 0.02 260);
   --muted-foreground: oklch(0.78 0.02 260);
 
-  /* Accent: same blue-gray family */
-  --accent: oklch(0.72 0.05 245);
+  /* Accent: brass still works on dark */
+  --accent: oklch(0.75 0.09 75);
   --accent-foreground: oklch(0.18 0.02 260);
 
   --destructive: oklch(0.6 0.16 25);
@@ -193,18 +197,18 @@
 
   --border: oklch(0.29 0.015 260 / 0.5);
   --input: oklch(0.29 0.015 260 / 0.7);
-  --ring: oklch(0.72 0.06 245);
+  --ring: var(--accent);
 
-  --chart-1: oklch(0.72 0.05 245);
-  --chart-2: oklch(0.6 0.06 245);
-  --chart-3: oklch(0.48 0.07 245);
-  --chart-4: oklch(0.36 0.07 245);
-  --chart-5: oklch(0.26 0.07 245);
+  --chart-1: oklch(0.75 0.09 75);
+  --chart-2: oklch(0.7 0.09 55);
+  --chart-3: oklch(0.63 0.06 45);
+  --chart-4: oklch(0.53 0.05 35);
+  --chart-5: oklch(0.45 0.05 30);
 
   --sidebar: oklch(0.19 0.02 260);
   --sidebar-foreground: var(--foreground);
-  --sidebar-primary: oklch(0.72 0.05 245);
-  --sidebar-primary-foreground: oklch(0.16 0.02 260);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
   --sidebar-accent: oklch(0.23 0.02 260);
   --sidebar-accent-foreground: var(--foreground);
   --sidebar-border: oklch(0.29 0.015 260 / 0.6);
@@ -238,7 +242,7 @@
 
   body {
     /*
-      Clean neutral background and high-contrast but soft foreground text.
+      Clean almost‑white background and soft charcoal text.
       Extra letter-spacing is handled at the component level for labels.
     */
     @apply bg-background text-foreground antialiased;
