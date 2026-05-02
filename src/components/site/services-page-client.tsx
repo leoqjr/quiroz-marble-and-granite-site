@@ -3,7 +3,6 @@
 
 import { BookingButton } from "@/components/site/booking-button";
 import { SectionHeader } from "@/components/site/section-header";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -92,7 +91,7 @@ export function ServicesPageClient() {
 
         <div className="space-y-14 px-4 pt-10 md:space-y-18 md:px-6 md:pt-14">
           <ExpertiseSection />
-          <ServicesGridSection
+          <ServicesOverviewSection
             onOpenImage={(src, alt) => {
               setLightboxImage(src);
               setLightboxAlt(alt);
@@ -135,55 +134,49 @@ export function ServicesPageClient() {
   );
 }
 
-/* Hero – same pattern as About, marble background, services copy */
+/* Hero – stronger heading + stacked service imagery */
+
+/* Hero – stronger heading, stacked imagery only on md+ */
 
 function HeroSection() {
   return (
-    <section className="relative h-[340px] overflow-hidden md:h-[420px] lg:h-[460px]">
-      <motion.div
-        initial={{ scale: 1.03, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="/background-image1.jpg"
-          alt="Marble backdrop for stone services"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent" />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-        className="relative h-full"
-      >
-        <div className="flex h-full items-end px-4 pb-6 md:px-6 md:pb-10">
-          <div className="inline-flex max-w-md flex-col gap-3 rounded-2xl bg-black/60 px-4 py-4 text-card backdrop-blur-sm md:max-w-lg md:px-5 md:py-5">
-            <h1 className="font-heading text-lg font-medium tracking-tight md:text-[1.6rem]">
-              Precision stone surfaces, tailored to you.
-            </h1>
-            <p className="text-[12px] leading-relaxed text-muted/80 md:text-[13px]">
-              Templating, fabrication, and installation handled by one team that
-              knows stone and the way you live with it every day.
-            </p>
-            <div className="mt-1 flex flex-row flex-wrap items-center gap-3">
-              <BookingButton />
-              <Link
-                href="/materials"
-                className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted/80 underline underline-offset-4 hover:text-card md:text-[11px]"
-              >
-                Explore materials
-              </Link>
-            </div>
+    <section className="border-b border-border/70 bg-card">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-6 md:py-16">
+        {/* Text */}
+        <div className="max-w-xl space-y-4">
+          <p className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground md:text-[11px]">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            Services
+          </p>
+          <h1 className="font-heading text-3xl font-medium tracking-tight text-foreground md:text-[2.4rem]">
+            Stone surfaces for everyday living.
+          </h1>
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
+            Kitchens, baths, fireplaces, and outdoor work handled by one team,
+            from template to install.
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <BookingButton />
+            <Link
+              href="/portfolio"
+              className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            >
+              See our work
+            </Link>
           </div>
         </div>
-      </motion.div>
+
+        {/* Simple stats block */}
+        <div className="mt-4 w-full max-w-xs rounded-2xl border border-border bg-background px-4 py-4 text-[12px] text-muted-foreground md:mt-0 md:text-[13px]">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            At a glance
+          </p>
+          <div className="mt-3 space-y-1.5">
+            <p>Since 2000 · Family‑run shop</p>
+            <p>Serving the greater Los Angeles area.</p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -200,19 +193,21 @@ function ExpertiseSection() {
   );
 }
 
-function ServicesGridSection({
+/* Services overview – simplified, clean grid */
+
+function ServicesOverviewSection({
   onOpenImage,
 }: {
   onOpenImage: (src: string, alt: string) => void;
 }) {
   return (
-    <section className="space-y-7 md:space-y-8">
+    <section className="space-y-8 md:space-y-9">
       <SectionHeader
-        eyebrow="Our services"
-        body="Kitchens, baths, fireplaces, outdoor spaces, and custom details—fabricated and installed by one team that focuses on calm, clean stonework."
+        eyebrow="What we handle"
+        body="Kitchens, baths, fireplaces, outdoor spaces, commercial interiors, and custom details—fabricated and installed by one team that focuses on calm, clean stonework."
       />
 
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
         {services.map((service) => (
           <article
             key={service.key}
@@ -221,16 +216,23 @@ function ServicesGridSection({
             <button
               type="button"
               onClick={() => onOpenImage(service.image, service.title)}
-              className="relative h-44 w-full cursor-zoom-in md:h-52"
+              className="relative h-44 w-full cursor-zoom-in overflow-hidden md:h-52"
             >
               <Image
                 src={service.image}
                 alt={service.title}
                 fill
-                className="object-cover object-bottom transition-transform duration-300 ease-out group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 360px"
+                className="object-cover object-center transition-transform duration-300 ease-out group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 420px"
               />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-3">
+                <span className="inline-flex rounded-full bg-black/70 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-card backdrop-blur-[3px] md:text-[11px]">
+                  {service.key}
+                </span>
+              </div>
             </button>
+
             <div className="flex flex-1 flex-col justify-between p-4 md:p-5">
               <div className="space-y-1.5">
                 <h2 className="text-[15px] font-semibold tracking-tight text-foreground md:text-[16px]">

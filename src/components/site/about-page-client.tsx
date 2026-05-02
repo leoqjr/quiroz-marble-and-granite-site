@@ -30,56 +30,47 @@ export function AboutPageClient() {
 
 /* Hero – warm and human */
 
+/* Hero – clean, text-only */
+
 function HeroSection() {
   return (
-    <section className="relative h-[340px] overflow-hidden md:h-[420px] lg:h-[460px]">
-      <motion.div
-        initial={{ scale: 1.03, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="/materials-hero.jpg"
-          alt="Stone fabrication in progress at Quiroz Marble and Granite"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/20 to-transparent" />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-        className="relative h-full"
-      >
-        <div className="flex h-full items-end px-4 pb-6 md:px-6 md:pb-10">
-          <div className="inline-flex max-w-md flex-col gap-3 rounded-2xl bg-black/55 px-4 py-4 text-card backdrop-blur-sm md:max-w-lg md:px-5 md:py-5">
-            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted/80 md:text-[11px]">
-              About Quiroz Marble and Granite
-            </p>
-            <h1 className="font-heading text-lg font-medium tracking-tight md:text-[1.6rem]">
-              A family stone shop in Los Angeles.
-            </h1>
-            <p className="text-[12px] leading-relaxed text-muted/80 md:text-[13px]">
-              Since 2000, we&apos;ve helped homes, designers, and builders bring
-              calm stonework into everyday spaces.
-            </p>
-            <div className="mt-1 flex flex-row flex-wrap items-center gap-3">
-              <BookingButton />
-              <a
-                href="#story"
-                className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted/80 underline underline-offset-4 hover:text-card md:text-[11px]"
-              >
-                Learn our story
-              </a>
-            </div>
+    <section className="border-b border-border/70 bg-card">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-6 md:py-16">
+        {/* Text */}
+        <div className="max-w-xl space-y-4">
+          <p className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground md:text-[11px]">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            About
+          </p>
+          <h1 className="font-heading text-3xl font-medium tracking-tight text-foreground md:text-[2.4rem]">
+            A family stone shop in Los Angeles.
+          </h1>
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
+            Quiroz Marble and Granite is a family‑run fabrication shop focused
+            on calm, careful stonework for everyday spaces.
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <BookingButton />
+            <a
+              href="#story"
+              className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            >
+              Learn our story
+            </a>
           </div>
         </div>
-      </motion.div>
+
+        {/* Simple facts block */}
+        <div className="mt-4 w-full max-w-xs rounded-2xl border border-border bg-background px-4 py-4 text-[12px] text-muted-foreground md:mt-0 md:text-[13px]">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            In short
+          </p>
+          <div className="mt-3 space-y-1.5">
+            <p>Family owned since 2000.</p>
+            <p>In‑house fabrication in Los Angeles.</p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -158,6 +149,7 @@ function ValuesSection() {
             className="flex flex-col gap-2 rounded-2xl border border-border bg-card px-4 py-4 shadow-sm"
           >
             <div className="inline-flex items-center gap-2">
+              {/* Use accent (blue-gray) as a subtle brand dot */}
               <div className="h-6 w-6 rounded-full border border-accent/60 bg-secondary" />
               <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
                 {value.label}
@@ -254,6 +246,7 @@ function WhyChooseSection() {
             key={item}
             className="flex items-start gap-2 text-[13px] leading-relaxed text-muted-foreground"
           >
+            {/* Accent dot picks up the blue-gray accent color */}
             <span className="mt-[6px] h-[6px] w-[6px] rounded-full bg-accent" />
             <p>{item}</p>
           </div>

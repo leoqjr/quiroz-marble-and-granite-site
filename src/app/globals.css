@@ -79,14 +79,14 @@
 }
 
 /* ==============================
-   Light theme: warm luxury palette
+   Light theme: clean neutral + elegant blue
    ============================== */
 /*
   Overall direction:
-  - Background: warm stone / cream, not pure white
-  - Foreground: deep warm charcoal (soft black)
-  - Accent: champagne / beige‑gold (subtle, not yellow)
-  - Muted/secondary: soft warm grays that let imagery pop
+  - Background: almost-white neutral (clean, minimal)
+  - Foreground: neutral charcoal
+  - Primary: deep, muted blue for CTAs
+  - Accent: soft blue-gray for subtle details
 */
 
 :root {
@@ -98,55 +98,55 @@
   */
 
   /* Base surface + text */
-  --background: oklch(0.97 0.02 90); /* warm light cream */
-  --foreground: oklch(0.16 0.03 40); /* deep warm charcoal */
+  --background: oklch(0.985 0.003 270); /* almost-white neutral */
+  --foreground: oklch(0.22 0.02 260); /* neutral charcoal */
 
   /* Cards & popovers slightly lifted from background */
-  --card: oklch(0.985 0.015 95); /* soft off‑white card */
+  --card: oklch(0.97 0.004 270); /* very light neutral card */
   --card-foreground: var(--foreground);
 
   --popover: var(--card);
   --popover-foreground: var(--foreground);
 
-  /* Primary: warm charcoal for main CTAs & key text */
-  --primary: oklch(0.2 0.03 40); /* rich warm near‑black */
-  --primary-foreground: oklch(0.985 0.01 95); /* soft cream */
+  /* Primary: deep, elegant blue for main CTAs */
+  --primary: oklch(0.42 0.08 250); /* muted deep blue */
+  --primary-foreground: oklch(0.97 0.005 270); /* near-white text */
 
-  /* Secondary: subtle warm stone surface */
-  --secondary: oklch(0.93 0.02 80); /* light stone beige */
-  --secondary-foreground: oklch(0.23 0.03 40);
+  /* Secondary: subtle gray surface */
+  --secondary: oklch(0.93 0.01 260); /* light gray */
+  --secondary-foreground: oklch(0.25 0.02 260);
 
   /* Muted: copy, labels, dividers */
-  --muted: oklch(0.93 0.015 80); /* background for muted chips */
-  --muted-foreground: oklch(0.52 0.02 50); /* warm mid-gray for body copy */
+  --muted: oklch(0.95 0.005 260); /* light gray for chips / backgrounds */
+  --muted-foreground: oklch(0.55 0.02 260); /* mid neutral gray for body copy */
 
-  /* Accent: champagne / brushed gold for details (not backgrounds) */
-  --accent: oklch(0.82 0.07 85); /* soft champagne */
-  --accent-foreground: oklch(0.23 0.03 40);
+  /* Accent: softer blue-gray for small details (chips, links, badges) */
+  --accent: oklch(0.72 0.05 245); /* soft blue-gray */
+  --accent-foreground: oklch(0.22 0.02 260);
 
   /* Destructive */
-  --destructive: oklch(0.63 0.16 25); /* warm red‑brown */
+  --destructive: oklch(0.6 0.16 25);
   --destructive-foreground: oklch(0.99 0 0);
 
-  /* Borders & inputs: subtle, warm and soft */
-  --border: oklch(0.88 0.015 80); /* light warm gray */
-  --input: oklch(0.9 0.015 80); /* slightly stronger than background */
+  /* Borders & inputs: subtle, neutral */
+  --border: oklch(0.9 0.01 260);
+  --input: oklch(0.93 0.01 260);
 
   /* Ring (focus outlines) */
-  --ring: oklch(0.73 0.07 85); /* champagne focus ring */
+  --ring: oklch(0.72 0.06 245); /* blue-gray ring */
 
-  /* Charts (not critical for marketing, but kept coherent) */
-  --chart-1: oklch(0.78 0.08 80);
-  --chart-2: oklch(0.62 0.07 40);
-  --chart-3: oklch(0.55 0.06 30);
-  --chart-4: oklch(0.45 0.05 40);
-  --chart-5: oklch(0.36 0.04 50);
+  /* Charts (aligned with blue accent) */
+  --chart-1: oklch(0.72 0.05 245);
+  --chart-2: oklch(0.6 0.06 245);
+  --chart-3: oklch(0.48 0.07 245);
+  --chart-4: oklch(0.36 0.07 245);
+  --chart-5: oklch(0.26 0.07 245);
 
   /* Radius base: slightly larger for softer cards/buttons */
   --radius: 0.75rem; /* 12px baseline, then scaled in @theme */
 
-  /* Sidebar colors (if you ever use them) kept in same family */
-  --sidebar: oklch(0.965 0.018 90);
+  /* Sidebar colors aligned with main palette */
+  --sidebar: oklch(0.97 0.004 270);
   --sidebar-foreground: var(--foreground);
   --sidebar-primary: var(--primary);
   --sidebar-primary-foreground: var(--primary-foreground);
@@ -157,55 +157,57 @@
 }
 
 /* ==============================
-   Dark theme: optional, kept soft
+   Dark theme: neutral with blue accent
    ============================== */
 /*
-  Still warm and soft; more for completeness.
-  You can leave dark mode off in the UI if you prefer.
+  Neutral dark mode with the same blue family.
+  Ignore if you don't use dark mode; it only applies with `.dark`.
 */
 
 .dark {
-  --background: oklch(0.17 0.03 40); /* deep warm charcoal */
-  --foreground: oklch(0.97 0.015 95); /* soft light cream */
+  --background: oklch(0.16 0.02 260); /* deep neutral charcoal */
+  --foreground: oklch(0.97 0.005 270); /* soft light neutral */
 
-  --card: oklch(0.2 0.03 40);
+  --card: oklch(0.19 0.02 260);
   --card-foreground: var(--foreground);
 
-  --popover: oklch(0.21 0.03 40);
+  --popover: oklch(0.2 0.02 260);
   --popover-foreground: var(--foreground);
 
-  --primary: oklch(0.86 0.04 90); /* light warm sand */
-  --primary-foreground: oklch(0.18 0.03 40);
+  /* Primary: lighter version of the same blue for CTAs on dark */
+  --primary: oklch(0.74 0.06 245); /* light blue on dark */
+  --primary-foreground: oklch(0.18 0.02 260);
 
-  --secondary: oklch(0.27 0.02 40);
-  --secondary-foreground: oklch(0.95 0.015 95);
+  --secondary: oklch(0.23 0.02 260);
+  --secondary-foreground: oklch(0.95 0.005 270);
 
-  --muted: oklch(0.24 0.02 40);
-  --muted-foreground: oklch(0.78 0.03 85);
+  --muted: oklch(0.24 0.02 260);
+  --muted-foreground: oklch(0.78 0.02 260);
 
-  --accent: oklch(0.78 0.07 85); /* champagne accent still works */
-  --accent-foreground: oklch(0.18 0.03 40);
+  /* Accent: same blue-gray family */
+  --accent: oklch(0.72 0.05 245);
+  --accent-foreground: oklch(0.18 0.02 260);
 
-  --destructive: oklch(0.63 0.16 25);
+  --destructive: oklch(0.6 0.16 25);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.29 0.02 40 / 0.5);
-  --input: oklch(0.29 0.02 40 / 0.7);
-  --ring: oklch(0.78 0.07 85);
+  --border: oklch(0.29 0.015 260 / 0.5);
+  --input: oklch(0.29 0.015 260 / 0.7);
+  --ring: oklch(0.72 0.06 245);
 
-  --chart-1: oklch(0.78 0.08 80);
-  --chart-2: oklch(0.62 0.07 40);
-  --chart-3: oklch(0.55 0.06 30);
-  --chart-4: oklch(0.45 0.05 40);
-  --chart-5: oklch(0.36 0.04 50);
+  --chart-1: oklch(0.72 0.05 245);
+  --chart-2: oklch(0.6 0.06 245);
+  --chart-3: oklch(0.48 0.07 245);
+  --chart-4: oklch(0.36 0.07 245);
+  --chart-5: oklch(0.26 0.07 245);
 
-  --sidebar: oklch(0.19 0.03 40);
+  --sidebar: oklch(0.19 0.02 260);
   --sidebar-foreground: var(--foreground);
-  --sidebar-primary: oklch(0.78 0.07 85);
-  --sidebar-primary-foreground: oklch(0.16 0.03 40);
-  --sidebar-accent: oklch(0.27 0.02 40);
+  --sidebar-primary: oklch(0.72 0.05 245);
+  --sidebar-primary-foreground: oklch(0.16 0.02 260);
+  --sidebar-accent: oklch(0.23 0.02 260);
   --sidebar-accent-foreground: var(--foreground);
-  --sidebar-border: oklch(0.29 0.02 40 / 0.6);
+  --sidebar-border: oklch(0.29 0.015 260 / 0.6);
   --sidebar-ring: var(--ring);
 }
 
@@ -236,14 +238,14 @@
 
   body {
     /*
-      Warm background and high-contrast but soft foreground text.
+      Clean neutral background and high-contrast but soft foreground text.
       Extra letter-spacing is handled at the component level for labels.
     */
     @apply bg-background text-foreground antialiased;
   }
 
   /* 
-    Headings: use a display serif for a luxury feel.
+    Headings: use a display serif for a refined feel.
     Ensure you set `--font-heading` in layout.tsx (e.g. Playfair Display).
   */
   h1,

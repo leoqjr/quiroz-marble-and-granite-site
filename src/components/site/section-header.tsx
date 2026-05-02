@@ -8,6 +8,7 @@ type SectionHeaderProps = {
   align?: "left" | "center";
   kicker?: string;
   className?: string;
+  accentEyebrow?: boolean;
 };
 
 export function SectionHeader({
@@ -17,6 +18,7 @@ export function SectionHeader({
   align = "left",
   kicker,
   className = "",
+  accentEyebrow = false,
 }: SectionHeaderProps) {
   const alignment =
     align === "center"
@@ -28,7 +30,12 @@ export function SectionHeader({
       className={`max-w-xl space-y-2 md:space-y-3 ${alignment} ${className}`}
     >
       {eyebrow && (
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+        <p
+          className={
+            "text-[11px] font-medium uppercase tracking-[0.18em] " +
+            (accentEyebrow ? "text-accent-foreground" : "text-muted-foreground")
+          }
+        >
           {eyebrow}
         </p>
       )}

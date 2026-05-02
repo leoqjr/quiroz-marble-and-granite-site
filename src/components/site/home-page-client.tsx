@@ -82,6 +82,8 @@ export function HomePageClient() {
   );
 }
 
+/* Hero – stronger heading + subtle blue accent */
+
 function HeroSection() {
   return (
     <section className="pt-2 md:grid md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-10 md:pt-0">
@@ -91,11 +93,12 @@ function HeroSection() {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="space-y-5 md:space-y-6"
       >
-        <p className="eyebrow text-muted-foreground">
+        <div className="inline-flex items-center gap-2 rounded-full bg-secondary/80 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground md:text-[11px]">
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" />
           Stone fabrication · Los Angeles
-        </p>
+        </div>
 
-        <h1 className="text-balance text-3xl font-heading font-medium tracking-tight text-foreground sm:text-4xl md:text-[2.7rem]">
+        <h1 className="text-balance font-heading text-3xl font-medium tracking-tight text-foreground sm:text-4xl md:text-[2.7rem]">
           Elevated stone fabrication in Los Angeles.
         </h1>
 
@@ -110,10 +113,7 @@ function HeroSection() {
 
         {/* Button row */}
         <div className="mt-4 flex flex-wrap items-center gap-4">
-          <Link href="/contact">
-            <BookingButton />
-          </Link>
-
+          <BookingButton />
           <Link
             href="/portfolio"
             className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
@@ -123,7 +123,7 @@ function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Image hero card */}
+      {/* Image hero card with subtle overlay and label */}
       <motion.div
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
@@ -137,11 +137,18 @@ function HeroSection() {
             backgroundImage: "url('/services-hero(2).jpg')",
           }}
         />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 via-black/15 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4">
+          <span className="inline-flex rounded-full bg-black/70 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-card backdrop-blur-[3px] md:text-[11px]">
+            Kitchen project · Quartz island
+          </span>
+        </div>
       </motion.div>
     </section>
   );
 }
+
+/* Rest of file unchanged */
 
 function HowWeWorkStrip() {
   return (

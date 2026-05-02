@@ -3,10 +3,8 @@
 
 import { BookingButton } from "@/components/site/booking-button";
 import { projects, type ProjectCategory } from "@/lib/data/projects";
-import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 const filters: { label: string; value: "all" | ProjectCategory }[] = [
   { label: "All", value: "all" },
@@ -22,10 +20,16 @@ export default function PortfolioPageClient() {
     "all",
   );
 
-  const filteredProjects =
-    activeFilter === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
+  const filteredProjects = useMemo(
+    () =>
+      activeFilter === "all"
+        ? projects
+        : projects.filter((project) => project.category === activeFilter),
+    [activeFilter],
+  );
+
+  // For a bit of hierarchy: treat the first few as "featured" on desktop
+  const [featured, ...rest] = filteredProjects;
 
   return (
     <div className="bg-background">
@@ -58,17 +62,74 @@ export default function PortfolioPageClient() {
             </div>
           </section>
 
-          {/* Projects grid */}
-          <section id="projects">
-            <div className="mt-6 grid gap-6 md:mt-8 md:grid-cols-2 lg:grid-cols-3">
+          {/* Featured row (desktop) + grid */}
+          <section id="projects" className="space-y-8">
+            {featured && (
+              <div className="hidden gap-6 md:grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:items-stretch">
+                {/* Featured large card */}
+                <article className="flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md">
+                  <div className="relative h-64 bg-secondary">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#ffffff_0,_#f5f5f2_45%,_#e6e6e0_100%)]" />
+                    <div className="absolute bottom-3 left-3 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-sm">
+                      Featured · {featured.category}
+                    </div>
+                  </div>
+                  <div className="flex flex-1 flex-col justify-between px-5 py-4">
+                    <div className="space-y-1.5">
+                      <h2 className="text-[15px] font-semibold tracking-tight text-foreground md:text-[16px]">
+                        {featured.title}
+                      </h2>
+                      <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+                        {featured.location}
+                      </p>
+                    </div>
+                    <div className="mt-3">
+                      <Link
+                        href="/services"
+                        className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
+                      >
+                        View similar work
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+
+                {/* Two supporting cards */}
+                <div className="flex flex-col gap-6">
+                  {rest.slice(0, 2).map((project) => (
+                    <article
+                      key={project.id}
+                      className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+                    >
+                      <div className="relative h-32 bg-secondary">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#ffffff_0,_#f5f5f2_45%,_#e6e6e0_100%)]" />
+                        <div className="absolute bottom-3 left-3 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-sm">
+                          {project.category}
+                        </div>
+                      </div>
+                      <div className="flex flex-1 flex-col justify-between px-4 py-3">
+                        <h3 className="text-sm font-semibold tracking-tight text-foreground">
+                          {project.title}
+                        </h3>
+                        <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+                          {project.location}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Grid – includes all projects, but on desktop this will follow the featured row */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filteredProjects.map((project) => (
                 <article
                   key={project.id}
                   className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
                 >
-                  {/* Image placeholder – later replace with next/image + real photos */}
                   <div className="relative h-60 bg-secondary md:h-64">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#FFFFFF_0,_#F3F1EB_45%,_#E5E1D8_100%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#ffffff_0,_#f5f5f2_45%,_#e6e6e0_100%)]" />
                     <div className="absolute bottom-3 left-3 rounded-full bg-background/90 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-sm">
                       {project.category}
                     </div>
@@ -111,56 +172,53 @@ export default function PortfolioPageClient() {
   );
 }
 
-/* Hero – same layout pattern as About, but with marble background */
+/* Hero – same layout pattern as About/Services, marble background */
+
+/* Hero – stronger heading, consistent with Services */
+
+/* Hero – stronger heading, with blue accents */
+
+/* Hero – stronger heading, with blue accent and no side box */
 
 function HeroSection() {
   return (
-    <section className="relative h-[340px] overflow-hidden md:h-[420px] lg:h-[460px]">
-      <motion.div
-        initial={{ scale: 1.03, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="/background-image1.jpg"
-          alt="Marble backdrop for portfolio projects"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent" />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-        className="relative h-full"
-      >
-        <div className="flex h-full items-end px-4 pb-6 md:px-6 md:pb-10">
-          <div className="inline-flex max-w-md flex-col gap-3 rounded-2xl bg-black/60 px-4 py-4 text-card backdrop-blur-sm md:max-w-lg md:px-5 md:py-5">
-            <h1 className="font-heading text-lg font-medium tracking-tight md:text-[1.6rem]">
-              Selected stone projects in Los Angeles.
-            </h1>
-            <p className="text-[12px] leading-relaxed text-muted/80 md:text-[13px]">
-              Kitchens, bathrooms, fireplaces, outdoor spaces, and commercial
-              interiors—each project tailored to the home, the client, and the
-              way the space is used.
-            </p>
-            <div className="mt-1 flex flex-row flex-wrap items-center gap-3">
-              <BookingButton />
-              <Link
-                href="/services"
-                className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted/80 underline underline-offset-4 hover:text-card md:text-[11px]"
-              >
-                View our services
-              </Link>
-            </div>
+    <section className="border-b border-border/70 bg-card">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-6 md:py-16">
+        {/* Text */}
+        <div className="max-w-xl space-y-4">
+          <p className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground md:text-[11px]">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            Portfolio
+          </p>
+          <h1 className="font-heading text-3xl font-medium tracking-tight text-foreground md:text-[2.4rem]">
+            Selected stone projects in Los Angeles.
+          </h1>
+          <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
+            Kitchens, baths, fireplaces, outdoor spaces, and commercial work
+            tailored to each home and client.
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <BookingButton />
+            <Link
+              href="/services"
+              className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground underline underline-offset-4 hover:text-foreground"
+            >
+              View our services
+            </Link>
           </div>
         </div>
-      </motion.div>
+
+        {/* Simple context block */}
+        <div className="mt-4 w-full max-w-xs rounded-2xl border border-border bg-background px-4 py-4 text-[12px] text-muted-foreground md:mt-0 md:text-[13px]">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+            Project types
+          </p>
+          <div className="mt-3 space-y-1.5">
+            <p>Kitchens · Bathrooms · Fireplaces · Outdoor · Commercial</p>
+            <p>Use the filters below to explore similar spaces.</p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
