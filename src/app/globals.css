@@ -79,14 +79,14 @@
 }
 
 /* ==============================
-   Light theme: almost-white + warm stone
+   Light theme: almost-white + soft taupe
    ============================== */
 /*
   Direction:
   - Background: almost-white neutral (clean, airy)
   - Foreground: neutral charcoal
-  - Primary: rich clay brown for CTAs
-  - Accent: muted brass / warm metal for details
+  - Primary: desaturated taupe (stone-like, not orange)
+  - Accent: soft stone gray-beige for details
 */
 
 :root {
@@ -98,10 +98,8 @@
   */
 
   /* Base surface + text */
-  /* Almost-white neutral background (very close to your original) */
-  --background: oklch(0.985 0.003 270);
-  /* Neutral charcoal for text */
-  --foreground: oklch(0.22 0.02 260);
+  --background: oklch(0.985 0.003 270); /* almost-white neutral */
+  --foreground: oklch(0.22 0.02 260); /* neutral charcoal */
 
   /* Cards & popovers slightly lifted from background */
   --card: oklch(0.97 0.004 270);
@@ -110,9 +108,10 @@
   --popover: var(--card);
   --popover-foreground: var(--foreground);
 
-  /* Primary: rich clay brown for main CTAs (approx #8A5A3B) */
-  --primary: oklch(0.55 0.09 55);
-  --primary-foreground: oklch(0.98 0.01 95);
+  /* Primary: soft taupe (muted, low-chroma, not orange) */
+  /* Think greige stone / mocha, enough contrast on the light bg */
+  --primary: oklch(0.58 0.04 60);
+  --primary-foreground: oklch(0.98 0.005 95);
 
   /* Secondary: very light neutral surface for subtle buttons / chips */
   --secondary: oklch(0.95 0.01 260);
@@ -122,9 +121,9 @@
   --muted: oklch(0.96 0.006 260);
   --muted-foreground: oklch(0.55 0.02 260);
 
-  /* Accent: muted brass / champagne (approx #C4975A) */
-  --accent: oklch(0.75 0.09 75);
-  --accent-foreground: oklch(0.24 0.03 40);
+  /* Accent: soft stone gray-beige (cooler, quieter than brass) */
+  --accent: oklch(0.82 0.02 80);
+  --accent-foreground: oklch(0.24 0.02 40);
 
   /* Destructive */
   --destructive: oklch(0.6 0.16 25);
@@ -134,15 +133,15 @@
   --border: oklch(0.9 0.01 260);
   --input: oklch(0.94 0.01 260);
 
-  /* Ring (focus outlines) – use accent brass for a premium feel */
+  /* Ring (focus outlines) – use the accent stone color */
   --ring: var(--accent);
 
-  /* Charts – warm neutrals so they sit with the brand */
-  --chart-1: oklch(0.72 0.07 75); /* brass */
-  --chart-2: oklch(0.64 0.07 55); /* clay */
-  --chart-3: oklch(0.8 0.04 95); /* light neutral */
-  --chart-4: oklch(0.6 0.05 45); /* darker stone */
-  --chart-5: oklch(0.5 0.05 30); /* deep neutral */
+  /* Charts – warm/neutral so they sit with the brand */
+  --chart-1: oklch(0.72 0.03 80); /* stone accent */
+  --chart-2: oklch(0.64 0.04 60); /* taupe */
+  --chart-3: oklch(0.8 0.02 95); /* light neutral */
+  --chart-4: oklch(0.6 0.03 45); /* darker stone */
+  --chart-5: oklch(0.5 0.03 30); /* deep neutral */
 
   /* Radius base: slightly larger for softer cards/buttons */
   --radius: 0.75rem; /* 12px baseline, then scaled in @theme */
@@ -159,10 +158,10 @@
 }
 
 /* ==============================
-   Dark theme: neutral with warm accent
+   Dark theme: neutral with soft taupe
    ============================== */
 /*
-  Neutral charcoal dark mode with the same clay/brass family.
+  Neutral charcoal dark mode with the same taupe/stone family.
   Only applies with `.dark`.
 */
 
@@ -178,8 +177,8 @@
   --popover: oklch(0.2 0.02 260);
   --popover-foreground: var(--foreground);
 
-  /* Primary: lighter clay for CTAs on dark */
-  --primary: oklch(0.7 0.09 55);
+  /* Primary: lighter taupe for CTAs on dark */
+  --primary: oklch(0.72 0.04 60);
   --primary-foreground: oklch(0.16 0.02 260);
 
   --secondary: oklch(0.23 0.02 260);
@@ -188,8 +187,8 @@
   --muted: oklch(0.24 0.02 260);
   --muted-foreground: oklch(0.78 0.02 260);
 
-  /* Accent: brass still works on dark */
-  --accent: oklch(0.75 0.09 75);
+  /* Accent: same soft stone accent on dark */
+  --accent: oklch(0.78 0.03 80);
   --accent-foreground: oklch(0.18 0.02 260);
 
   --destructive: oklch(0.6 0.16 25);
@@ -199,17 +198,17 @@
   --input: oklch(0.29 0.015 260 / 0.7);
   --ring: var(--accent);
 
-  --chart-1: oklch(0.75 0.09 75);
-  --chart-2: oklch(0.7 0.09 55);
-  --chart-3: oklch(0.63 0.06 45);
-  --chart-4: oklch(0.53 0.05 35);
-  --chart-5: oklch(0.45 0.05 30);
+  --chart-1: oklch(0.78 0.03 80);
+  --chart-2: oklch(0.72 0.04 60);
+  --chart-3: oklch(0.63 0.03 45);
+  --chart-4: oklch(0.53 0.03 35);
+  --chart-5: oklch(0.45 0.03 30);
 
   --sidebar: oklch(0.19 0.02 260);
   --sidebar-foreground: var(--foreground);
   --sidebar-primary: var(--primary);
   --sidebar-primary-foreground: var(--primary-foreground);
-  --sidebar-accent: oklch(0.23 0.02 260);
+  --sidebar-accent: oklch(0.26 0.02 260);
   --sidebar-accent-foreground: var(--foreground);
   --sidebar-border: oklch(0.29 0.015 260 / 0.6);
   --sidebar-ring: var(--ring);

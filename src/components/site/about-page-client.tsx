@@ -35,9 +35,9 @@ export function AboutPageClient() {
 function HeroSection() {
   return (
     <section className="border-b border-border/70 bg-card">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-6 md:py-16">
+      <div className="mx-auto max-w-4xl px-4 py-12 md:px-6 md:py-16">
         {/* Text */}
-        <div className="max-w-xl space-y-4">
+        <div className="space-y-4 md:space-y-5">
           <p className="inline-flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground md:text-[11px]">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             About
@@ -45,7 +45,7 @@ function HeroSection() {
           <h1 className="font-heading text-3xl font-medium tracking-tight text-foreground md:text-[2.4rem]">
             A family stone shop in Los Angeles.
           </h1>
-          <p className="text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
+          <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-[0.95rem]">
             Quiroz Marble and Granite is a family‑run fabrication shop focused
             on calm, careful stonework for everyday spaces.
           </p>
@@ -57,17 +57,6 @@ function HeroSection() {
             >
               Learn our story
             </a>
-          </div>
-        </div>
-
-        {/* Simple facts block */}
-        <div className="mt-4 w-full max-w-xs rounded-2xl border border-border bg-background px-4 py-4 text-[12px] text-muted-foreground md:mt-0 md:text-[13px]">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-            In short
-          </p>
-          <div className="mt-3 space-y-1.5">
-            <p>Family owned since 2000.</p>
-            <p>In‑house fabrication in Los Angeles.</p>
           </div>
         </div>
       </div>
